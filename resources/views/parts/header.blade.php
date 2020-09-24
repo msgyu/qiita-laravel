@@ -54,7 +54,7 @@
                   <p class="">投稿する</p>
                 </li>
               </ul>
-              <a class="nav-link text-white" id="post-link" href="/drafts/new"></a>
+              <a class="nav-link text-white" id="post-link" href="{{ route('posts.create')}}"></a>
             </div>
           </li>
           <li class=" ml-2 li-icon">
