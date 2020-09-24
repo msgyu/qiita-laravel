@@ -31,8 +31,8 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('post_tags');
-        Schema::dropIfExists('tags');
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('tags');
         Schema::dropIfExists('users');
     }
 }
