@@ -14,7 +14,10 @@
     </div>
   </div>
   <div class="post-page-footer">
-    <input type="submit" class="post-button m-1" value="Qiitaに投稿">
+    <button type='submit' class="post-button m-1" tabindex="41">
+      <i class="fa fa-upload"></i>
+      Qiita に投稿
+    </button>
   </div>
 </form>
 @endsection
