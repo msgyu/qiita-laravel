@@ -49,11 +49,13 @@ class PostController extends Controller
         $params['user_id'] = Auth::id();
         $post = Post::create($params);
 
-        $tags = $request->tags;
-        foreach ($tags as $tag_params) {
-            $tag = Tag::firstOrCreate(['name' => $tag_params->name]);
-            $post->tags()->attach($tag);
-        };
+        if (($request->tags)) {
+            $tags = $request->tags;
+            foreach ($tags as $tag_params) {
+                $tag = Tag::firstOrCreate(['name' => $tag_params->name]);
+                $post->tags()->attach($tag);
+            };
+        }
 
         return redirect()->route('root');
     }
