@@ -17507,6 +17507,7 @@ a.text-dark:focus {
 
 .post-page-wrapper .post-page-footer .post-button {
   background-color: #55c501;
+  border-color: #4ea30a;
   color: white;
   border-radius: 0.25rem;
   width: 7rem;
