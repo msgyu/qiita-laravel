@@ -40,7 +40,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'tags' => 'required|string',
+            'article' => 'required|string',
+        ]);
+
+        $params['user_id'] = Auth::id();
     }
 
     /**
