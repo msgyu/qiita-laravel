@@ -40006,6 +40006,9 @@ $(function () {
     var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($(this).val()));
     $("#markdown_preview").html(html);
   });
+  var target = $(".post-body");
+  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml(target.html()));
+  $(".post-body").html(html);
 
   function getHtml(html) {
     html = html.replace(/&lt;/g, "<");
