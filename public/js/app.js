@@ -39935,7 +39935,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(function () {
   function add_tag(text) {
-    var $tag_li = "<li class=\"tag-content\">\n                    <span class=\"tag-label\">\n                      ".concat(text, "\n                    </span>\n                    <a class=\"text-icon\">\n                      \xD7\n                    </a>\n                    <input class=\"tag-hidden-field\" name=\"tags[]['name'] value=\"").concat(text, "\" type=\"hidden\">\n                  </li>");
+    var $tag_li = "<li class=\"tag-content\">\n                    <span class=\"tag-label\">\n                      ".concat(text, "\n                    </span>\n                    <a class=\"text-icon\">\n                      \xD7\n                    </a>\n                    <input class=\"tag-hidden-field\" name=\"tags[]\" value=\"").concat(text, "\" type=\"hidden\">\n                  </li>");
     return $tag_li;
   }
 

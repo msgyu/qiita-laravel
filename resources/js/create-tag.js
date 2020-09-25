@@ -7,7 +7,7 @@ $(function() {
                     <a class="text-icon">
                       ×
                     </a>
-                    <input class="tag-hidden-field" name="tags[]['name'] value="${text}" type="hidden">
+                    <input class="tag-hidden-field" name="tags[]" value="${text}" type="hidden">
                   </li>`;
         return $tag_li;
     }

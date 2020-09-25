@@ -3,10 +3,10 @@
 @section('content')
 <form class="post-page-wrapper" action="{{ route('posts.store') }}" method="post">
   @csrf
-  <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル" name="title">
+  <input type="text" class="form-control" id="title-input" placeholder="タイトル" name="title">
   <ul class="tag-wrapper ">
     <li class="tag-new">
-      <input id="tag-input" name="tags[]['name']" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
+      <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
     </li>
   </ul>
   <div class="row">
