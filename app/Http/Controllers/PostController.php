@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\post;
-use App\Models\tag;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,20 +42,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $params = $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|max:255',
             'body' => 'required|string',
         ]);
 
         $params['user_id'] = Auth::id();
         $post = Post::create($params);
+        $tags = $request->tags;
 
-        if (($request->tags)) {
-            $tags = $request->tags;
-            foreach ($tags as $tag_params) {
-                $tag = Tag::firstOrCreate(['name' => $tag_params->name]);
+        foreach ($tags as $tag_params) {
+            if (!empty($tag_params)) {
+                $tag = Tag::firstOrCreate(['name' => $tag_params]);
                 $post->tags()->attach($tag);
-            };
-        }
+            }
+        };
 
         return redirect()->route('root');
     }
