@@ -39875,6 +39875,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./markdown */ "./resources/js/markdown.js");
+
+__webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39919,6 +39923,69 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/create-tag.js":
+/*!************************************!*\
+  !*** ./resources/js/create-tag.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $("#tag-input").focus(function () {
+    $(this).css("background", "#b3eaef");
+  }).blur(function () {
+    $(this).css("background", "#fff");
+  });
+
+  function add_tag(text) {
+    var $tag_li = "<li class=\"tag-content\">\n                    <span class=\"tag-label\">\n                      ".concat(text, "\n                    </span>\n                    <a class=\"text-icon\">\n                      \xD7\n                    </a>\n                    <input class=\"tag-hidden-field\" name=\"tags[]['name'] value=\"").concat(text, "\" type=\"hidden\">\n                  </li>");
+    return $tag_li;
+  }
+
+  $tags = [];
+  $("#tag-input").on("keydown", function (e) {
+    if (e.keyCode == 13) {
+      var $text = this.value;
+
+      if ($text.length > 0 && $tags.indexOf($text) == -1) {
+        $("#tag-input").before(add_tag($text));
+        $tags.push($text);
+        this.value = "";
+        return false;
+      }
+    }
+
+    if (e.keyCode == 8) {
+      var $text = this.value;
+
+      if ($text.length == 0) {
+        var $tag = $(".tag-content:last");
+        var tag_value = $tag.find(".tag-hidden-field").val();
+        var index = $tags.indexOf(tag_value);
+
+        if (index > -1) {
+          $tags.splice(index, 1);
+        }
+
+        $tag.remove();
+      }
+    }
+  });
+  $(".tag-wrapper").on("click", ".text-icon", function () {
+    var $tag = $(this).parents(".tag-content");
+    var tag_value = $tag.find(".tag-hidden-field").val();
+    var index = $tags.indexOf(tag_value);
+
+    if (index > -1) {
+      $tags.splice(index, 1);
+    }
+
+    $tag.remove();
+  });
+});
 
 /***/ }),
 

@@ -11,7 +11,11 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js(["resources/js/app.js", "resources/js/markdown.js"], "public/js").sass(
-    "resources/sass/app.scss",
-    "public/css"
-);
+mix.js(
+    [
+        "resources/js/app.js",
+        "resources/js/markdown.js",
+        "resources/js/create-tag.js"
+    ],
+    "public/js"
+).sass("resources/sass/app.scss", "public/css");
