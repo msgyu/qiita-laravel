@@ -1,12 +1,4 @@
 $(function() {
-    $("#tag-input")
-        .focus(function() {
-            $(this).css("background", "#b3eaef");
-        })
-        .blur(function() {
-            $(this).css("background", "#fff");
-        });
-
     function add_tag(text) {
         var $tag_li = `<li class="tag-content">
                     <span class="tag-label">
