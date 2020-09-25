@@ -1,0 +1,33 @@
+.top-wrapper {
+    background-color: #f6f6f6;
+    padding: 40px 0px;
+    height: 100vh;
+    .posts-wrapper {
+        background-color: white;
+        margin: 0px auto;
+        padding: 20px;
+        .post-box {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: solid 3px #f6f6f6;
+            .post-box_left {
+                height: 40px;
+                width: 40px;
+                background-color: gray;
+                border-radius: 5px;
+            }
+            .post-box_right {
+                padding-left: 20px;
+                .post-title {
+                    font-weight: bold;
+                }
+                .post-details {
+                    &_date {
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+}
