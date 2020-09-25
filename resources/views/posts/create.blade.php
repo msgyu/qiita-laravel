@@ -5,13 +5,8 @@
   @csrf
   <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル" name="title">
   <ul class="tag-wrapper ">
-    <li class="tag-content">
-      <span class="tag-label">タグ</span>
-      <a class="tag-close">×</a>
-      <input class="tag-hidden-field" value="タグ" type="hidden" />
-    </li>
     <li class="tag-new">
-      <input id="tag-input" name="tags[]['name']" class="tag-input ui-autocomplete-input" placeholder="プログラミング技術に関するタグを入力" autocomplete="off" type="text" />
+      <input id="tag-input" name="tags[]['name']" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
     </li>
   </ul>
   <div class="row">
