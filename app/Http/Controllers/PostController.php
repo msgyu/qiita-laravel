@@ -57,7 +57,7 @@ class PostController extends Controller
             }
         };
 
-        return redirect()->route('root');
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
@@ -68,7 +68,7 @@ class PostController extends Controller
      */
     public function show(post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**
