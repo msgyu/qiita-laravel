@@ -5,7 +5,7 @@
   <div class="posts-wrapper col-md-6">
     @foreach ($posts as $post)
     <div class="post-box">
-      <div class="post-box_left"></div>
+      <img class="post-box_left" src="{{ asset('./img/sample-user.png') }}" alt="ロゴ">
       <div class="post-box_right">
         <a class="post-title" href="{{ route('posts.show', $post)}}">{{ $post->title }}</a>
         <div class="post-details">
