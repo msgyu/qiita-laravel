@@ -5,21 +5,46 @@
         margin: 3rem 5rem;
         padding: 3rem;
         .post-header {
-            .date {
-                color: gray;
+            &_info {
+                li {
+                    display: inline-block;
+                    height: 32px;
+                    line-height: 32px;
+                }
+                .user-icon {
+                    border-radius: 50%;
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 8px;
+                }
+                .user-name {
+                    font-size: 18px;
+                    margin-right: 16px;
+                }
+                .date {
+                    color: gray;
+                    margin-right: 16px;
+                }
             }
         }
         .post-title {
-            font-size: 2rem;
+            font-size: 4rem;
             margin-top: 1.2rem;
             font-weight: bold;
+            margin-bottom: 16px;
+            line-height: 1.4;
+            font-feature-settings: "palt";
         }
         .post-tags {
             .post-tag {
-                background-color: gray;
+                background-color: #eee;
                 display: inline-flex;
-                padding: 0.3rem;
+                padding: 2px 8px;
+                font-size: 14px;
                 color: #666;
+                border-radius: 4px;
+                height: 23px;
+                line-height: 19px;
             }
         }
         .post-body {
