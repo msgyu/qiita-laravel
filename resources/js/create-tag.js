@@ -29,8 +29,8 @@ $(function() {
                 $("#tag-input").before(add_tag($text));
                 $tags.push($text);
                 this.value = "";
-                return false;
             }
+            return false;
         }
 
         if (e.keyCode == 8) {
