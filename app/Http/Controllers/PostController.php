@@ -16,8 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Post::orderBy('created_at', 'desc')->get();
         if (Auth::check()) {
-            return view('posts.index');
+            return view('posts.index', compact('posts'));
         } else {
             return view('posts.top');
         }

@@ -17651,3 +17651,41 @@ a.text-dark:focus {
   display: block;
 }
 
+.top-wrapper {
+  background-color: #f6f6f6;
+  padding: 40px 0px;
+  height: 100vh;
+}
+
+.top-wrapper .posts-wrapper {
+  background-color: white;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+.top-wrapper .posts-wrapper .post-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: solid 3px #f6f6f6;
+}
+
+.top-wrapper .posts-wrapper .post-box .post-box_left {
+  height: 40px;
+  width: 40px;
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.top-wrapper .posts-wrapper .post-box .post-box_right {
+  padding-left: 20px;
+}
+
+.top-wrapper .posts-wrapper .post-box .post-box_right .post-title {
+  font-weight: bold;
+}
+
+.top-wrapper .posts-wrapper .post-box .post-box_right .post-details_date {
+  color: gray;
+}
+
