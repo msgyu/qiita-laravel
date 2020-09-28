@@ -17564,3 +17564,90 @@ a.text-dark:focus {
   width: 280px;
 }
 
+.post-page-wrapper {
+  background-color: #f8f9fc;
+}
+
+.post-page-wrapper .post-wrapper {
+  background-color: white;
+  margin: 3rem 5rem;
+  padding: 3rem;
+}
+
+.post-page-wrapper .post-wrapper .post-header_info li {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_info .user-icon {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_info .user-name {
+  font-size: 18px;
+  margin-right: 16px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_info .date {
+  color: gray;
+  margin-right: 16px;
+}
+
+.post-page-wrapper .post-wrapper .post-title {
+  font-size: 4rem;
+  margin-top: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  font-feature-settings: "palt";
+}
+
+.post-page-wrapper .post-wrapper .post-tags .post-tag {
+  background-color: #eee;
+  display: inline-flex;
+  padding: 2px 8px;
+  font-size: 14px;
+  color: #666;
+  border-radius: 4px;
+  height: 23px;
+  line-height: 19px;
+}
+
+.post-page-wrapper .post-wrapper .post-body {
+  margin-top: 2rem;
+}
+
+.post-page-wrapper .post-wrapper .post-body h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.2rem;
+  border-bottom: solid 1px #ddd;
+}
+
+.post-page-wrapper .post-wrapper .post-body h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.2rem;
+  border-bottom: solid 1px #ddd;
+}
+
+.post-page-wrapper .post-wrapper .post-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.2rem;
+  border-bottom: solid 1px #ddd;
+}
+
+.post-page-wrapper .post-wrapper .post-body pre code {
+  color: white;
+  padding: 1.5rem 1rem;
+  background-color: #364549;
+  width: 100%;
+  display: block;
+}
+
