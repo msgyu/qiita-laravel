@@ -63,7 +63,7 @@
             <p class="">0</p>
           </li>
           <li class="nav-item dropdown">
-            <img class="user-icon" src="{{ asset('./img/sample-user.png') }}" alt="ロゴ">
+            <img class="user-icon" src="{{ asset('./img/sample-user.png') }}" alt="ユーザー画像">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               <span class="caret"></span>
             </a>
