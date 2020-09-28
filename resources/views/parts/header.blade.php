@@ -13,9 +13,9 @@
       </li>
       <li>
         <div class="search-warapper">
-          <form class="form-inline my-2 my-lg-0 ml-2 search-form">
+          <form class="form-inline my-2 my-lg-0 ml-2 search-form" method="POST" action="{{ route(posts.index )}}">
             <i class="fas fa-search"></i>
-            <input type="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
           </form>
         </div>
       </li>
