@@ -16,10 +16,11 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $keyward = $request->name('search');
+        $keyword = $request->name('search');
 
+        $posts = Post::orderBy('created_at', 'desc')->get();
         if (Auth::check()) {
-            return view('posts.index');
+            return view('posts.index', compact('posts'));
         } else {
             return view('posts.top');
         }
