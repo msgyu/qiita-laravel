@@ -15,7 +15,7 @@
         <div class="search-warapper">
           <form class="form-inline my-2 my-lg-0 ml-2 search-form">
             <i class="fas fa-search"></i>
-            <input type="search" class="form-control mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
           </form>
         </div>
       </li>
