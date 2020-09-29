@@ -2,13 +2,13 @@
   <div class="header-container">
     <ul class="header-left">
       <li>
-        <a class="header-icon" href="{{ url('/') }}">
+        <a class="header-icon" href="{{ route('root') }}">
           {{ config('app.name', 'Laravel') }}
         </a>
       </li>
       <li>
         <div class="header-community">
-          <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コミュニティ</a>
+          <!-- <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コミュニティ</a> -->
         </div>
       </li>
       <li>
@@ -39,11 +39,11 @@
           </li>
           @endif
           @else
-          <li class="nav-item li-icon">
+          <!-- <li class="nav-item li-icon">
             <a class="nav-link text-white" href="#"></a>
             <i class="fab fa-get-pocket"></i>
             <p class="">ストック一覧</p>
-          </li>
+          </li> -->
           <li>
             <div class="new-post-btn">
               <ul class="new-post-btn_ul">
@@ -57,11 +57,11 @@
               <a class="nav-link text-white" id="post-link" href="{{ route('posts.create')}}"></a>
             </div>
           </li>
-          <li class=" ml-2 li-icon">
+          <!-- <li class=" ml-2 li-icon">
             <a class="nav-link text-white" href="#"></a>
             <i class="far fa-bell"></i>
             <p class="">0</p>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <img class="user-icon" src="{{ asset('./img/sample-user.png') }}" alt="ユーザー画像">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -69,14 +69,14 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">マイページ</a>
+              <!-- <a class="dropdown-item" href="#">マイページ</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">下書き一覧</a>
               <a class="dropdown-item" href="#">編集リクエスト一覧</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">設定</a>
               <a class="dropdown-item" href="#">ヘルプ</a>
-              <div class="dropdown-divider"></div>
+              <div class="dropdown-divider"></div> -->
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                 {{ __('ログアウト') }}
