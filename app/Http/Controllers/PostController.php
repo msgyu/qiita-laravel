@@ -6,6 +6,7 @@ use App\Models\post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -14,14 +15,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function top()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
-        if (Auth::check()) {
-            return view('posts.index', compact('posts'));
+        return view('posts.top', compact('posts'));
+    }
+
+    public function index(Request $request)
+    {
+        $keyword = $request->input('search');
+        if ($keyword !== null) {
+            $keyword_space_half = mb_convert_kana($keyword, 's');
+            $keywords = preg_split('/[\s]+/', $keyword_space_half);
+
+            $query = DB::table('posts');
+
+            foreach ($keywords as $keywords) {
+                $query
+                    ->where('title', 'like', '%' . $keyword . '%')
+                    ->orWhere('body', 'LIKE', "%{$keyword}%");
+            }
+            $posts = $query->select('id', 'title', 'body', 'user_id', 'created_at')->orderBy('created_at', 'desc')->get();
         } else {
-            return view('posts.top');
+            $posts = Post::orderBy('created_at', 'desc')->get();
         }
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -67,8 +86,9 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($id)
     {
+        $post = Post::find($id);
         return view('posts.show', compact('post'));
     }
 

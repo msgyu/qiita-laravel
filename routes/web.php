@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PostController@index')->name('root');
+Route::get('/', 'PostController@top')->name('root');
 
 Route::resource('posts', 'PostController');
 

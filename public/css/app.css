@@ -17238,6 +17238,7 @@ a.text-dark:focus {
   border: none;
   height: 29px;
   outline: 0;
+  padding: 6px 12px;
 }
 
 .header-community {
