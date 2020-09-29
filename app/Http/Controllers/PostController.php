@@ -84,8 +84,9 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($id)
     {
+        $post = Post::find($id);
         return view('posts.show', compact('post'));
     }
 
