@@ -25,7 +25,9 @@ class PostController extends Controller
             $query = DB::table('posts');
 
             foreach ($keywords as $keywords) {
-                $query->where('title', 'like', '%' . $keyword . '%');
+                $query
+                    ->where('title', 'like', '%' . $keyword . '%')
+                    ->orWhere('body', 'LIKE', "%{$keyword}%");
             }
             $posts = $query->select('id', 'title', 'body', 'user_id', 'created_at')->orderBy('created_at', 'desc')->get();
         } else {
