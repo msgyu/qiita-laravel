@@ -19,6 +19,8 @@ class PostController extends Controller
     {
         $keyword = $request->input('search');
         if ($keyword !== null) {
+            $keyword_space_half = mb_convert_kana($keyword, 's');
+            $keywords = preg_split('/[\s]+/', $keyword_space_half);
             $posts = DB::table('posts')->where('title', 'like', '%' . $keyword . '%')->get();
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
