@@ -6,6 +6,7 @@ use App\Models\post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -16,9 +17,13 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->name('search');
+        $keyword = $request->input('search');
+        if ($keyword !== null) {
+            $posts = DB::table('posts')->where('title', 'like', '%' . $keyword . '%')->get();
+        } else {
+            $posts = Post::orderBy('created_at', 'desc')->get();
+        }
 
-        $posts = Post::orderBy('created_at', 'desc')->get();
         if (Auth::check()) {
             return view('posts.index', compact('posts'));
         } else {
