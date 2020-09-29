@@ -13,11 +13,11 @@
       <table>
         <tr>
           <th>ユーザ名</th>
-          <td><input type="text" class="form-control" placeholder="qiita風たん" size="50" value="{{ old('email') }}" name="username" required autofocus></td>
+          <td><input type="text" class="form-control" placeholder="qiita" size="50" value="{{ old('email') }}" name="username" required autofocus></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td><input type="email" class="form-control" placeholder="qiitahuu@qiitahuu.com" size="50" name="email" required></td>
+          <td><input type="email" class="form-control" placeholder="qiita@qiita.com" size="50" name="email" required></td>
         </tr>
         <tr>
           <th>パスワード</th>
