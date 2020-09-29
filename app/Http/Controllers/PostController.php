@@ -21,7 +21,13 @@ class PostController extends Controller
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
-            $posts = DB::table('posts')->where('title', 'like', '%' . $keyword . '%')->get();
+
+            $query = DB::table('posts');
+
+            foreach ($keywords as $keywords) {
+                $query->where('title', 'like', '%' . $keyword . '%');
+            }
+            $posts = $query->select('id', 'title', 'body', 'user_id', 'created_at')->orderBy('created_at', 'desc')->get();
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
@@ -29,7 +35,7 @@ class PostController extends Controller
         if (Auth::check()) {
             return view('posts.index', compact('posts'));
         } else {
-            return view('posts.top');
+            return view('posts.top', compact('posts'));
         }
     }
 
