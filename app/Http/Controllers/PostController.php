@@ -40,7 +40,7 @@ class PostController extends Controller
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
 
-        return view('posts.top', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
