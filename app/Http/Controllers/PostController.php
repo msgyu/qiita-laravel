@@ -24,6 +24,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('search');
+        $tag_btn_value = $request->input('tag_btn');
+
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
@@ -36,11 +38,14 @@ class PostController extends Controller
                     ->orWhere('body', 'LIKE', "%{$keyword}%");
             }
             $posts = $query->orderBy('created_at', 'desc')->get();
+        } elseif ($tag_btn_value !== null) {
+            $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
+            $posts = $tag->posts;
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
 
-        return view('posts.index', compact('posts', 'keyword'));
+        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
 
     /**
