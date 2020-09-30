@@ -101,8 +101,14 @@ class PostController extends Controller
     public function edit($id)
     {
 
+        $user = Auth::user();
         $post = Post::find($id);
-        return view('posts.edit', compact('post'));
+
+        if ($user->id === $post->user_id) {
+            return view('posts.edit', compact('post'));
+        } else {
+            return back()->with('flash_message', '投稿者でなければ編集できません');
+        }
     }
 
     /**
@@ -114,7 +120,23 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        //
+        $params = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|string',
+        ]);
+
+        $params['user_id'] = Auth::id();
+        $post = Post::create($params);
+        $tags = $request->tags;
+
+        foreach ($tags as $tag_params) {
+            if (!empty($tag_params)) {
+                $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                $post->tags()->attach($tag);
+            }
+        };
+
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
