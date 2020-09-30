@@ -72,12 +72,14 @@ class PostController extends Controller
             $post = Post::create($params);
             $tags = $request->tags;
 
-            foreach ($tags as $tag_params) {
-                if (!empty($tag_params)) {
-                    $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                    $post->tags()->attach($tag);
-                }
-            };
+            if (count($tags) !== 0) {
+                foreach ($tags as $tag_params) {
+                    if (!empty($tag_params)) {
+                        $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                        $post->tags()->attach($tag);
+                    }
+                };
+            }
 
             return redirect()->route('posts.show', compact('post'));
         } else {
@@ -133,28 +135,29 @@ class PostController extends Controller
             $user = Auth::user();
 
             if ($user->id === $post->user_id) {
-                return view('posts.edit', compact('post'));
+                $params = $request->validate([
+                    'title' => 'required|max:255',
+                    'body' => 'required|string',
+                ]);
+
+                $post->fill($params)->save();
+                $tags = $request->tags;
+                $post->tags()->detach();
+
+                if (count($tags) !== 0) {
+                    foreach ($tags as $tag_params) {
+                        if (!empty($tag_params)) {
+                            $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                            $post->tags()->attach($tag);
+                        }
+                    };
+                }
+
+
+                return redirect()->route('posts.show', compact('post'));
             } else {
                 return back()->with('flash_message', '投稿者でなければ編集できません');
             }
-
-            $params = $request->validate([
-                'title' => 'required|max:255',
-                'body' => 'required|string',
-            ]);
-
-            $params['user_id'] = Auth::id();
-            $post = Post::create($params);
-            $tags = $request->tags;
-
-            foreach ($tags as $tag_params) {
-                if (!empty($tag_params)) {
-                    $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                    $post->tags()->attach($tag);
-                }
-            };
-
-            return redirect()->route('posts.show', compact('post'));
         } else {
             return back()->with('flash_message', '編集するにはログインする必要があります');
         }
