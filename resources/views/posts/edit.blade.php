@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<form class="post-page-wrapper" action="{{ route('posts.store') }}" method="post">
+<form class="post-page-wrapper" action="{{ route('posts.update', $post) }}" method="post">
   @csrf
+  @method('PUT')
+
   <input type="text" class="form-control" id="title-input" value="{{ $post->title }}" placeholder="タイトル" name="title">
   <ul class="tag-wrapper ">
     @foreach($post->tags as $tag)
