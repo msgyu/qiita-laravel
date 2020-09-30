@@ -29,14 +29,13 @@ class PostController extends Controller
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
 
             $query = DB::table('posts');
-            // preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keywords, $match);
 
             foreach ($keywords as $keyword) {
                 $query
                     ->where('title', 'like', '%' . $keyword . '%')
                     ->orWhere('body', 'LIKE', "%{$keyword}%");
             }
-            $posts = $query->select('id', 'title', 'body', 'user_id', 'created_at')->orderBy('created_at', 'desc')->get();
+            $posts = $query->orderBy('created_at', 'desc')->get();
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
