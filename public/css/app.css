@@ -17660,6 +17660,10 @@ a.text-dark:focus {
   font-feature-settings: "palt";
 }
 
+.post-page-wrapper .post-wrapper .post-tags div {
+  margin: 0 8px 0 0;
+}
+
 .post-page-wrapper .post-wrapper .post-tags .post-tag {
   background-color: #eee;
   display: inline-flex;
@@ -17669,6 +17673,12 @@ a.text-dark:focus {
   border-radius: 4px;
   height: 23px;
   line-height: 19px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .post-page-wrapper .post-wrapper .post-body {

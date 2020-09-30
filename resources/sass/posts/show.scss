@@ -79,6 +79,10 @@
             font-feature-settings: "palt";
         }
         .post-tags {
+            div {
+                margin: 0 8px 0 0;
+            }
+
             .post-tag {
                 background-color: #eee;
                 display: inline-flex;
@@ -88,6 +92,11 @@
                 border-radius: 4px;
                 height: 23px;
                 line-height: 19px;
+
+                border: none;
+                cursor: pointer;
+                outline: none;
+                appearance: none;
             }
         }
         .post-body {

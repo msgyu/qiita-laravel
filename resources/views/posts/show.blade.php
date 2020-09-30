@@ -44,9 +44,13 @@
     </div>
     <div class="post-title"> {{ $post->title }}</div>
     @if($post->tags)
-    <div class="post-tags">
+    <div class="post-tags" style="display:inline-flex">
       @foreach ($post->tags as $tag)
-      <div class="post-tag">{{ optional($tag)->name }}</div>
+      <div>
+        <form action="{{ route('posts.index')}}" method="GET">
+          <button class="post-tag" name="tag_btn" value="{{ optional($tag)->name }}">{{ optional($tag)->name }}</button>
+        </form>
+      </div>
       @endforeach
     </div>
     @endif
