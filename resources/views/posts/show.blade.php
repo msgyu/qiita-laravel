@@ -13,7 +13,7 @@
         @if (Auth::check())
         @if($post->user_id === Auth::user()->id)
         <li>
-          <a href="" class="edit-pass">
+          <a href="{{ route('posts.edit', $post->id) }}" class="edit-pass">
             <span>
               <i class="fas fa-pencil-alt"></i>
               編集する
