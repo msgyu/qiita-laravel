@@ -3,6 +3,7 @@
 @section('content')
 <div class="top-wrapper">
   <div class="posts-wrapper col-md-6">
+    @if(count($posts) !== 0)
     @foreach ($posts as $post)
     <div class="post-box">
       <img class="post-box_left" src="{{ asset('./img/sample-user.png') }}" alt="ロゴ">
@@ -14,6 +15,9 @@
       </div>
     </div>
     @endforeach
+    @else
+    <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
+    @endif
   </div>
 </div>
 @endsection

@@ -29,8 +29,9 @@ class PostController extends Controller
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
 
             $query = DB::table('posts');
+            // preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keywords, $match);
 
-            foreach ($keywords as $keywords) {
+            foreach ($keywords as $keyword) {
                 $query
                     ->where('title', 'like', '%' . $keyword . '%')
                     ->orWhere('body', 'LIKE', "%{$keyword}%");
@@ -40,7 +41,7 @@ class PostController extends Controller
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'keyword'));
     }
 
     /**
