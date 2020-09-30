@@ -98,10 +98,11 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit($id)
     {
 
-        return view('posts.edit', $post);
+        $post = Post::find($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
