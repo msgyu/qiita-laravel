@@ -6,6 +6,8 @@ $(function() {
         breaks: true,
         sanitize: true
     });
+    var html = marked(getHtml($("#markdown_editor_textarea").val()));
+    $("#markdown_preview").html(html);
 
     $("#markdown_editor_textarea").keyup(function() {
         var html = marked(getHtml($(this).val()));

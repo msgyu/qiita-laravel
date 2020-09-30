@@ -61,23 +61,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required|string',
-        ]);
 
-        $params['user_id'] = Auth::id();
-        $post = Post::create($params);
-        $tags = $request->tags;
+        if (Auth::check()) {
+            $params = $request->validate([
+                'title' => 'required|max:255',
+                'body' => 'required|string',
+            ]);
 
-        foreach ($tags as $tag_params) {
-            if (!empty($tag_params)) {
-                $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                $post->tags()->attach($tag);
+            $params['user_id'] = Auth::id();
+            $post = Post::create($params);
+            $tags = $request->tags;
+
+            if (count($tags) !== 0) {
+                foreach ($tags as $tag_params) {
+                    if (!empty($tag_params)) {
+                        $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                        $post->tags()->attach($tag);
+                    }
+                };
             }
-        };
 
-        return redirect()->route('posts.show', compact('post'));
+            return redirect()->route('posts.show', compact('post'));
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -98,9 +105,20 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit($id)
     {
-        //
+        if (Auth::check()) {
+            $user = Auth::user();
+            $post = Post::find($id);
+
+            if ($user->id === $post->user_id) {
+                return view('posts.edit', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
+            }
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -112,7 +130,37 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        //
+
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->id === $post->user_id) {
+                $params = $request->validate([
+                    'title' => 'required|max:255',
+                    'body' => 'required|string',
+                ]);
+
+                $post->fill($params)->save();
+                $tags = $request->tags;
+                $post->tags()->detach();
+
+                if (count($tags) !== 0) {
+                    foreach ($tags as $tag_params) {
+                        if (!empty($tag_params)) {
+                            $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                            $post->tags()->attach($tag);
+                        }
+                    };
+                }
+
+
+                return redirect()->route('posts.show', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
+            }
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**

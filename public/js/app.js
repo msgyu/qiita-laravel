@@ -40002,6 +40002,8 @@ $(function () {
     breaks: true,
     sanitize: true
   });
+  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($("#markdown_editor_textarea").val()));
+  $("#markdown_preview").html(html);
   $("#markdown_editor_textarea").keyup(function () {
     var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($(this).val()));
     $("#markdown_preview").html(html);
