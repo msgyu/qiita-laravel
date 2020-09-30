@@ -17624,10 +17624,18 @@ a.text-dark:focus {
   font-size: 16px;
 }
 
+.post-page-wrapper .post-wrapper .post-header_ul-right a.setting:hover {
+  text-decoration: none;
+}
+
 .post-page-wrapper .post-wrapper .post-header_ul-right li {
   display: inline-block;
   height: 32px;
   line-height: 32px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right li .trash {
+  padding: 0 5px 0 0;
 }
 
 .post-page-wrapper .post-wrapper .post-title {

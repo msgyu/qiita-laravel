@@ -25,10 +25,11 @@
             <a class="dropdown-toggle setting" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span><i class="fas fa-cog"></i></span>
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">
+                <span class="trash"><i class="far fa-trash-alt "></i></span>
+                <span>削除</span>
+              </a>
             </div>
           </div>
         </li>
