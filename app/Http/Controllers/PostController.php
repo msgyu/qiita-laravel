@@ -61,23 +61,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required|string',
-        ]);
 
-        $params['user_id'] = Auth::id();
-        $post = Post::create($params);
-        $tags = $request->tags;
+        if (Auth::check()) {
+            $params = $request->validate([
+                'title' => 'required|max:255',
+                'body' => 'required|string',
+            ]);
 
-        foreach ($tags as $tag_params) {
-            if (!empty($tag_params)) {
-                $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                $post->tags()->attach($tag);
-            }
-        };
+            $params['user_id'] = Auth::id();
+            $post = Post::create($params);
+            $tags = $request->tags;
 
-        return redirect()->route('posts.show', compact('post'));
+            foreach ($tags as $tag_params) {
+                if (!empty($tag_params)) {
+                    $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                    $post->tags()->attach($tag);
+                }
+            };
+
+            return redirect()->route('posts.show', compact('post'));
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -100,14 +105,17 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $post = Post::find($id);
 
-        $user = Auth::user();
-        $post = Post::find($id);
-
-        if ($user->id === $post->user_id) {
-            return view('posts.edit', compact('post'));
+            if ($user->id === $post->user_id) {
+                return view('posts.edit', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
+            }
         } else {
-            return back()->with('flash_message', '投稿者でなければ編集できません');
+            return back()->with('flash_message', '編集するにはログインする必要があります');
         }
     }
 
@@ -120,23 +128,36 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        $params = $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required|string',
-        ]);
 
-        $params['user_id'] = Auth::id();
-        $post = Post::create($params);
-        $tags = $request->tags;
+        if (Auth::check()) {
+            $user = Auth::user();
 
-        foreach ($tags as $tag_params) {
-            if (!empty($tag_params)) {
-                $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                $post->tags()->attach($tag);
+            if ($user->id === $post->user_id) {
+                return view('posts.edit', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
             }
-        };
 
-        return redirect()->route('posts.show', compact('post'));
+            $params = $request->validate([
+                'title' => 'required|max:255',
+                'body' => 'required|string',
+            ]);
+
+            $params['user_id'] = Auth::id();
+            $post = Post::create($params);
+            $tags = $request->tags;
+
+            foreach ($tags as $tag_params) {
+                if (!empty($tag_params)) {
+                    $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                    $post->tags()->attach($tag);
+                }
+            };
+
+            return redirect()->route('posts.show', compact('post'));
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
