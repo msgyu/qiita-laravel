@@ -171,6 +171,18 @@ class PostController extends Controller
      */
     public function destroy(post $post)
     {
-        //
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->id === $post->user_id) {
+
+                $post->delete();
+                return redirect(route('root'))->with('flash_message', '削除されました');
+            } else {
+                return back()->with('flash_message', '投稿者でなければ削除できません');
+            }
+        } else {
+            return back()->with('flash_message', '削除するにはログインする必要があります');
+        }
     }
 }
