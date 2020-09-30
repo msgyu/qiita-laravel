@@ -17575,27 +17575,59 @@ a.text-dark:focus {
   padding: 3rem;
 }
 
-.post-page-wrapper .post-wrapper .post-header_info li {
+.post-page-wrapper .post-wrapper .post-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-left li {
   display: inline-block;
   height: 32px;
   line-height: 32px;
 }
 
-.post-page-wrapper .post-wrapper .post-header_info .user-icon {
+.post-page-wrapper .post-wrapper .post-header_ul-left .user-icon {
   border-radius: 50%;
   width: 32px;
   height: 32px;
   margin-right: 8px;
 }
 
-.post-page-wrapper .post-wrapper .post-header_info .user-name {
+.post-page-wrapper .post-wrapper .post-header_ul-left .user-name {
   font-size: 18px;
   margin-right: 16px;
 }
 
-.post-page-wrapper .post-wrapper .post-header_info .date {
+.post-page-wrapper .post-wrapper .post-header_ul-left .date {
   color: gray;
   margin-right: 16px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right {
+  height: 18px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right a {
+  color: #999999;
+  font-size: 12px;
+  line-height: 18px;
+  height: 100%;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right a.edit-pass {
+  font-size: 12px;
+  margin: 0 16px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right a.setting {
+  font-size: 16px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right li {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
 }
 
 .post-page-wrapper .post-wrapper .post-title {

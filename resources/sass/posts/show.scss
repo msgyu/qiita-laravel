@@ -5,7 +5,10 @@
         margin: 3rem 5rem;
         padding: 3rem;
         .post-header {
-            &_info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            &_ul-left {
                 li {
                     display: inline-block;
                     height: 32px;
@@ -24,6 +27,28 @@
                 .date {
                     color: gray;
                     margin-right: 16px;
+                }
+            }
+
+            &_ul-right {
+                height: 18px;
+                a {
+                    color: #999999;
+                    font-size: 12px;
+                    line-height: 18px;
+                    height: 100%;
+                    &.edit-pass {
+                        font-size: 12px;
+                        margin: 0 16px;
+                    }
+                    &.setting {
+                        font-size: 16px;
+                    }
+                }
+                li {
+                    display: inline-block;
+                    height: 32px;
+                    line-height: 32px;
                 }
             }
         }
