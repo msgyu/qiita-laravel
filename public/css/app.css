@@ -17471,6 +17471,7 @@ a.text-dark:focus {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   color: #495057;
+  overflow: scroll;
 }
 
 .post-page-wrapper .row .col-6 #markdown_preview h1 {
@@ -17719,6 +17720,7 @@ a.text-dark:focus {
   background-color: #f6f6f6;
   padding: 40px 0px;
   height: 100vh;
+  overflow: scroll;
 }
 
 .top-wrapper .posts-wrapper {
