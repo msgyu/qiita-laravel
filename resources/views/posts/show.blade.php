@@ -26,10 +26,15 @@
               <span><i class="fas fa-cog"></i></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">
-                <span class="trash"><i class="far fa-trash-alt "></i></span>
-                <span>削除</span>
-              </a>
+              <form class="dropdown-item trash-form" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
+                @csrf
+                @method('DELETE')
+
+                <button>
+                  <span class="trash-form_btn"><i class="far fa-trash-alt "></i></span>
+                  <span>削除</span>
+                </button>
+              </form>
             </div>
           </div>
         </li>

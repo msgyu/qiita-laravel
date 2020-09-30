@@ -17634,7 +17634,20 @@ a.text-dark:focus {
   line-height: 32px;
 }
 
-.post-page-wrapper .post-wrapper .post-header_ul-right li .trash {
+.post-page-wrapper .post-wrapper .post-header_ul-right li .trash-form button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #999999;
+  font-size: 12px;
+}
+
+.post-page-wrapper .post-wrapper .post-header_ul-right li .trash-form_btn {
   padding: 0 5px 0 0;
 }
 
