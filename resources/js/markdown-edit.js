@@ -20,8 +20,4 @@ $(function() {
         var html = marked(getHtml($(this).val()));
         $("#markdown_preview").html(html);
     });
-
-    var target = $(".post-body");
-    var html = marked(getHtml(target.html()));
-    $(".post-body").html(html);
 });
