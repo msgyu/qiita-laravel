@@ -14,7 +14,8 @@ const mix = require("laravel-mix");
 mix.js(
     [
         "resources/js/app.js",
-        "resources/js/markdown.js",
+        "resources/js/markdown-show.js",
+        "resources/js/markdown-edit.js",
         "resources/js/create-tag.js"
     ],
     "public/js"
