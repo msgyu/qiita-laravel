@@ -24,23 +24,41 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('search');
+        $tag_btn_value = $request->input('tag_btn');
+
+
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
+            preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+            $no_tag_keywords = array_diff($keywords, $match[0]);
+            $tags = $match[1];
+            $tags_count = count($tags);
 
             $query = DB::table('posts');
-
-            foreach ($keywords as $keywords) {
+            if (count($tags) !== 0) {
                 $query
-                    ->where('title', 'like', '%' . $keyword . '%')
-                    ->orWhere('body', 'LIKE', "%{$keyword}%");
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $tags)
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
             }
-            $posts = $query->select('id', 'title', 'body', 'user_id', 'created_at')->orderBy('created_at', 'desc')->get();
+
+            foreach ($no_tag_keywords as $keyword) {
+                $query
+                    ->where('posts.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+            }
+            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+        } elseif ($tag_btn_value !== null) {
+            $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
+            $posts = $tag->posts;
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
 
     /**
@@ -61,23 +79,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required|string',
-        ]);
 
-        $params['user_id'] = Auth::id();
-        $post = Post::create($params);
-        $tags = $request->tags;
+        if (Auth::check()) {
+            $params = $request->validate([
+                'title' => 'required|max:255',
+                'body' => 'required|string',
+            ]);
 
-        foreach ($tags as $tag_params) {
-            if (!empty($tag_params)) {
-                $tag = Tag::firstOrCreate(['name' => $tag_params]);
-                $post->tags()->attach($tag);
+            $params['user_id'] = Auth::id();
+            $post = Post::create($params);
+            $tags = $request->tags;
+
+            if (count($tags) !== 0) {
+                foreach ($tags as $tag_params) {
+                    if (!empty($tag_params)) {
+                        $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                        $post->tags()->attach($tag);
+                    }
+                };
             }
-        };
 
-        return redirect()->route('posts.show', compact('post'));
+            return redirect()->route('posts.show', compact('post'));
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -98,9 +123,20 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit($id)
     {
-        //
+        if (Auth::check()) {
+            $user = Auth::user();
+            $post = Post::find($id);
+
+            if ($user->id === $post->user_id) {
+                return view('posts.edit', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
+            }
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -112,7 +148,37 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        //
+
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->id === $post->user_id) {
+                $params = $request->validate([
+                    'title' => 'required|max:255',
+                    'body' => 'required|string',
+                ]);
+
+                $post->fill($params)->save();
+                $tags = $request->tags;
+                $post->tags()->detach();
+
+                if (count($tags) !== 0) {
+                    foreach ($tags as $tag_params) {
+                        if (!empty($tag_params)) {
+                            $tag = Tag::firstOrCreate(['name' => $tag_params]);
+                            $post->tags()->attach($tag);
+                        }
+                    };
+                }
+
+
+                return redirect()->route('posts.show', compact('post'));
+            } else {
+                return back()->with('flash_message', '投稿者でなければ編集できません');
+            }
+        } else {
+            return back()->with('flash_message', '編集するにはログインする必要があります');
+        }
     }
 
     /**
@@ -123,6 +189,18 @@ class PostController extends Controller
      */
     public function destroy(post $post)
     {
-        //
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->id === $post->user_id) {
+
+                $post->delete();
+                return redirect(route('root'))->with('flash_message', '削除されました');
+            } else {
+                return back()->with('flash_message', '投稿者でなければ削除できません');
+            }
+        } else {
+            return back()->with('flash_message', '削除するにはログインする必要があります');
+        }
     }
 }

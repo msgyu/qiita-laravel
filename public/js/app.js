@@ -39875,7 +39875,9 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./markdown */ "./resources/js/markdown.js");
+__webpack_require__(/*! ./markdown-show */ "./resources/js/markdown-show.js");
+
+__webpack_require__(/*! ./markdown-edit */ "./resources/js/markdown-edit.js");
 
 __webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
 
@@ -39984,10 +39986,10 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/markdown.js":
-/*!**********************************!*\
-  !*** ./resources/js/markdown.js ***!
-  \**********************************/
+/***/ "./resources/js/markdown-edit.js":
+/*!***************************************!*\
+  !*** ./resources/js/markdown-edit.js ***!
+  \***************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40002,13 +40004,6 @@ $(function () {
     breaks: true,
     sanitize: true
   });
-  $("#markdown_editor_textarea").keyup(function () {
-    var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($(this).val()));
-    $("#markdown_preview").html(html);
-  });
-  var target = $(".post-body");
-  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml(target.html()));
-  $(".post-body").html(html);
 
   function getHtml(html) {
     html = html.replace(/&lt;/g, "<");
@@ -40016,6 +40011,46 @@ $(function () {
     html = html.replace(/&amp;/g, "&");
     return html;
   }
+
+  var defolt_preview = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($("#markdown_editor_textarea").val()));
+  $("#markdown_preview").html(defolt_preview);
+  $("#markdown_editor_textarea").keyup(function () {
+    var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml($(this).val()));
+    $("#markdown_preview").html(html);
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/markdown-show.js":
+/*!***************************************!*\
+  !*** ./resources/js/markdown-show.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_0__);
+
+$(function () {
+  marked__WEBPACK_IMPORTED_MODULE_0___default.a.setOptions({
+    langPrefix: "",
+    breaks: true,
+    sanitize: true
+  });
+
+  function getHtml(html) {
+    html = html.replace(/&lt;/g, "<");
+    html = html.replace(/&gt;/g, ">");
+    html = html.replace(/&amp;/g, "&");
+    return html;
+  }
+
+  var target = $(".post-body");
+  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()(getHtml(target.html()));
+  $(".post-body").html(html);
 });
 
 /***/ }),
@@ -40032,14 +40067,16 @@ $(function () {
 /***/ }),
 
 /***/ 0:
-/*!****************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/markdown.js ./resources/sass/app.scss ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/markdown-show.js ./resources/js/markdown-edit.js ./resources/js/create-tag.js ./resources/sass/app.scss ***!
+  \**********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/js/markdown.js */"./resources/js/markdown.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/js/markdown-show.js */"./resources/js/markdown-show.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/js/markdown-edit.js */"./resources/js/markdown-edit.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/js/create-tag.js */"./resources/js/create-tag.js");
 module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/qiita-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
