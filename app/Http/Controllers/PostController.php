@@ -25,25 +25,26 @@ class PostController extends Controller
     {
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
 
-        $posts = DB::table('posts')
-            ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-            ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-            ->whereIn('tags.name', $match[1])
-            ->groupBy('posts.id')
-            ->having([count('posts.id')], '=', [count($match[1])])
-            ->get();
-        dd($posts);
+        // preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+        // $posts = DB::table('posts')
+        // ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+        // ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+        // ->whereIn('tags.name', $match[1])
+        // ->groupBy('posts.id')
+        // ->having(count('posts.id'), '=', [count($match[1])])
+        // ->get();
 
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
-
+            preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+            $no_tag_keywords = array_diff($keywords, $match[0]);
+            $tags = $match[1];
 
             $query = DB::table('posts');
 
-            foreach ($keywords as $keyword) {
+            foreach ($no_tag_keywords as $keyword) {
                 $query
                     ->where('title', 'like', '%' . $keyword . '%')
                     ->orWhere('body', 'LIKE', "%{$keyword}%");
