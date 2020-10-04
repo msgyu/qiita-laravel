@@ -33,6 +33,7 @@ class PostController extends Controller
             preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
             $no_tag_keywords = array_diff($keywords, $match[0]);
             $tags = $match[1];
+            $tags_count = count($tags);
 
             $query = DB::table('posts');
             if (count($tags) !== 0) {
@@ -40,8 +41,8 @@ class PostController extends Controller
                     ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
                     ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
                     ->whereIn('tags.name', $tags)
-                    ->groupBy('posts.id');
-                // ->having(count('posts.id'), '=', [count($mtags)])
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
             }
 
             foreach ($no_tag_keywords as $keyword) {
