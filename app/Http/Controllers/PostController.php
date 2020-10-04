@@ -26,18 +26,30 @@ class PostController extends Controller
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
 
+
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
             $keywords = preg_split('/[\s]+/', $keyword_space_half);
+            preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+            $no_tag_keywords = array_diff($keywords, $match[0]);
+            $tags = $match[1];
 
             $query = DB::table('posts');
-
-            foreach ($keywords as $keyword) {
+            if (count($tags) !== 0) {
                 $query
-                    ->where('title', 'like', '%' . $keyword . '%')
-                    ->orWhere('body', 'LIKE', "%{$keyword}%");
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $match[1])
+                    ->groupBy('posts.id');
+                // ->having(count('posts.id'), '=', [count($match[1])])
             }
-            $posts = $query->orderBy('created_at', 'desc')->get();
+
+            foreach ($no_tag_keywords as $keyword) {
+                $query
+                    ->where('posts.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+            }
+            $posts = $query->orderBy('posts.created_at', 'desc')->get();
         } elseif ($tag_btn_value !== null) {
             $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
             $posts = $tag->posts;
