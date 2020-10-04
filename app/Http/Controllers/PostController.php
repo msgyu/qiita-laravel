@@ -39,9 +39,9 @@ class PostController extends Controller
                 $query
                     ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
                     ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-                    ->whereIn('tags.name', $match[1])
+                    ->whereIn('tags.name', $tags)
                     ->groupBy('posts.id');
-                // ->having(count('posts.id'), '=', [count($match[1])])
+                // ->having(count('posts.id'), '=', [count($mtags)])
             }
 
             foreach ($no_tag_keywords as $keyword) {
