@@ -46,10 +46,10 @@ class PostController extends Controller
 
             foreach ($no_tag_keywords as $keyword) {
                 $query
-                    ->where('title', 'like', '%' . $keyword . '%')
-                    ->orWhere('body', 'LIKE', "%{$keyword}%");
+                    ->where('posts.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
             }
-            $posts = $query->orderBy('created_at', 'desc')->get();
+            $posts = $query->orderBy('posts.created_at', 'desc')->get();
         } elseif ($tag_btn_value !== null) {
             $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
             $posts = $tag->posts;
