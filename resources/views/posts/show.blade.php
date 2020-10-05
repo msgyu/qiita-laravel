@@ -54,6 +54,11 @@
       @endforeach
     </div>
     @endif
+    <div class="btn-warapper">
+      <div class="like">
+        <button class="like_btn">LGTM</button>
+      </div>
+    </div>
     <div class="post-body">{{$post->body}}</div>
   </div>
 </div>
