@@ -39881,6 +39881,8 @@ __webpack_require__(/*! ./markdown-edit */ "./resources/js/markdown-edit.js");
 
 __webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
 
+__webpack_require__(/*! ./create-like.js */ "./resources/js/create-like.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39925,6 +39927,31 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/create-like.js":
+/*!*************************************!*\
+  !*** ./resources/js/create-like.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $(".like_btn").click(function () {
+    var post_id = $(".like_btn").data("post_id");
+    $.ajax({
+      url: "/likes",
+      type: "POST",
+      dataType: "json",
+      data: {
+        id: post_id
+      }
+    }).done(function (comments) {}).fail(function () {
+      alert("通信に失敗しました");
+    });
+  });
+});
 
 /***/ }),
 
