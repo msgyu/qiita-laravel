@@ -8,6 +8,11 @@ a {
   text-decoration: none;
 }
 
+main {
+  height: 800px;
+  background-color: #f8f9fc;
+}
+
 /*
 	TODO will need to remove settings on HTML since we can't namespace it.
 /*
