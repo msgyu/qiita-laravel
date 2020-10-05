@@ -14,6 +14,7 @@
 Route::get('/', 'PostController@top')->name('root');
 
 Route::resource('posts', 'PostController');
+Route::resource('likes', 'PostController');
 
 Auth::routes();
 
