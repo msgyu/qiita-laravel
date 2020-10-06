@@ -8,15 +8,17 @@
         <li class="active">
           <a href="">
             すべて
-            <span class="badge">46462</span>
+            <span class="badge">{{ count($posts)}}</span>
           </a>
         </li>
+        @auth
         <li>
           <a href="">
             LGTM済み
-            <span class="badge">46462</span>
+            <span class="badge">{{ count(Auth::user()->likes)}}</span>
           </a>
         </li>
+        @endauth
       </ul>
     </div>
     @if(count($posts) !== 0)
