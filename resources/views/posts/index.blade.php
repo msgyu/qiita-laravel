@@ -13,7 +13,7 @@
         </li>
         <li>
           <a href="">
-            LGTM済
+            LGTM済み
             <span class="badge">46462</span>
           </a>
         </li>
