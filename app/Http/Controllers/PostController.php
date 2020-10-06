@@ -52,7 +52,7 @@ class PostController extends Controller
             }
             $posts = $query->orderBy('posts.created_at', 'desc')->get();
         } elseif ($tag_btn_value !== null) {
-            $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
+            $tag = Tag::where('name', $tag_btn_value)->first();
             $posts = $tag->posts;
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
