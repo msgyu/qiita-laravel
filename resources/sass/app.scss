@@ -6,6 +6,11 @@ a {
     text-decoration: none;
 }
 
+main {
+    height: 800px;
+    background-color: #f8f9fc;
+}
+
 @import "./reset.scss";
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 

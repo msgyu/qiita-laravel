@@ -54,6 +54,19 @@
       @endforeach
     </div>
     @endif
+    @auth
+    <div class="btn-warapper">
+      @if($like)
+      <div class="like">
+        <button class="like_btn" post_id="{{ $post->id }}" like_exist="1" style="color:#fff; background: #55c500">LGTM</button>
+      </div>
+      @else
+      <div class="like">
+        <button class="like_btn" post_id="{{ $post->id }}" like_exist="0">LGTM</button>
+      </div>
+      @endif
+    </div>
+    @endauth
     <div class="post-body">{{$post->body}}</div>
   </div>
 </div>

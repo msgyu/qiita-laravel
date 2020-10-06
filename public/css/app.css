@@ -8,6 +8,11 @@ a {
   text-decoration: none;
 }
 
+main {
+  height: 800px;
+  background-color: #f8f9fc;
+}
+
 /*
 	TODO will need to remove settings on HTML since we can't namespace it.
 /*
@@ -17714,6 +17719,40 @@ a.text-dark:focus {
   background-color: #364549;
   width: 100%;
   display: block;
+}
+
+.btn-warapper {
+  margin: 40px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  will-change: transform;
+  z-index: 100;
+}
+
+.btn-warapper .like {
+  text-align: center;
+  font-size: 2rem;
+  height: 44px;
+  width: 100%;
+  margin: 0 8px;
+  color: #55c500;
+  background-color: #fff;
+}
+
+.btn-warapper .like_btn {
+  border: 2px solid #55c500;
+  height: 100%;
+  width: 100%;
+  color: inherit;
+  background-color: inherit;
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 38px;
 }
 
 .top-wrapper {
