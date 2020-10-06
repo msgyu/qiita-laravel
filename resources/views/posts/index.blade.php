@@ -3,6 +3,16 @@
 @section('content')
 <div class="top-wrapper">
   <div class="posts-wrapper col-md-6">
+    <div>
+      <ul class="post-nav">
+        <li>
+          <a href="">すべて</a>
+        </li>
+        <li>
+          <a href="">LGTM済み</a>
+        </li>
+      </ul>
+    </div>
     @if(count($posts) !== 0)
     @foreach ($posts as $post)
     <div class="post-box">
