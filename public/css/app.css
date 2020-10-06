@@ -17768,6 +17768,27 @@ a.text-dark:focus {
   padding: 20px;
 }
 
+.top-wrapper .posts-wrapper .posts-nav_ul li {
+  display: inline-block;
+  width: 133px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li a {
+  display: block;
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  margin-right: 2px;
+  line-height: 1.42857;
+  border: 1px solid transparent;
+  border-radius: 3px 3px 0 0;
+  padding: 10px 15px;
+}
+
 .top-wrapper .posts-wrapper .post-box {
   display: flex;
   align-items: center;
