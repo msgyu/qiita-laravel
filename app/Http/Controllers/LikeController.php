@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\like;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -81,5 +82,23 @@ class LikeController extends Controller
     public function destroy(like $like)
     {
         //
+    }
+
+    public function like_product(Request $request)
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            if ($request->input('like_exist') == 0) {
+                Like::create([
+                    'post_id' => $request->input('post_id'),
+                    'user_id' => $user->id,
+                ]);
+            } elseif ($request->input('like_exist')  == 1) {
+                Like::where('post_id', "=", $request->input('post_id'))
+                    ->where('user_id', "=", $user->id)
+                    ->delete();
+            }
+        }
+        return  $request->input('like_exist');
     }
 }
