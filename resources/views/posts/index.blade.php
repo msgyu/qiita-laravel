@@ -6,10 +6,16 @@
     <div class="posts-nav">
       <ul class="posts-nav_ul">
         <li class="active">
-          <a href="">すべて</a>
+          <a href="">
+            すべて
+            <span class="badge">46462</span>
+          </a>
         </li>
         <li>
-          <a href="">LGTM済み</a>
+          <a href="">
+            LGTM済
+            <span class="badge">46462</span>
+          </a>
         </li>
       </ul>
     </div>
