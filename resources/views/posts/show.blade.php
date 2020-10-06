@@ -54,11 +54,13 @@
       @endforeach
     </div>
     @endif
+    @auth
     <div class="btn-warapper">
       <div class="like">
         <button class="like_btn" post_id="{{ $post->id }}" like_exist="0">LGTM</button>
       </div>
     </div>
+    @endauth
     <div class="post-body">{{$post->body}}</div>
   </div>
 </div>
