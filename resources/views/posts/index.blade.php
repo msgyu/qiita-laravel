@@ -5,7 +5,7 @@
   <div class="posts-wrapper col-md-6">
     <div class="posts-nav">
       <ul class="posts-nav_ul">
-        <li>
+        <li class="active">
           <a href="">すべて</a>
         </li>
         <li>
