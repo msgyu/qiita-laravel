@@ -56,7 +56,7 @@
     @endif
     <div class="btn-warapper">
       <div class="like">
-        <button class="like_btn" post_id="{{ $post->id }}">LGTM</button>
+        <button class="like_btn" post_id="{{ $post->id }}" like_exist="0">LGTM</button>
       </div>
     </div>
     <div class="post-body">{{$post->body}}</div>
