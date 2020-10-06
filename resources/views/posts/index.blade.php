@@ -3,8 +3,8 @@
 @section('content')
 <div class="top-wrapper">
   <div class="posts-wrapper col-md-6">
-    <div>
-      <ul class="post-nav">
+    <div class="posts-nav">
+      <ul class="posts-nav_ul">
         <li>
           <a href="">すべて</a>
         </li>
