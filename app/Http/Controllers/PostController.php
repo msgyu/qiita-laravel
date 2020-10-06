@@ -114,7 +114,13 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show', compact('post'));
+        $user = Auth::user();
+        $like = DB::table('likes')
+            ->where(
+                ['post_id', '=', $post->id],
+                ['user_id', '=', $user->id]
+            );
+        return view('posts.show', compact('post', 'like'));
     }
 
     /**
