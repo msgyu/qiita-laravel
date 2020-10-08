@@ -13,9 +13,44 @@ class LikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $keyword = $request->input('search');
+        $tag_btn_value = $request->input('tag_btn');
+
+
+        if ($keyword !== null) {
+            $keyword_space_half = mb_convert_kana($keyword, 's');
+            $keywords = preg_split('/[\s]+/', $keyword_space_half);
+            preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+            $no_tag_keywords = array_diff($keywords, $match[0]);
+            $tags = $match[1];
+            $tags_count = count($tags);
+
+            $query = DB::table('posts');
+            if (count($tags) !== 0) {
+                $query
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $tags)
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+            }
+
+            foreach ($no_tag_keywords as $keyword) {
+                $query
+                    ->where('posts.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+            }
+            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+        } elseif ($tag_btn_value !== null) {
+            $tag = Tag::where('name', $tag_btn_value)->first();
+            $posts = $tag->posts;
+        } else {
+            $posts = Post::orderBy('created_at', 'desc')->get();
+        }
+
+        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
 
     /**
