@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\like;
 use App\Models\post;
 use App\Models\Tag;
@@ -29,6 +30,7 @@ class LikeController extends Controller
             $tags = $match[1];
             $tags_count = count($tags);
 
+            $query = User::with(['likes.post'])->find(Auth::id())->likes()->post();
             $query = DB::table('posts');
             if (count($tags) !== 0) {
                 $query
