@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\like;
+use App\Models\post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LikeController extends Controller
 {
@@ -17,7 +20,6 @@ class LikeController extends Controller
     {
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
-
 
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
