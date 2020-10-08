@@ -13,7 +13,7 @@
         </li>
         @auth
         <li>
-          <a href="">
+          <a href="{{ route('likes.index')}}">
             LGTM済み
             <span class="badge">{{ count(Auth::user()->likes)}}</span>
           </a>
