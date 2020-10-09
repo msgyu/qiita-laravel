@@ -21,6 +21,9 @@ class LikeController extends Controller
     {
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
+        $query = DB::table('posts')
+            ->join('likes', 'posts.id', '=', 'likes.post_id')
+            ->where('likes.user_id', '=', Auth::id());
 
         if ($keyword !== null) {
             $keyword_space_half = mb_convert_kana($keyword, 's');
@@ -30,31 +33,30 @@ class LikeController extends Controller
             $tags = $match[1];
             $tags_count = count($tags);
 
-            $query = User::with(['likes.post'])->find(Auth::id())->likes()->post();
-            $query = DB::table('posts');
-            if (count($tags) !== 0) {
-                $query
-                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-                    ->whereIn('tags.name', $tags)
-                    ->groupBy('posts.id')
-                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
-            }
 
-            foreach ($no_tag_keywords as $keyword) {
-                $query
-                    ->where('posts.title', 'like', '%' . $keyword . '%')
-                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
-            }
+            // $query = User::with(['likes.post'])->find(Auth::id())->likes()->post();
+            // if (count($tags) !== 0) {
+            //     $query
+            //         ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+            //         ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+            //         ->whereIn('tags.name', $tags)
+            //         ->groupBy('posts.id')
+            //         ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+            // }
+
+            // foreach ($no_tag_keywords as $keyword) {
+            //     $query
+            //         ->where('posts.title', 'like', '%' . $keyword . '%')
+            //         ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+            // }
             $posts = $query->orderBy('posts.created_at', 'desc')->get();
-        } elseif ($tag_btn_value !== null) {
-            $tag = Tag::where('name', $tag_btn_value)->first();
-            $posts = $tag->posts;
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
         }
 
-        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
+
+
+        return view('likes.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
 
     /**
