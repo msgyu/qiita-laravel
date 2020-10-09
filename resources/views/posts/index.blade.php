@@ -53,17 +53,7 @@
       </ul>
     </div>
     @if(count($posts) !== 0)
-    @foreach ($posts as $post)
-    <div class="post-box">
-      <img class="post-box_left" src="{{ asset('./img/sample-user.png') }}" alt="ロゴ">
-      <div class="post-box_right">
-        <a class="post-title" href="{{ route('posts.show', $post->id)}}">{{ $post->title }}</a>
-        <div class="post-details">
-          <div class="post-details_date">{{ $post->created_at }}</div>
-        </div>
-      </div>
-    </div>
-    @endforeach
+    @include('parts.posts_index')
     @else
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
