@@ -49,9 +49,9 @@ class LikeController extends Controller
             //         ->where('posts.title', 'like', '%' . $keyword . '%')
             //         ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
             // }
-            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+            $posts = $query->orderBy('likes.created_at', 'desc')->get();
         } else {
-            $posts = Post::orderBy('created_at', 'desc')->get();
+            $posts = $query->orderBy('likes.created_at', 'desc')->get();
         }
 
 
