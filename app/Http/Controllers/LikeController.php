@@ -33,22 +33,20 @@ class LikeController extends Controller
             $tags = $match[1];
             $tags_count = count($tags);
 
+            if (count($tags) !== 0) {
+                $query
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $tags)
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+            }
 
-            // $query = User::with(['likes.post'])->find(Auth::id())->likes()->post();
-            // if (count($tags) !== 0) {
-            //     $query
-            //         ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-            //         ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-            //         ->whereIn('tags.name', $tags)
-            //         ->groupBy('posts.id')
-            //         ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
-            // }
-
-            // foreach ($no_tag_keywords as $keyword) {
-            //     $query
-            //         ->where('posts.title', 'like', '%' . $keyword . '%')
-            //         ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
-            // }
+            foreach ($no_tag_keywords as $keyword) {
+                $query
+                    ->where('posts.title', 'like', '%' . $keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+            }
             $posts = $query->orderBy('likes.created_at', 'desc')->get();
         } else {
             $posts = $query->orderBy('likes.created_at', 'desc')->get();
