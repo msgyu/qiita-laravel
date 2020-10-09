@@ -40,17 +40,15 @@ class LikeController extends Controller
                     ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
             }
 
-            foreach ($no_tag_keywords as $keyword) {
+            foreach ($no_tag_keywords as $no_tag_keyword) {
                 $query
-                    ->where('posts.title', 'like', '%' . $keyword . '%')
-                    ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+                    ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
+                    ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
             }
             $posts = $query->orderBy('likes.created_at', 'desc')->get();
         } else {
             $posts = $query->orderBy('likes.created_at', 'desc')->get();
         }
-
-
 
         return view('likes.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
