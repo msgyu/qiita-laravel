@@ -15,12 +15,6 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function top()
-    {
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.top', compact('posts'));
-    }
-
     public function index(Request $request)
     {
         $keyword = $request->input('search');
@@ -52,7 +46,7 @@ class PostController extends Controller
             }
             $posts = $query->orderBy('posts.created_at', 'desc')->get();
         } elseif ($tag_btn_value !== null) {
-            $tag = Tag::firstOrCreate(['name' => $tag_btn_value]);
+            $tag = Tag::where('name', $tag_btn_value)->first();
             $posts = $tag->posts;
         } else {
             $posts = Post::orderBy('created_at', 'desc')->get();
@@ -115,12 +109,15 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $user = Auth::user();
-        $like = DB::table('likes')
-            ->where(
-                ['post_id', '=', $post->id],
-                ['user_id', '=', $user->id]
-            );
-        return view('posts.show', compact('post', 'like'));
+        if (Auth::check()) {
+            $like = DB::table('likes')
+                ->where('post_id', '=', $post->id)
+                ->where('user_id', '=', $user->id)
+                ->get();
+            return view('posts.show', compact('post', 'like'));
+        } else {
+            return view('posts.show', compact('post'));
+        }
     }
 
     /**

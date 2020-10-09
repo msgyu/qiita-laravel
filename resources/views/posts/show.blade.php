@@ -56,7 +56,7 @@
     @endif
     @auth
     <div class="btn-warapper">
-      @if($like)
+      @if(count($like) > 0)
       <div class="like">
         <button class="like_btn" post_id="{{ $post->id }}" like_exist="1" style="color:#fff; background: #55c500">LGTM</button>
       </div>

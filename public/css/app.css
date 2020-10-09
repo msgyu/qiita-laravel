@@ -17768,6 +17768,54 @@ a.text-dark:focus {
   padding: 20px;
 }
 
+.top-wrapper .posts-wrapper .posts-nav_ul {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: -1;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li {
+  display: inline-block;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li.active {
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li.active a {
+  background-color: #fff;
+  color: #555;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li a {
+  display: block;
+  text-decoration: none;
+  cursor: default;
+  border-bottom-color: transparent;
+  margin-right: 2px;
+  line-height: 1.42857;
+  border: 1px solid transparent;
+  border-radius: 3px 3px 0 0;
+  padding: 8px 15px;
+}
+
+.top-wrapper .posts-wrapper .posts-nav_ul li a .badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #999;
+  border-radius: 10px;
+}
+
 .top-wrapper .posts-wrapper .post-box {
   display: flex;
   align-items: center;
