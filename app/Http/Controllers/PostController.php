@@ -117,10 +117,9 @@ class PostController extends Controller
         $user = Auth::user();
         if (Auth::check()) {
             $like = DB::table('likes')
-                ->where(
-                    ['post_id', '=', $post->id],
-                    ['user_id', '=', $user->id]
-                );
+                ->where('post_id', '=', $post->id)
+                ->where('user_id', '=', $user->id)
+                ->get();
             return view('posts.show', compact('post', 'like'));
         } else {
             return view('posts.show', compact('post'));
