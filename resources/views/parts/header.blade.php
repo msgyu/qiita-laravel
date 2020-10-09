@@ -13,10 +13,17 @@
       </li>
       <li>
         <div class="search-warapper">
+          @if (Route::currentRouteName() === 'likes.index')
+          <form class="form-inline my-2 my-lg-0 ml-2 search-form" action="{{ route('likes.index')}}" method="GET">
+            <i class="fas fa-search"></i>
+            <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+          </form>
+          @else
           <form class="form-inline my-2 my-lg-0 ml-2 search-form" action="{{ route('posts.index')}}" method="GET">
             <i class="fas fa-search"></i>
             <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
           </form>
+          @endif
         </div>
       </li>
     </ul>
