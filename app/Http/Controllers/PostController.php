@@ -15,12 +15,6 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function top()
-    {
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.top', compact('posts'));
-    }
-
     public function index(Request $request)
     {
         $keyword = $request->input('search');
