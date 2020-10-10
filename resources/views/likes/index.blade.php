@@ -11,10 +11,10 @@
             <span class="search-conditions_title order-terms_title">順番</span>
           </div>
           <div class="search-conditions_radio">
-            <input type="radio" name="date-terms" value="day" class="">LGTM数順
+            <input type="radio" name="order-terms" value="day" class="">LGTM数順
           </div>
           <div class="search-conditions_radio">
-            <input type="radio" name="date-terms" value="week">新着順
+            <input type="radio" name="order-terms" value="week">新着順
           </div>
         </div>
         <div class="search-conditions date-terms">
