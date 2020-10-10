@@ -33,6 +33,7 @@
 </div>
 @endif
 <div class="top-wrapper">
+  @include('parts.detaile-search')
   <div class="posts-wrapper col-md-6">
     <div class="posts-nav">
       <ul class="posts-nav_ul">
