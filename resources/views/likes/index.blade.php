@@ -53,12 +53,12 @@
           <div class="search-conditions_radio">
             <span>
               <label for="">
-                最低:<input type="number" class="input-small" value="2020-01-11" placeholder="以上">
+                最低:<input type="number" class="input-small" value="2020-01-11" placeholder="100">
               </label>
             </span>
             <span>
               <label for="">
-                最高:<input type="number" class="input-small" placeholder="以下">
+                最高:<input type="number" class="input-small" placeholder="1000">
               </label>
             </span>
           </div>
