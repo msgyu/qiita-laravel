@@ -17791,6 +17791,7 @@ a.text-dark:focus {
   width: 100%;
   height: 100%;
   width: 200px;
+  box-sizing: border-box;
 }
 
 .top-wrapper .detailed-search_form_head {
@@ -17815,6 +17816,41 @@ a.text-dark:focus {
 .top-wrapper .detailed-search_form_body .search-conditions_title {
   font-weight: 700;
   font-size: 13px;
+  padding-bottom: 10px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_title.lgtm-terms_title {
+  font-weight: bolder;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio {
+  font-size: 13px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio label {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio input {
+  display: inline-block;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio .input-small {
+  width: 120px;
+  height: 19px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio input[type=date] {
+  font-size: 12px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions_radio input[type=date]::-webkit-clear-button {
+  -webkit-appearance: none;
 }
 
 .top-wrapper .posts-wrapper {
