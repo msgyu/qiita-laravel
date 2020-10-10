@@ -6,6 +6,17 @@
     <form action="" class="detailed-search_form">
       <div class="detailed-search_form_head">記事の条件</div>
       <div class="detailed-search_form_body">
+        <div class="search-conditions order-terms">
+          <div>
+            <span class="search-conditions_title order-terms_title">順番</span>
+          </div>
+          <div class="search-conditions_radio">
+            <input type="radio" name="date-terms" value="day" class="">LGTM数順
+          </div>
+          <div class="search-conditions_radio">
+            <input type="radio" name="date-terms" value="week">新着順
+          </div>
+        </div>
         <div class="search-conditions date-terms">
           <div>
             <span class="search-conditions_title">日付</span>
@@ -42,16 +53,17 @@
           <div class="search-conditions_radio">
             <span>
               <label for="">
-                最低:<input type="number" class="input-small" value="2020-01-11" placeholder="開始">
+                最低:<input type="number" class="input-small" value="2020-01-11" placeholder="以上">
               </label>
             </span>
             <span>
               <label for="">
-                最高:<input type="number" class="input-small" value="2020-01-11" placeholder="終了">
+                最高:<input type="number" class="input-small" placeholder="以下">
               </label>
             </span>
           </div>
         </div>
+
 
       </div>
     </form>
