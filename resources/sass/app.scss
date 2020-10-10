@@ -26,6 +26,7 @@ main {
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 @import "./parts/header.scss";
+@import "./parts/detail-search.scss";
 @import "./posts/top.scss";
 @import "./posts/create.scss";
 @import "./posts/show.scss";
