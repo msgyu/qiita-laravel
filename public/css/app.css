@@ -17813,6 +17813,34 @@ a.text-dark:focus {
   padding: 10px;
 }
 
+.top-wrapper .detailed-search_form_body .search-conditions .search-warapper {
+  padding-top: 10px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions .search-warapper .search-form {
+  width: 150px;
+  border-radius: 4px;
+  background-color: #fff;
+  height: 32px;
+  line-height: 56px;
+  color: #aaa;
+  box-shadow: inset 0 1px 2px #ccc;
+  position: relative;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions .search-warapper .search-form i {
+  padding: 0 0 0 9px;
+}
+
+.top-wrapper .detailed-search_form_body .search-conditions .search-warapper .search-form input {
+  background-color: none;
+  font-size: 12px;
+  border: none;
+  height: 29px;
+  outline: 0;
+  padding: 6px 12px;
+}
+
 .top-wrapper .detailed-search_form_body .search-conditions_title {
   font-weight: 700;
   font-size: 13px;

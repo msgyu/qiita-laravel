@@ -1,7 +1,20 @@
 <div class="detailed-search col-md-3">
-  <form action="" class="detailed-search_form">
+  <form action="{{ route('likes.index')}}" method="GET" class="detailed-search_form">
     <div class="detailed-search_form_head">記事の条件</div>
     <div class="detailed-search_form_body">
+      <div class="search-conditions keyword-terms">
+        <div>
+          <span class="search-conditions_title keyword-terms_title">キーワード</span>
+        </div>
+        <div class="form-inline my-2 my-lg-0 ml-2 search-form">
+          <i class="fas fa-search"></i>
+          @if(isset($keyword))
+          <input type="search" name="search" class="mr-sm-2" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
+          @else
+          <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+          @endif
+        </div>
+      </div>
       <div class="search-conditions order-terms">
         <div>
           <span class="search-conditions_title order-terms_title">順番</span>

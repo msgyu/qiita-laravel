@@ -24,6 +24,30 @@
                 background-color: #fff;
                 .search-conditions {
                     padding: 10px;
+                    .search-warapper {
+                        padding-top: 10px;
+                        .search-form {
+                            width: 150px;
+                            border-radius: 4px;
+                            background-color: #fff;
+                            height: 32px;
+                            line-height: 56px;
+                            color: #aaa;
+                            box-shadow: inset 0 1px 2px #ccc;
+                            position: relative;
+                            i {
+                                padding: 0 0 0 9px;
+                            }
+                            input {
+                                background-color: none;
+                                font-size: 12px;
+                                border: none;
+                                height: 29px;
+                                outline: 0;
+                                padding: 6px 12px;
+                            }
+                        }
+                    }
                     &_title {
                         font-weight: 700;
                         font-size: 13px;
