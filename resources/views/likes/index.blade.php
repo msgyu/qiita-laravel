@@ -36,12 +36,12 @@
           <div class="search-conditions_radio">
             <span>
               <label for="">
-                開始:<input type="date" class="input-small" value="2020-01-11" placeholder="開始">
+                開始:<input type="date" class="input-small" name="piriod-start" value="2020-01-11" placeholder="開始">
               </label>
             </span>
             <span>
               <label for="">
-                終了:<input type="date" class="input-small" value="2020-01-11" placeholder="終了">
+                終了:<input type="date" class="input-small" name="piriod-end" value="2020-01-11" placeholder="終了">
               </label>
             </span>
           </div>
@@ -53,12 +53,12 @@
           <div class="search-conditions_radio">
             <span>
               <label for="">
-                最低:<input type="number" class="input-small" value="2020-01-11" placeholder="100">
+                最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100">
               </label>
             </span>
             <span>
               <label for="">
-                最高:<input type="number" class="input-small" placeholder="1000">
+                最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000">
               </label>
             </span>
           </div>
