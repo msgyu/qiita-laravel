@@ -43,7 +43,7 @@
             <input type="radio" name="priod" value="week">1週間
           </div>
           <div class="search-conditions_radio">
-            <input type="radio" name="priod" value="month">月間
+            <input type="radio" name="priod" value="month">1月間
           </div>
           <div class="search-conditions_radio">
             <input type="radio" name="priod" value="period">期間指定
