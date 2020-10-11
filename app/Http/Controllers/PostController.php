@@ -73,24 +73,26 @@ class PostController extends Controller
             }
         }
 
-        // tags search
-        if (count($tags) !== 0) {
-            $query
-                ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-                ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-                ->whereIn('tags.name', $tags)
-                ->groupBy('posts.id')
-                ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
-        }
+        if ($keyword !== null) {
+            // tags search
+            if (count($tags) !== 0) {
+                $query
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $tags)
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+            }
 
-        // keywords search
-        foreach ($no_tag_keywords as $no_tag_keyword) {
-            $query
-                ->where(function ($query) use ($no_tag_keyword) {
-                    $query
-                        ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
-                        ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
-                });
+            // keywords search
+            foreach ($no_tag_keywords as $no_tag_keyword) {
+                $query
+                    ->where(function ($query) use ($no_tag_keyword) {
+                        $query
+                            ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
+                            ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
+                    });
+            }
         }
 
 
