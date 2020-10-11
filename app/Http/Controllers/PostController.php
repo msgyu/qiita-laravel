@@ -66,12 +66,12 @@ class PostController extends Controller
         }
 
         // keywords search
-        foreach ($no_tag_keywords as $keyword) {
+        foreach ($no_tag_keywords as $no_tag_keyword) {
             $query
-                ->where(function ($query) use ($keyword) {
+                ->where(function ($query) use ($no_tag_keyword) {
                     $query
-                        ->where('posts.title', 'like', '%' . $keyword . '%')
-                        ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
+                        ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
+                        ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
                 });
         }
 
