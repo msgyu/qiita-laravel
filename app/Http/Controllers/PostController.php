@@ -23,6 +23,9 @@ class PostController extends Controller
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
         $priod = $request->input('priod');
+        $priod_start = $request->input('piriod-start');
+        $priod_end = $request->input('piriod-end');
+
 
         // keyword
         $keyword = $request->input('search');
@@ -56,6 +59,16 @@ class PostController extends Controller
                     $query->where([
                         ['posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 week"))],
                         ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
+                    ]);
+                case "month":
+                    $query->where([
+                        ['posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 month"))],
+                        ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
+                    ]);
+                case "period":
+                    $query->where([
+                        ['posts.created_at', '>=', date("{$priod_start} 00:00:00")],
+                        ['posts.created_at', '<=', date("{$priod_end} 23:59:59")]
                     ]);
             }
         }
