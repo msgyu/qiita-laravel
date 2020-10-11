@@ -52,6 +52,11 @@ class PostController extends Controller
                         ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
                         ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
                     ]);
+                case "week":
+                    $query->where([
+                        ['posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 week"))],
+                        ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
+                    ]);
             }
         }
 
