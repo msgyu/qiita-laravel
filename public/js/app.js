@@ -39883,6 +39883,8 @@ __webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
 
 __webpack_require__(/*! ./create-like.js */ "./resources/js/create-like.js");
 
+__webpack_require__(/*! ./input-submit.js */ "./resources/js/input-submit.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39954,14 +39956,12 @@ $(function () {
         like_exist: like_exist
       }
     }).done(function (like_exist) {
-      console.log("成功");
-
       if (like_exist == 0) {
         click_button.attr("like_exist", "1");
         click_button.css({
           color: "#fff",
           background: "#55c500"
-        }); // click_button.children().attr("class", "fas fa-heart");
+        });
       }
 
       if (like_exist == 1) {
@@ -39972,8 +39972,7 @@ $(function () {
         });
       }
     }).fail(function (data) {
-      alert("いいね処理失敗");
-      alert(JSON.stringify(data));
+      alert("いいね処理に失敗しました");
     });
   });
 });
@@ -40033,6 +40032,23 @@ $(function () {
     }
 
     $tag.remove();
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/input-submit.js":
+/*!**************************************!*\
+  !*** ./resources/js/input-submit.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $(".search-input").keydown(function (e) {
+    if (e.keyCode == 13) {
+      $(this).parents("form").submit();
+    }
   });
 });
 
