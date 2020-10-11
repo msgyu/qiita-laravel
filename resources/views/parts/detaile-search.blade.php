@@ -6,13 +6,15 @@
         <div>
           <span class="search-conditions_title keyword-terms_title">キーワード</span>
         </div>
-        <div class="form-inline my-2 my-lg-0 ml-2 search-form">
-          <i class="fas fa-search"></i>
-          @if(isset($keyword))
-          <input type="search" name="search" class="mr-sm-2" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
-          @else
-          <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
-          @endif
+        <div class="search-warapper">
+          <div class="form-inline search-form">
+            <i class="fas fa-search"></i>
+            @if(isset($keyword))
+            <input type="search" name="search" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
+            @else
+            <input type="search" name="search" placeholder="キーワードを入力" aria-label="検索...">
+            @endif
+          </div>
         </div>
       </div>
       <div class="search-conditions order-terms">
