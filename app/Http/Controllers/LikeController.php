@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\like;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,27 @@ class LikeController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->input('search');
+        // values
         $tag_btn_value = $request->input('tag_btn');
-        $query = DB::table('posts')
+        $order = $request->input('order');
+        $lgtm_min = $request->input('lgtm-min');
+        $lgtm_max = $request->input('lgtm-max');
+        $priod = $request->input('priod');
+        $priod_start = $request->input('piriod-start');
+        $priod_end = $request->input('piriod-end');
+
+
+        // keyword
+        $keyword = $request->input('search');
+        $keyword_space_half = mb_convert_kana($keyword, 's');
+        $keywords = preg_split('/[\s]+/', $keyword_space_half);
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+        $no_tag_keywords = array_diff($keywords, $match[0]);
+        $tags = $match[1];
+        $tags_count = count($tags);
+
+        // query
+        $query = Post::withCount('likes')
             ->join('likes', 'posts.id', '=', 'likes.post_id')
             ->where('likes.user_id', '=', Auth::id());
 
