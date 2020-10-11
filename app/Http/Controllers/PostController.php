@@ -94,86 +94,12 @@ class PostController extends Controller
         }
 
 
-        // lgtm sum search
-
-        // if ($lgtm_min !== null) {
-        //     $query
-        // ->join('likes', 'posts.id', '=', 'likes.post_id')
-        // ->groupBy('posts.id')
-        // ->havingRaw('count(likes.id) >= ?', $lgtm_min);
-        // ->where('likes_count', '>=', $lgtm_min);
-        // }
-
-
         // search order
         if ($order == 'new') {
             $posts = $query->orderBy('posts.created_at', 'desc')->get();
         } else {
             $posts = $query->orderBy('likes_count', 'desc')->get();
         }
-
-
-
-
-
-        // if ($keyword !== null) {
-        //     $keyword_space_half = mb_convert_kana($keyword, 's');
-        //     $keywords = preg_split('/[\s]+/', $keyword_space_half);
-        //     preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
-        //     $no_tag_keywords = array_diff($keywords, $match[0]);
-        //     $tags = $match[1];
-        //     $tags_count = count($tags);
-
-
-        //     if ($priod !== null) {
-        //         switch ($priod) {
-        //             case "day":
-        //                 $query->where([
-        //                     ['created_at', '>=', date("Y-m-d 00:00:00")],
-        //                     ['created_at', '<=', date("Y-m-d 23:59:59")]
-        //                 ]);
-        //         }
-        //     }
-
-        //     $posts = $query->get();
-
-        //     if (count($tags) !== 0) {
-        //         $query
-        //             ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-        //             ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-        //             ->whereIn('tags.name', $tags)
-        //             ->groupBy('posts.id')
-        //             ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
-        //     }
-
-        //     foreach ($no_tag_keywords as $keyword) {
-        //         $query
-        //             ->where('posts.title', 'like', '%' . $keyword . '%')
-        //             ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
-        //     }
-
-
-
-
-        //     if ($order !== null) {
-        // if ($order == 'new') {
-
-        //             $posts = $query->orderBy('posts.created_at', 'desc')->get();
-        //         } else {
-
-        //             $posts = $query->orderBy('likes_count', 'desc')->get();
-        //         }
-        //     } else {
-        //         $posts = $query->orderBy('posts.created_at', 'desc')->get();
-        //     }
-        // } elseif ($tag_btn_value !== null) {
-        //     $tag = Tag::where('name', $tag_btn_value)->first();
-        //     $posts = $tag->posts;
-        // } else {
-        //     $posts = Post::orderBy('created_at', 'desc')->get();
-        // }
-
-
 
         return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
