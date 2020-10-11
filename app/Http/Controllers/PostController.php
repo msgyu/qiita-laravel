@@ -55,6 +55,15 @@ class PostController extends Controller
             }
         }
 
+        // tags search
+        if (count($tags) !== 0) {
+            $query
+                ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                ->whereIn('tags.name', $tags)
+                ->groupBy('posts.id')
+                ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+        }
 
         // keywords search
         foreach ($no_tag_keywords as $keyword) {
@@ -66,15 +75,6 @@ class PostController extends Controller
                 });
         }
 
-        // tags search
-        if (count($tags) !== 0) {
-            $query
-                ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
-                ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
-                ->whereIn('tags.name', $tags)
-                ->groupBy('posts.id')
-                ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
-        }
 
         // lgtm sum search
 
