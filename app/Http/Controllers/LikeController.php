@@ -45,12 +45,13 @@ class LikeController extends Controller
                     ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
                     ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
             }
-            $posts = $query->orderBy('likes.created_at', 'desc')->get();
+            $like_posts = $query->orderBy('likes.created_at', 'desc')->get();
         } else {
-            $posts = $query->orderBy('likes.created_at', 'desc')->get();
+            $like_posts = $query->orderBy('likes.created_at', 'desc')->get();
         }
+        $posts = DB::table('posts')->count();
 
-        return view('likes.index', compact('posts', 'keyword', 'tag_btn_value'));
+        return view('likes.index', compact('posts', 'like_posts', 'keyword', 'tag_btn_value'));
     }
 
     /**
