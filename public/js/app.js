@@ -39883,6 +39883,8 @@ __webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
 
 __webpack_require__(/*! ./create-like.js */ "./resources/js/create-like.js");
 
+__webpack_require__(/*! ./input-submit.js */ "./resources/js/input-submit.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -40030,6 +40032,23 @@ $(function () {
     }
 
     $tag.remove();
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/input-submit.js":
+/*!**************************************!*\
+  !*** ./resources/js/input-submit.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $(".search-input").keydown(function (e) {
+    if (e.keyCode == 13) {
+      $(this).parents("form").submit();
+    }
   });
 });
 
