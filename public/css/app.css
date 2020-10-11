@@ -17791,8 +17791,6 @@ a.text-dark:focus {
   height: 100%;
   width: 200px;
   margin: 0 0 0 102px;
-  position: -webkit-sticky;
-  position: sticky;
   box-sizing: border-box;
 }
 

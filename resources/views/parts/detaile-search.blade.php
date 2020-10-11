@@ -22,7 +22,7 @@
           <span class="search-conditions_title order-terms_title">順番</span>
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="order" value="lgtm" class="">LGTM数順
+          <input type="radio" name="order" value="lgtm" checked="checked">LGTM数順
         </div>
         <div class="search-conditions_radio">
           <input type="radio" name="order" value="new">新着順
