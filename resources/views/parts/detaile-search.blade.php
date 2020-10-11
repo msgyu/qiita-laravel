@@ -34,7 +34,7 @@
         </div>
         <div class="search-conditions date-terms">
           <div>
-            <span class="search-conditions_title">日付</span>
+            <span class="search-conditions_title">期間</span>
           </div>
           <div class="search-conditions_radio">
             <input type="radio" name="priod" value="day" class="">1日
