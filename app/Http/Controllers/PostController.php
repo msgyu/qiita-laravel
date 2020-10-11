@@ -20,6 +20,9 @@ class PostController extends Controller
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
         $order = $request->input('order');
+        $lgtm_min = $request->input('lgtm-min');
+        $lgtm_max = $request->input('lgtm-max');
+        $priod = $request->input('priod');
 
 
         if ($keyword !== null) {
@@ -31,6 +34,22 @@ class PostController extends Controller
             $tags_count = count($tags);
 
             $query = Post::withCount('likes');
+
+            if ($priod !== null) {
+
+                switch ($priod) {
+                    case "day":
+                        $query->where([
+                            ['created_at', '>=', date("Y-m-d 00:00:00")],
+                            ['created_at', '<=', date("Y-m-d 23:59:59")]
+                        ]);
+                        dd($query);
+                }
+            }
+
+
+
+
             if (count($tags) !== 0) {
                 $query
                     ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
@@ -45,6 +64,17 @@ class PostController extends Controller
                     ->where('posts.title', 'like', '%' . $keyword . '%')
                     ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
             }
+
+            // if ($lgtm_min !== null) {
+            //     $query
+            //         ->join('likes', 'posts.id', '=', 'likes.post_id')
+            //         ->groupBy('posts.id')
+            //         ->havingRaw('count(likes.id) >= ?', $lgtm_min);
+            // }
+            // if ($lgtm_max !== null) {
+            //     $query->havingRaw('count(likes.id) <= ?', [count($lgtm_max)]);
+            // }
+
 
             if ($order !== null) {
                 switch ($order) {
