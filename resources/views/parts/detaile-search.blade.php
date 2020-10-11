@@ -22,10 +22,10 @@
           <span class="search-conditions_title order-terms_title">順番</span>
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="order-terms" value="day" class="">LGTM数順
+          <input type="radio" name="order-terms" value="order-lgtm" class="">LGTM数順
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="order-terms" value="week">新着順
+          <input type="radio" name="order-terms" value="order-new">新着順
         </div>
       </div>
       <div class="search-conditions date-terms">
@@ -47,12 +47,12 @@
         <div class="search-conditions_radio">
           <span>
             <label for="">
-              開始:<input type="date" class="input-small" name="piriod-start" value="2020-01-11" placeholder="開始">
+              開始:<input type="date" class="input-small" name="piriod-start" placeholder="2020-01-11">
             </label>
           </span>
           <span>
             <label for="">
-              終了:<input type="date" class="input-small" name="piriod-end" value="2020-01-11" placeholder="終了">
+              終了:<input type="date" class="input-small" name="piriod-end" placeholder="2020-02-11">
             </label>
           </span>
         </div>
