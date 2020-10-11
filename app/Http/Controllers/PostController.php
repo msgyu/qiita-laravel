@@ -30,7 +30,7 @@ class PostController extends Controller
             $tags = $match[1];
             $tags_count = count($tags);
 
-            $query = DB::table('posts');
+            $query = Post::withCount('likes');
             if (count($tags) !== 0) {
                 $query
                     ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
@@ -49,11 +49,9 @@ class PostController extends Controller
             if ($order !== null) {
                 switch ($order) {
                     case "lgtm":
-                        $posts = $query->withCount('likes')->orderBy('likes_count', 'desc')->get();
-                        break;
+                        $posts = $query->orderBy('likes_count', 'desc')->get();
                     case "new":
                         $posts = $query->orderBy('posts.created_at', 'desc')->get();
-                        break;
                 }
             } else {
                 $posts = $query->orderBy('posts.created_at', 'desc')->get();
@@ -124,8 +122,10 @@ class PostController extends Controller
         $user = Auth::user();
         if (Auth::check()) {
             $like = DB::table('likes')
-                ->where('post_id', '=', $post->id)
-                ->where('user_id', '=', $user->id)
+                ->where([
+                    ['post_id', '=', $post->id],
+                    ['user_id', '=', $user->id]
+                ])
                 ->get();
             return view('posts.show', compact('post', 'like'));
         } else {
