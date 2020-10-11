@@ -87,8 +87,12 @@ class PostController extends Controller
         // }
 
 
-        // $posts = $query->orderBy('posts.created_at', 'desc')->get();
-        $posts = $query->orderBy('likes_count', 'desc')->get();
+        // search order
+        if ($order == 'new') {
+            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+        } else {
+            $posts = $query->orderBy('likes_count', 'desc')->get();
+        }
 
 
 
@@ -134,7 +138,7 @@ class PostController extends Controller
 
 
         //     if ($order !== null) {
-        //         if ($order == 'new') {
+        // if ($order == 'new') {
 
         //             $posts = $query->orderBy('posts.created_at', 'desc')->get();
         //         } else {
