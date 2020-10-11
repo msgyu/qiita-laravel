@@ -36,11 +36,25 @@ class PostController extends Controller
         // query
         $query = Post::withCount('likes');
 
+        //LGTM sum search
+        if ($lgtm_min !== null) {
+            $query->having('likes_count', '>=', $lgtm_min);
+        }
+        if ($lgtm_max !== null) {
+            $query->having('likes_count', '>=', $lgtm_max);
+        }
+
         // priod search
-        $query->where([
-            ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
-            ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
-        ]);
+        if ($priod !== null) {
+            switch ($priod) {
+                case "day":
+                    $query->where([
+                        ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
+                        ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
+                    ]);
+            }
+        }
+
 
         // keywords search
         foreach ($no_tag_keywords as $keyword) {
@@ -64,28 +78,19 @@ class PostController extends Controller
 
         // lgtm sum search
 
-        if ($lgtm_min !== null) {
-            $query
-                ->join('likes', 'posts.id', '=', 'likes.post_id')
-                ->groupBy('posts.id')
-                ->havingRaw('count(likes.id) >= ?', $lgtm_min);
-        }
-        if ($lgtm_max !== null) {
-            $query->havingRaw('count(likes.id) <= ?', [count($lgtm_max)]);
-        }
+        // if ($lgtm_min !== null) {
+        //     $query
+        // ->join('likes', 'posts.id', '=', 'likes.post_id')
+        // ->groupBy('posts.id')
+        // ->havingRaw('count(likes.id) >= ?', $lgtm_min);
+        // ->where('likes_count', '>=', $lgtm_min);
+        // }
+
 
         // $posts = $query->orderBy('posts.created_at', 'desc')->get();
         $posts = $query->orderBy('likes_count', 'desc')->get();
 
-        // if ($priod !== null) {
-        //     switch ($priod) {
-        //         case "day":
-        //             $query->where([
-        //                 ['created_at', '>=', date("Y-m-d 00:00:00")],
-        //                 ['created_at', '<=', date("Y-m-d 23:59:59")]
-        //             ]);
-        //     }
-        // }
+
 
 
 
@@ -145,6 +150,8 @@ class PostController extends Controller
         // } else {
         //     $posts = Post::orderBy('created_at', 'desc')->get();
         // }
+
+
 
         return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
     }
