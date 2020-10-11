@@ -17,20 +17,15 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->input('search');
+        // values
         $tag_btn_value = $request->input('tag_btn');
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
         $priod = $request->input('priod');
 
-        $query = Post::withCount('likes');
-
-        $query->where([
-            ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
-            ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
-        ]);
-
+        // keyword
+        $keyword = $request->input('search');
         $keyword_space_half = mb_convert_kana($keyword, 's');
         $keywords = preg_split('/[\s]+/', $keyword_space_half);
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
@@ -38,7 +33,16 @@ class PostController extends Controller
         $tags = $match[1];
         $tags_count = count($tags);
 
+        // query
+        $query = Post::withCount('likes');
 
+        // priod search
+        $query->where([
+            ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
+            ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
+        ]);
+
+        // keywords search
         foreach ($no_tag_keywords as $keyword) {
             $query
                 ->where(function ($query) use ($keyword) {
@@ -48,6 +52,7 @@ class PostController extends Controller
                 });
         }
 
+        // tags search
         if (count($tags) !== 0) {
             $query
                 ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
@@ -56,6 +61,19 @@ class PostController extends Controller
                 ->groupBy('posts.id')
                 ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
         }
+
+        // lgtm sum search
+
+        if ($lgtm_min !== null) {
+            $query
+                ->join('likes', 'posts.id', '=', 'likes.post_id')
+                ->groupBy('posts.id')
+                ->havingRaw('count(likes.id) >= ?', $lgtm_min);
+        }
+        if ($lgtm_max !== null) {
+            $query->havingRaw('count(likes.id) <= ?', [count($lgtm_max)]);
+        }
+
         // $posts = $query->orderBy('posts.created_at', 'desc')->get();
         $posts = $query->orderBy('likes_count', 'desc')->get();
 
@@ -108,15 +126,6 @@ class PostController extends Controller
         //     }
 
 
-        //     if ($lgtm_min !== null) {
-        //         $query
-        //             ->join('likes', 'posts.id', '=', 'likes.post_id')
-        //             ->groupBy('posts.id')
-        //             ->havingRaw('count(likes.id) >= ?', $lgtm_min);
-        //     }
-        //     if ($lgtm_max !== null) {
-        //         $query->havingRaw('count(likes.id) <= ?', [count($lgtm_max)]);
-        //     }
 
 
         //     if ($order !== null) {
