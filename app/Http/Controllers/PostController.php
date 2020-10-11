@@ -19,6 +19,7 @@ class PostController extends Controller
     {
         $keyword = $request->input('search');
         $tag_btn_value = $request->input('tag_btn');
+        $order = $request->input('order');
 
 
         if ($keyword !== null) {
@@ -44,7 +45,19 @@ class PostController extends Controller
                     ->where('posts.title', 'like', '%' . $keyword . '%')
                     ->orWhere('posts.body', 'LIKE', "%{$keyword}%");
             }
-            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+
+            if ($order !== null) {
+                switch ($order) {
+                    case "lgtm":
+                        $posts = $query->withCount('likes')->orderBy('likes_count', 'desc')->get();
+                        break;
+                    case "new":
+                        $posts = $query->orderBy('posts.created_at', 'desc')->get();
+                        break;
+                }
+            } else {
+                $posts = $query->orderBy('posts.created_at', 'desc')->get();
+            }
         } elseif ($tag_btn_value !== null) {
             $tag = Tag::where('name', $tag_btn_value)->first();
             $posts = $tag->posts;
