@@ -154,6 +154,10 @@
                 .post-details {
                     &_date {
                         color: gray;
+                        .lgtm {
+                            font-weight: 900;
+                            margin-left: 5px;
+                        }
                     }
                 }
             }

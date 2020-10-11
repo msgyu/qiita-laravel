@@ -4,7 +4,10 @@
   <div class="post-box_right">
     <a class="post-title" href="{{ route('posts.show', $post->id)}}">{{ $post->title }}</a>
     <div class="post-details">
-      <div class="post-details_date">{{ $post->created_at }}</div>
+      <div class="post-details_date">
+        <span>{{ $post->created_at }}</span>
+        <span class="lgtm">LGTM {{ count($post->likes) }}</span>
+      </div>
     </div>
   </div>
 </div>

@@ -17963,3 +17963,8 @@ a.text-dark:focus {
   color: gray;
 }
 
+.top-wrapper .posts-wrapper .post-box .post-box_right .post-details_date .lgtm {
+  font-weight: 900;
+  margin-left: 5px;
+}
+
