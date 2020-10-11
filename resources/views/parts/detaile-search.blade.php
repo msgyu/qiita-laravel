@@ -22,10 +22,10 @@
           <span class="search-conditions_title order-terms_title">順番</span>
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="order-terms" value="order-lgtm" class="">LGTM数順
+          <input type="radio" name="order" value="order-lgtm" class="">LGTM数順
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="order-terms" value="order-new">新着順
+          <input type="radio" name="order" value="order-new">新着順
         </div>
       </div>
       <div class="search-conditions date-terms">
@@ -33,16 +33,16 @@
           <span class="search-conditions_title">日付</span>
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="date-terms" value="day" class="">1日
+          <input type="radio" name="priod" value="day" class="">1日
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="date-terms" value="week">1週間
+          <input type="radio" name="priod" value="week">1週間
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="date-terms" value="month">月間
+          <input type="radio" name="priod" value="month">月間
         </div>
         <div class="search-conditions_radio">
-          <input type="radio" name="date-terms" value="period">期間指定
+          <input type="radio" name="priod" value="period">期間指定
         </div>
         <div class="search-conditions_radio">
           <span>
@@ -74,8 +74,6 @@
           </span>
         </div>
       </div>
-
-
     </div>
   </form>
 </div>
