@@ -1,5 +1,5 @@
 <div class="detailed-search col-md-3">
-  <form action="{{ route('likes.index')}}" method="GET" class="detailed-search_form">
+  <form action="{{ route('posts.index')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
     <div class="detailed-search_form_head">記事の条件</div>
     <div class="detailed-search_form_body">
       <div class="search-conditions keyword-terms">
@@ -10,9 +10,9 @@
           <div class="form-inline search-form">
             <i class="fas fa-search"></i>
             @if(isset($keyword))
-            <input type="search" name="search" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" value="{{$keyword}}" class="search-input" placeholder="キーワードを入力" aria-label="検索...">
             @else
-            <input type="search" name="search" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" placeholder="キーワードを入力" class="search-input" aria-label="検索...">
             @endif
           </div>
         </div>
