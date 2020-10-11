@@ -9,7 +9,7 @@
         <li>
           <a href="{{ route('posts.index') }}">
             すべて
-            <span class="badge">{{ count($posts)}}</span>
+            <span class="badge">{{ $posts }}</span>
           </a>
         </li>
         @auth
@@ -22,8 +22,8 @@
         @endauth
       </ul>
     </div>
-    @if(count($posts) !== 0)
-    @include('parts.posts_index')
+    @if(count($like_posts) !== 0)
+    @include('parts.posts_index', ['posts' => $like_posts] )
     @else
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
