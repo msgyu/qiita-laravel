@@ -8,23 +8,27 @@
     }
     .row {
         justify-content: center;
-        .col-6 {
-            padding: 0rem;
+        width: 100%;
+        margin: 0;
+        .markdown {
+            width: 50%;
+            padding: 16px;
             flex: none;
+            border: 1px solid #ced4da;
+            background-color: #fff;
             #markdown_editor_textarea {
-                padding: 1rem;
+                box-sizing: border-box;
                 height: 29rem;
                 width: 100%;
                 resize: none;
                 outline: 0;
+                border: none;
             }
             #markdown_preview {
-                padding: 1rem;
-                height: 29rem;
-                border: solid 1px gray;
+                box-sizing: border-box;
                 width: 100%;
+                padding: 1rem;
                 background-color: white;
-                border: 1px solid #ced4da;
                 border-radius: 0.25rem;
                 color: #495057;
                 overflow: scroll;

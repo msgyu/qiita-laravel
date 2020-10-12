@@ -17473,34 +17473,38 @@ a.text-dark:focus {
 
 .post-page-wrapper .row {
   justify-content: center;
+  width: 100%;
+  margin: 0;
 }
 
-.post-page-wrapper .row .col-6 {
-  padding: 0rem;
+.post-page-wrapper .row .markdown {
+  width: 50%;
+  padding: 16px;
   flex: none;
+  border: 1px solid #ced4da;
+  background-color: #fff;
 }
 
-.post-page-wrapper .row .col-6 #markdown_editor_textarea {
-  padding: 1rem;
+.post-page-wrapper .row .markdown #markdown_editor_textarea {
+  box-sizing: border-box;
   height: 29rem;
   width: 100%;
   resize: none;
   outline: 0;
+  border: none;
 }
 
-.post-page-wrapper .row .col-6 #markdown_preview {
-  padding: 1rem;
-  height: 29rem;
-  border: solid 1px gray;
+.post-page-wrapper .row .markdown #markdown_preview {
+  box-sizing: border-box;
   width: 100%;
+  padding: 1rem;
   background-color: white;
-  border: 1px solid #ced4da;
   border-radius: 0.25rem;
   color: #495057;
   overflow: scroll;
 }
 
-.post-page-wrapper .row .col-6 #markdown_preview h1 {
+.post-page-wrapper .row .markdown #markdown_preview h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -17508,21 +17512,21 @@ a.text-dark:focus {
   border-bottom: solid 1px #ddd;
 }
 
-.post-page-wrapper .row .col-6 #markdown_preview h2 {
+.post-page-wrapper .row .markdown #markdown_preview h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   padding-bottom: 0.2rem;
   border-bottom: solid 1px #ddd;
 }
 
-.post-page-wrapper .row .col-6 #markdown_preview h3 {
+.post-page-wrapper .row .markdown #markdown_preview h3 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
   padding-bottom: 0.2rem;
   border-bottom: solid 1px #ddd;
 }
 
-.post-page-wrapper .row .col-6 #markdown_preview pre code {
+.post-page-wrapper .row .markdown #markdown_preview pre code {
   color: white;
   padding: 1.5rem 1rem;
   background-color: #364549;
