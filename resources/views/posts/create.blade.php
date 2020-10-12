@@ -10,10 +10,10 @@
     </li>
   </ul>
   <div class="row">
-    <div class="col-6">
+    <div class="markdown">
       <textarea name="body" id="markdown_editor_textarea" placeholder="プログラミング知識をmarkdonw記法で書いて共有" cols="30" rows="10" class="form-control"></textarea>
     </div>
-    <div class="col-6">
+    <div class="markdown">
       <div id="markdown_preview"></div>
     </div>
   </div>
