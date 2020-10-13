@@ -2,6 +2,17 @@
 
 @section('content')
 <form class="post-page-wrapper" action="{{ route('posts.store') }}" method="post">
+  <div class="post-create_wrapper">
+    aaaa
+  </div>
+  <div class="post-create-footer">
+    <button type='submit' class="post-button" tabindex="41">
+      <i class="fa fa-upload"></i>
+      Oiita に投稿
+    </button>
+  </div>
+</form>
+<!-- <form class="post-page-wrapper" action="{{ route('posts.store') }}" method="post">
   @csrf
   <input type="text" class="form-control" id="title-input" placeholder="タイトル" name="title">
   <ul class="tag-wrapper ">
@@ -18,10 +29,10 @@
     </div>
   </div>
   <div class="post-page-footer">
-    <button type='submit' class="post-button m-1" tabindex="41">
+    <button type='submit' class="post-button" tabindex="41">
       <i class="fa fa-upload"></i>
       Oiita に投稿
     </button>
   </div>
-</form>
+</form> -->
 @endsection
