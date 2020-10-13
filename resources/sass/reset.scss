@@ -7,6 +7,14 @@
 html {
     color: #000;
     background: #fff;
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+
+#app {
+    height: 100%;
 }
 /*
 	TODO remove settings on BODY since we can't namespace it.
