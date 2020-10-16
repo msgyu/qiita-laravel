@@ -17984,3 +17984,24 @@ a.text-dark:focus {
   margin-left: 5px;
 }
 
+.top-wrapper .posts-wrapper .post-box .post-box_right .post-tags div {
+  margin: 0 8px 0 0;
+}
+
+.top-wrapper .posts-wrapper .post-box .post-box_right .post-tags .post-tag {
+  background-color: #eee;
+  display: inline-flex;
+  padding: 2px 8px;
+  font-size: 14px;
+  color: #666;
+  border-radius: 4px;
+  height: 23px;
+  line-height: 19px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
