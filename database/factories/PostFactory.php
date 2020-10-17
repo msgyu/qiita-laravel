@@ -6,7 +6,6 @@ use App\Models\post;
 use Faker\Generator as Faker;
 
 $factory->define(post::class, function (Faker $faker) {
-    return [
-        //
-    ];
+    $userIDs  = App\User::pluck('id')->all();
+    return [];
 });
