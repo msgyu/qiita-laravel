@@ -7,5 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(post::class, function (Faker $faker) {
     $userIDs  = App\User::pluck('id')->all();
-    return [];
+    return [
+        'title' => $faker->realText(30),
+        'body' => $faker->realText(),
+        'user_id' => $faker->randomElement($userIDs)
+    ];
 });
