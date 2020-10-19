@@ -9,8 +9,8 @@
 
 
 # Introduction
-Oiitaは「Qiita」に影響を受けたプロジェクトになります。一番の違いは絞り込み検索の充実です。
-Qiitaはキーワードでの検索が可能でありながら、複数タグでの検索やLGTM数、期間指定などができません。そのため、欲している記事が見つけにくい問題があります。そこで今回のOiitaでは、絞り込み検索の充実し、目的としている記事をみつけやすいように改善しました。
+Oiitaは「Qiita」に影響を受けたプロジェクトです。一番の違いは、オリジナルの絞り込み検索です。
+Qiitaはキーワードでの検索が可能でありながら、複数タグでの検索やLGTM数、期間指定などができません。そのため、目的の記事が見つけにくい問題があります。そこでOiitaでは、絞り込み検索の充実させ、目的としている記事をみつけやすいように改善しました。
 
 Oiita will be a project inspired by "Qiita". The biggest difference is the ability to refine the search.
 While Qiita allows you to search by keywords, it does not allow you to search by multiple tags, number of LGTMs, or time period. So it can be difficult to find the articles you are looking for. So, we have improved the search function in Oiita to make it easier to find the articles you are looking for.
@@ -43,7 +43,7 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 I will introduce the features of Oiita here.
 
 - list of articles
-- Keyword search(header)
+- Keyword search in header
 - conditional search
     - Multiple keyword search
     - Multiple Tag Search
@@ -61,13 +61,15 @@ I will introduce the features of Oiita here.
 
 
 ## 記事一覧の表示（list of articles）
-![Oiita記事一覧表示](https://user-images.githubusercontent.com/52862370/96440317-c4925d00-1242-11eb-8980-e3fff69cd088.gif)
-記事一覧を表示するトップページ。「すべて」をクリック時は、すべての記事が表示される。ログイン時には「LGTM済み」の選択肢も追加され、LGTM（いいね）した記事の一覧も表示が可能。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
+![Oiita記事一覧](https://user-images.githubusercontent.com/52862370/96441062-d7f1f800-1243-11eb-8616-859b6e1e6226.gif)
+「すべて」を選択時はすべての記事が表示され、「LGTM済み」を選択した場合はLGTM（いいね）した記事のみ一覧表示される。ただし、LGTMするにはログインする必要がある。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
 
-Top page to display a list of articles. When you click on "All", all articles are displayed. When you log in, the "LGTMed" option has been added and the list of LGTM (Liked) articles can be viewed. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
+If you select "すべて", all the articles are shown, and if you select "LGTM済み", only the articles you "LGTMed" (liked) are shown. However, you need to be logged in to LGTM. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
 
 
 ## キーワード検索機能（header) Keyword search(header)
+![複数キーワード検索](https://user-images.githubusercontent.com/52862370/96442671-797a4900-1246-11eb-89cd-77f63221b40e.gif)
+headerにある検索フォームでは、複数キーワードと複数タグ検索が可能。タグで絞り込みたい場合はキーワードの先頭に`#`をつけて検索する。
  
 
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
