@@ -44,7 +44,7 @@ class PostController extends Controller
             $query->having('likes_count', '>=', $lgtm_min);
         }
         if ($lgtm_max !== null) {
-            $query->having('likes_count', '>=', $lgtm_max);
+            $query->having('likes_count', '<=', $lgtm_max);
         }
 
         // priod search
