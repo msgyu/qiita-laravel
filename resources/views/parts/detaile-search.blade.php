@@ -46,16 +46,32 @@
             <span class="search-conditions_title">期間</span>
           </div>
           <div class="search-conditions_radio">
-            <input type="radio" name="priod" value="day" class="">1日
+            @if($priod == "day")
+            <input type="radio" name="priod" value="day" checked="checked">1日
+            @else
+            <input type="radio" name="priod" value="day">1日
+            @endif
           </div>
           <div class="search-conditions_radio">
+            @if($priod == "week")
+            <input type="radio" name="priod" value="week" checked="checked">1週間
+            @else
             <input type="radio" name="priod" value="week">1週間
+            @endif
           </div>
           <div class="search-conditions_radio">
+            @if($priod == "month")
+            <input type="radio" name="priod" value="month" checked="checked">1月間
+            @else
             <input type="radio" name="priod" value="month">1月間
+            @endif
           </div>
           <div class="search-conditions_radio">
+            @if($priod == "period")
+            <input type="radio" name="priod" value="period" checked="checked">期間指定
+            @else
             <input type="radio" name="priod" value="period">期間指定
+            @endif
           </div>
           <div class="search-conditions_radio">
             <span>
