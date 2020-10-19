@@ -14,11 +14,12 @@ Qiitaはキーワードでの検索が可能でありながら、複数タグで
 
 Oiita will be a project inspired by "Qiita". The biggest difference is the ability to refine the search.
 While Qiita allows you to search by keywords, it does not allow you to search by multiple tags, number of LGTMs, or time period. So it can be difficult to find the articles you are looking for. So, we have improved the search function in Oiita to make it easier to find the articles you are looking for.
-
+<br>
+<br>
 
 # function
-ここではOiitaの機能紹介をしていきます。
-
+ここではOiitaの機能紹介をしていきます。<br>
+<br>
 - 記事一覧の表示
 - キーワード検索機能（header)
     - 複数キーワード検索
@@ -42,7 +43,8 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 
 
 
-I will introduce the features of Oiita here.
+I will introduce the features of Oiita here.<br>
+<br>
 
 - list of articles
 - Keyword search in header
@@ -84,9 +86,11 @@ The search form in the header allows you to narrow down your search results with
 <br>
 
 ### 複数キーワード検索（Multiple keyword search）
-![複数キーワード検索](https://user-images.githubusercontent.com/52862370/96442671-797a4900-1246-11eb-89cd-77f63221b40e.gif)
+![複数タグ検索](https://user-images.githubusercontent.com/52862370/96445521-01625200-124b-11eb-8363-a8a1ec965a7e.gif)
+
 <br>
 複数のキーワードで絞り込みするには、キーワードとキーワードの間をスペース（半角、全角とも可能）で区切る必要がある。記事のタイトルか内容に指定したキーワードが含まれている場合、検索結果に表示される。
+<br>
 To narrow down the search by multiple keywords, you need to separate the keywords with a space (both one-byte and two-byte characters are possible). If the keyword is included in the title or content of the article, it will be displayed in the search results.
 <br>
 <br>
@@ -101,8 +105,9 @@ If you want to search not only by keywords but also by tags, put `#` at the begi
 <br>
 
 ## 絞り込み検索(side) conditional search
-サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。
-The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.
+サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。<br>
+The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.<br>
+<br>
 
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
 ![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
