@@ -40,14 +40,14 @@ While Qiita allows you to search by keywords, it does not allow you to search by
     - 複数キーワード検索
     - 複数タグ検索
     - 順番（新規投稿順、LGTM数順）
-    - 投稿期間の指定（本日、１週間、1ヶ月間、開始日〜終了日の指定）
+    - 投稿期間の指定（本日、１週間、1ヶ月間、期間指定）
     - LGTM数の指定（最低数、最高数）
     - 記事全体で検索、LGTMした記事で検索
 - 記事投稿
     - 新規作成(Markdown記法)
     - 編集
     - 削除
-- いいね機能 like button
+- いいね機能（Ajax） like button
 - User認証
     - 新規登録
     - ログイン
@@ -82,6 +82,9 @@ I will introduce the features of Oiita here.<br>
 
 ## 記事一覧の表示（list of articles）
 ![Oiita記事一覧](https://user-images.githubusercontent.com/52862370/96441062-d7f1f800-1243-11eb-8616-859b6e1e6226.gif)
+<br>
+<br>
+<br>
 「すべて」を選択した場合はすべての記事が表示され、「LGTM済み」を選択した場合はLGTM（いいね）した記事のみ一覧表示される。ただし、LGTMするにはログインする必要がある。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
 
 If you select "すべて", all the articles are shown, and if you select "LGTM済み", only the articles you "LGTMed" (liked) are shown. However, you need to be logged in to LGTM. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
@@ -91,6 +94,9 @@ If you select "すべて", all the articles are shown, and if you select "LGTM�
 
 
 ## キーワード検索機能（header) Keyword search(header)
+![複数キーワード検索](https://user-images.githubusercontent.com/52862370/96458276-b1d85200-125b-11eb-8908-724dca1c7b3a.gif)
+<br>
+<br>
 headerにある検索フォームでは、複数のキーワードとタグで検索結果の絞り込みが可能。
 The search form in the header allows you to narrow down your search results with multiple keywords and tags.
 
@@ -119,6 +125,39 @@ If you want to search not only by keywords but also by tags, put `#` at the begi
 ## 絞り込み検索(side) conditional search
 サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。<br>
 The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.<br>
+<br>
+<br>
+### 複数キーワード検索
+headerの検索フォームと同じく複数キーワードで条件を絞ることが可能。エンターを押すことで検索が実行される
+<br>
+<br>
+<br>
+### 複数タグ検索
+headerの検索フォームと同じく、タグ名の先頭に`#`を付与することで、そのタグを保有する記事に絞ることができる。複数のタグで絞り込み可能。キーワードとタグを合わせることで記事をより絞り込むことができます。
+<br>
+<br>
+<br>
+### 順番（新規投稿順、LGTM数順）
+標準ではLGTMが多い記事の順番で表示される（LGTM数順）。しかし、最新の記事を求める場合に備えて新規投稿順に変更することが可能
+<br>
+<br>
+<br>
+### 投稿期間の指定
+日付を指定して、その期間に投稿された記事の一覧を取得することが可能。
+<br>
+<br>
+<br>
+#### 選択肢
+- 本日: 今日の日付に投稿された記事を取得
+- 1週間: 直近1週間の間に投稿された記事を取得
+- 1ヶ月: 直近1ヶ月間に投稿された記事を取得
+- 期間指定: ユーザーが指定した期間に投稿された記事を取得する。
+<br>
+<br>
+<br>
+### LGTM数の指定
+LGTM数の最低数や最高数を指定して、その範囲内の記事を取得する。これによりLGTM数が多い良質な記事に絞って検索したり、LGMT数が少ない記事の分析をするなど、ユーザーの使う意図に合わせて検索が可能になった。<br>
+<br>
 <br>
 
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
