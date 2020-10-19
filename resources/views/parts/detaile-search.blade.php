@@ -25,12 +25,21 @@
           <div>
             <span class="search-conditions_title order-terms_title">順番</span>
           </div>
+          @if($order == "new")
+          <div class="search-conditions_radio">
+            <input type="radio" name="order" value="lgtm">LGTM数順
+          </div>
+          <div class="search-conditions_radio">
+            <input type="radio" name="order" value="new" checked="checked">新着順
+          </div>
+          @else
           <div class="search-conditions_radio">
             <input type="radio" name="order" value="lgtm" checked="checked">LGTM数順
           </div>
           <div class="search-conditions_radio">
             <input type="radio" name="order" value="new">新着順
           </div>
+          @endif
         </div>
         <div class="search-conditions date-terms">
           <div>
