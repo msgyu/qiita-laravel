@@ -93,9 +93,6 @@ I will introduce the features of Oiita here.<br>
 <br>
 <br>
 「すべて」を選択した場合はすべての記事が表示され、「LGTM済み」を選択した場合はLGTM（いいね）した記事のみ一覧表示される。ただし、LGTMするにはログインする必要がある。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。<br>
-<br>
-<br>
-
 If you select "すべて", all the articles are shown, and if you select "LGTM済み", only the articles you "LGTMed" (liked) are shown. However, you need to be logged in to LGTM. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
 <br>
 <br>
@@ -107,7 +104,6 @@ If you select "すべて", all the articles are shown, and if you select "LGTM�
 <br>
 <br>
 headerにある検索フォームでは、複数のキーワードとタグで検索結果の絞り込みが可能。<br>
-<br>
 The search form in the header allows you to narrow down your search results with multiple keywords and tags.
 <br>
 <br>
@@ -238,6 +234,20 @@ public function index(Request $request)
 <br>
 headerの検索フォームと同じく複数キーワードで条件を絞ることが可能。エンターを押すことで検索が実行される<br>
 <br>
+
+#### コード
+foreachでwhere文を繰り返し、検索キーワードの条件に当てはまる記事に絞り込む
+
+```php
+            foreach ($no_tag_keywords as $no_tag_keyword) {
+                $query
+                    ->where(function ($query) use ($no_tag_keyword) {
+                        $query
+                            ->where('posts.title', 'like', '%' . $no_tag_keyword . '%')
+                            ->orWhere('posts.body', 'LIKE', "%{$no_tag_keyword}%");
+                    });
+            }
+```
 <br>
 <br>
 ### 複数タグ検索
@@ -263,7 +273,9 @@ if (count($tags) !== 0) {
 <br>
 <br>
 <br>
+
 ### 順番（新規投稿順、LGTM数順）
+
 ![order](https://user-images.githubusercontent.com/52862370/96461360-41333480-125f-11eb-98b5-c5ec1a4d89cb.png)
 <br>
 <br>
