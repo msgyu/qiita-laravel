@@ -18,18 +18,44 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 
 # function
 ここではOiitaの機能紹介をしていきます。
+
+- 記事一覧の表示
+- User認証
+- 記事投稿
+    - 新規作成(Markdown記法)
+    - 編集
+    - 削除
+- いいね機能 like button
+- キーワード検索機能（header)
+    - 複数キーワード検索
+    - 複数タグ検索
+- 絞り込み検索(side)
+    - 複数キーワード検索
+    - 複数タグ検索
+    - 順番（新規投稿順、LGTM数順）
+    - 投稿期間の指定（本日、１週間、1ヶ月間、開始日〜終了日の指定）
+    - LGTM数の指定（最低数、最高数）
+    - 記事全体で検索、LGTMした記事で検索
+
+
+
 I will introduce the features of Oiita here.
 
-
-- 記事一覧の表示  list of articles
-- User認証  authentication
-- 記事投稿 Article Submission
-    - 新規作成(Markdown記法) Create New (Markdown)
-    - 編集 Edit
-    - 削除 Delete
-- いいね機能 like button
-- キーワード検索機能（header） Keyword search(header)
-- 絞り込み検索(side) conditional search
+- list of articles
+- User auth
+- Article Submission
+    - Create New (Markdown)
+    - Edit
+    - Delete
+- like button
+- Keyword search(header)
+- conditional search
+    - Multiple keyword search
+    - Multiple Tag Search
+    - Order (in order of new submissions or sum of LGTMs)
+    - period specified (today, week, month, start to end date)
+    - Specify the range of the number of LGMTs( min and max )
+    - Search the entire article or search by LGTMed article
 
 
 ## 記事投稿
