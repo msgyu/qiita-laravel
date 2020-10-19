@@ -18,6 +18,7 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 
 ## Purpose
+
 - 絞り込み検索を実装して、目的の記事を見つけやすくする。
 - 実践を通して、SQLの理解を深める
 <br>
@@ -30,6 +31,7 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 
 ## ER図 ER Diagram
+
 ![ER図](https://user-images.githubusercontent.com/52862370/96422391-ec79c480-1232-11eb-9c29-201200699e9a.png)<br>
 <br>
 <br>
@@ -37,6 +39,7 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 
 
 # function
+
 ここではOiitaの機能紹介をしていきます。<br>
 <br>
 - 記事一覧の表示
@@ -88,6 +91,7 @@ I will introduce the features of Oiita here.<br>
 
 
 ## 記事一覧の表示（list of articles）
+
 ![Oiita記事一覧](https://user-images.githubusercontent.com/52862370/96441062-d7f1f800-1243-11eb-8616-859b6e1e6226.gif)
 <br>
 <br>
@@ -100,6 +104,7 @@ If you select "すべて", all the articles are shown, and if you select "LGTM�
 
 
 ## キーワード検索機能（header) Keyword search(header)
+
 ![複数キーワード検索](https://user-images.githubusercontent.com/52862370/96458276-b1d85200-125b-11eb-8908-724dca1c7b3a.gif)
 <br>
 <br>
@@ -107,7 +112,10 @@ headerにある検索フォームでは、複数のキーワードとタグで�
 The search form in the header allows you to narrow down your search results with multiple keywords and tags.
 <br>
 <br>
+
+
 ### 複数キーワード検索（Multiple keyword search）
+
 ![複数タグ検索](https://user-images.githubusercontent.com/52862370/96445521-01625200-124b-11eb-8363-a8a1ec965a7e.gif)
 
 <br>
@@ -116,14 +124,20 @@ The search form in the header allows you to narrow down your search results with
 To narrow down the search by multiple keywords, you need to separate the keywords with a space (both one-byte and two-byte characters are possible). If the keyword is included in the title or content of the article, it will be displayed in the search results.
 <br>
 <br>
+
+
 ### 複数タグ（Multiple Tag Search）
+
 ![Oiita複数タグ](https://user-images.githubusercontent.com/52862370/96443753-0ffb3a00-1248-11eb-807d-9e45068c67af.gif)
 <br>キーワードだけではなくタグで絞り込みたい場合は、タグ名の先頭に`#`を付与して検索する。
 If you want to search not only by keywords but also by tags, put `#` at the beginning of the tag name.
 <br>
 <br>
 <br>
+
+
 ## 絞り込み検索(side) conditional search
+
 サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。<br>
 The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.<br>
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)<br>
@@ -225,6 +239,7 @@ public function index(Request $request)
 ````
 
 ### 複数キーワード検索
+
 ![絞り込み検索（キーワード&タグ）](https://user-images.githubusercontent.com/52862370/96460982-ca963700-125e-11eb-9750-a5a863299551.png)<br>
 <br>
 <br>
@@ -232,6 +247,7 @@ headerの検索フォームと同じく複数キーワードで条件を絞る�
 <br>
 
 #### コード
+
 foreachでwhere文を繰り返し、検索キーワードの条件に当てはまる記事に絞り込む
 
 ```php
@@ -246,12 +262,16 @@ foreachでwhere文を繰り返し、検索キーワードの条件に当ては�
 ```
 <br>
 <br>
+
 ### 複数タグ検索
+
 ![絞り込み検索（複数タグ）](https://user-images.githubusercontent.com/52862370/96461225-15b04a00-125f-11eb-912b-777f0b4f93ef.png)<br>
 <br>
 headerの検索フォームと同じく、タグ名の先頭に`#`を付与することで、そのタグを保有する記事に絞ることができる。複数のタグで絞り込み可能。キーワードとタグを合わせることで記事をより絞り込むことができます。<br>
 <br>
+
 #### コード
+
 クエリビルダでtagモデルとその中間テーブルを結合し、havingで記事に紐づくタグ数が検索フォームで入力したタグ数と一致している、かつwhereInで検索したタグ名を含む記事を取得している。
 
 ```php
@@ -350,6 +370,8 @@ if ($order == 'new') {
 <br>
 
 ### LGTM数の指定
+
+
 ![絞り込み検索（LGTM数）](https://user-images.githubusercontent.com/52862370/96461633-940cec00-125f-11eb-8fa4-931e782778da.png)
 <br>
 <br>
