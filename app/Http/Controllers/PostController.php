@@ -103,7 +103,8 @@ class PostController extends Controller
             $posts = $query->orderBy('likes_count', 'desc')->get();
         }
 
-        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
+
+        return view('posts.index', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**
