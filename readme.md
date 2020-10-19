@@ -107,7 +107,6 @@ headerにある検索フォームでは、複数のキーワードとタグで�
 The search form in the header allows you to narrow down your search results with multiple keywords and tags.
 <br>
 <br>
-
 ### 複数キーワード検索（Multiple keyword search）
 ![複数タグ検索](https://user-images.githubusercontent.com/52862370/96445521-01625200-124b-11eb-8363-a8a1ec965a7e.gif)
 
@@ -117,8 +116,6 @@ The search form in the header allows you to narrow down your search results with
 To narrow down the search by multiple keywords, you need to separate the keywords with a space (both one-byte and two-byte characters are possible). If the keyword is included in the title or content of the article, it will be displayed in the search results.
 <br>
 <br>
-
-
 ### 複数タグ（Multiple Tag Search）
 ![Oiita複数タグ](https://user-images.githubusercontent.com/52862370/96443753-0ffb3a00-1248-11eb-807d-9e45068c67af.gif)
 <br>キーワードだけではなくタグで絞り込みたい場合は、タグ名の先頭に`#`を付与して検索する。
@@ -126,7 +123,6 @@ If you want to search not only by keywords but also by tags, put `#` at the begi
 <br>
 <br>
 <br>
-
 ## 絞り込み検索(side) conditional search
 サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。<br>
 The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.<br>
