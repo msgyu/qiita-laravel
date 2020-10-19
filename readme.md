@@ -238,6 +238,20 @@ headerの検索フォームと同じく複数キーワードで条件を絞る�
 ![絞り込み検索（複数タグ）](https://user-images.githubusercontent.com/52862370/96461225-15b04a00-125f-11eb-912b-777f0b4f93ef.png)<br>
 <br>
 headerの検索フォームと同じく、タグ名の先頭に`#`を付与することで、そのタグを保有する記事に絞ることができる。複数のタグで絞り込み可能。キーワードとタグを合わせることで記事をより絞り込むことができます。
+
+#### コード
+クエリビルダでtagモデルとその中間テーブルを結合し、havingで記事に紐づくタグ数が検索フォームで入力したタグ数と一致している、かつ検索したタグ名と一致しているものを取得している。
+
+```php
+            if (count($tags) !== 0) {
+                $query
+                    ->join('post_tags', 'posts.id', '=', 'post_tags.post_id')
+                    ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+                    ->whereIn('tags.name', $tags)
+                    ->groupBy('posts.id')
+                    ->havingRaw('count(distinct tags.id) = ?', [count($tags)]);
+            }
+```
 <br>
 <br>
 <br>
@@ -274,8 +288,10 @@ headerの検索フォームと同じく、タグ名の先頭に`#`を付与す�
 LGTM数の最低数や最高数を指定して、その範囲内の記事を取得する。これによりLGTM数が多い良質な記事に絞って検索したり、LGMT数が少ない記事の分析をするなど、ユーザーの使う意図に合わせて検索が可能になった。<br>
 <br>
 <br>
-
-SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_count`がLGTM数の最低数`$lgtm_min`より数が多く、最高数`$lgtm_max`よりも少ない記事を取得する。
+<br>
+#### コードについて
+SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_count`がLGTM数の最低数`$lgtm_min`より数が多く、最高数`$lgtm_max`よりも少ない記事を取得する。<br>
+<br>
 
 ```php
         // query
@@ -289,6 +305,9 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
             $query->having('likes_count', '>=', $lgtm_max);
         }
 ```
+
+
+
 
 
 ![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
