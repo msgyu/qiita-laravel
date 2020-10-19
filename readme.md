@@ -30,12 +30,14 @@ While Qiita allows you to search by keywords, it does not allow you to search by
     - 投稿期間の指定（本日、１週間、1ヶ月間、開始日〜終了日の指定）
     - LGTM数の指定（最低数、最高数）
     - 記事全体で検索、LGTMした記事で検索
-- User認証
 - 記事投稿
     - 新規作成(Markdown記法)
     - 編集
     - 削除
 - いいね機能 like button
+- User認証
+    - 新規登録
+    - ログイン
 
 
 
@@ -44,6 +46,8 @@ I will introduce the features of Oiita here.
 
 - list of articles
 - Keyword search in header
+    - Multiple keyword search
+    - Multiple Tag Search
 - conditional search
     - Multiple keyword search
     - Multiple Tag Search
@@ -57,20 +61,48 @@ I will introduce the features of Oiita here.
     - Edit
     - Delete
 - like button
-
+<br>
+<br>
+<br>
 
 
 ## 記事一覧の表示（list of articles）
 ![Oiita記事一覧](https://user-images.githubusercontent.com/52862370/96441062-d7f1f800-1243-11eb-8616-859b6e1e6226.gif)
-「すべて」を選択時はすべての記事が表示され、「LGTM済み」を選択した場合はLGTM（いいね）した記事のみ一覧表示される。ただし、LGTMするにはログインする必要がある。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
+「すべて」を選択した場合はすべての記事が表示され、「LGTM済み」を選択した場合はLGTM（いいね）した記事のみ一覧表示される。ただし、LGTMするにはログインする必要がある。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
 
 If you select "すべて", all the articles are shown, and if you select "LGTM済み", only the articles you "LGTMed" (liked) are shown. However, you need to be logged in to LGTM. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
+<br>
+<br>
+<br>
 
 
 ## キーワード検索機能（header) Keyword search(header)
+headerにある検索フォームでは、複数のキーワードとタグで検索結果の絞り込みが可能。
+The search form in the header allows you to narrow down your search results with multiple keywords and tags.
+
+<br>
+<br>
+
+### 複数キーワード検索（Multiple keyword search）
 ![複数キーワード検索](https://user-images.githubusercontent.com/52862370/96442671-797a4900-1246-11eb-89cd-77f63221b40e.gif)
-headerにある検索フォームでは、複数キーワードと複数タグ検索が可能。タグで絞り込みたい場合はキーワードの先頭に`#`をつけて検索する。
- 
+<br>
+複数のキーワードで絞り込みするには、キーワードとキーワードの間をスペース（半角、全角とも可能）で区切る必要がある。記事のタイトルか内容に指定したキーワードが含まれている場合、検索結果に表示される。
+To narrow down the search by multiple keywords, you need to separate the keywords with a space (both one-byte and two-byte characters are possible). If the keyword is included in the title or content of the article, it will be displayed in the search results.
+<br>
+<br>
+
+
+### 複数タグ（Multiple Tag Search）
+![Oiita複数タグ](https://user-images.githubusercontent.com/52862370/96443753-0ffb3a00-1248-11eb-807d-9e45068c67af.gif)
+<br>キーワードだけではなくタグで絞り込みたい場合は、タグ名の先頭に`#`を付与して検索する。
+If you want to search not only by keywords but also by tags, put `#` at the beginning of the tag name.
+<br>
+<br>
+<br>
+
+## 絞り込み検索(side) conditional search
+サイドカラムにある絞り込み検索フォームでは、複数のキーワードとタグの他に条件を指定して検索することが可能。
+The narrowed search form in the side column allows you to specify multiple keywords and tags as well as criteria for searching.
 
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
 ![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
