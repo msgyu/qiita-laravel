@@ -20,12 +20,6 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 ここではOiitaの機能紹介をしていきます。
 
 - 記事一覧の表示
-- User認証
-- 記事投稿
-    - 新規作成(Markdown記法)
-    - 編集
-    - 削除
-- いいね機能 like button
 - キーワード検索機能（header)
     - 複数キーワード検索
     - 複数タグ検索
@@ -36,18 +30,19 @@ While Qiita allows you to search by keywords, it does not allow you to search by
     - 投稿期間の指定（本日、１週間、1ヶ月間、開始日〜終了日の指定）
     - LGTM数の指定（最低数、最高数）
     - 記事全体で検索、LGTMした記事で検索
+- User認証
+- 記事投稿
+    - 新規作成(Markdown記法)
+    - 編集
+    - 削除
+- いいね機能 like button
+
 
 
 
 I will introduce the features of Oiita here.
 
 - list of articles
-- User auth
-- Article Submission
-    - Create New (Markdown)
-    - Edit
-    - Delete
-- like button
 - Keyword search(header)
 - conditional search
     - Multiple keyword search
@@ -56,9 +51,23 @@ I will introduce the features of Oiita here.
     - period specified (today, week, month, start to end date)
     - Specify the range of the number of LGMTs( min and max )
     - Search the entire article or search by LGTMed article
+- User auth
+- Article Submission
+    - Create New (Markdown)
+    - Edit
+    - Delete
+- like button
 
 
-## 記事投稿
+
+## 記事一覧の表示（list of articles）
+![Oiita記事一覧表示](https://user-images.githubusercontent.com/52862370/96440317-c4925d00-1242-11eb-8980-e3fff69cd088.gif)
+記事一覧を表示するトップページ。「すべて」をクリック時は、すべての記事が表示される。ログイン時には「LGTM済み」の選択肢も追加され、LGTM（いいね）した記事の一覧も表示が可能。影響を受けた「Qiita」では「LGTM」と「ストック」の二つの機能に別れているが、別々にする必要性がないため「Oiita」では「LGTM」のみとなっている。また、後述する検索機能を活用すれば、検索結果を絞り込むことができる。
+
+Top page to display a list of articles. When you click on "All", all articles are displayed. When you log in, the "LGTMed" option has been added and the list of LGTM (Liked) articles can be viewed. In the affected "Qiita" it is split into two functions, "LGTM" and "Stock", but in "Oiita" it is only "LGTM" as there is no need to separate them. In addition, the search function, described below, can be used to narrow down the search results.
+
+
+## キーワード検索機能（header) Keyword search(header)
  
 
 ![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
