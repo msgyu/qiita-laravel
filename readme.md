@@ -17,6 +17,18 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 <br>
 
+## Purpose
+- 絞り込み検索を実装して、目的の記事を見つけやすくする。
+- 実践を通して、SQLの理解を深める
+<br>
+<br>
+
+- Implement a narrowed search to make it easier to find the article you want.
+- Deepen your understanding of SQL through practice
+<br>
+<br>
+<br>
+
 # function
 ここではOiitaの機能紹介をしていきます。<br>
 <br>
