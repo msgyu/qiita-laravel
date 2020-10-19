@@ -76,12 +76,20 @@
           <div class="search-conditions_radio">
             <span>
               <label for="">
+                @if($priod_start !== null)
+                開始:<input type="date" class="input-small" name="piriod-start" placeholder="2020-01-11" value="{{$priod_start}}">
+                @else
                 開始:<input type="date" class="input-small" name="piriod-start" placeholder="2020-01-11">
+                @endif
               </label>
             </span>
             <span>
               <label for="">
+                @if($priod_end !== null)
+                終了:<input type="date" class="input-small" name="piriod-end" placeholder="2020-02-11" value="{{$priod_end}}">
+                @else
                 終了:<input type="date" class="input-small" name="piriod-end" placeholder="2020-02-11">
+                @endif
               </label>
             </span>
           </div>
