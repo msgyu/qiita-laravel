@@ -29,6 +29,13 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 <br>
 
+## ER図 ER Diagram
+![ER図](https://user-images.githubusercontent.com/52862370/96422391-ec79c480-1232-11eb-9c29-201200699e9a.png)<br>
+<br>
+<br>
+今回の目的はSQLを利用した絞り込み検索の実装なので、シンプルな構造となっている。
+
+
 # function
 ここではOiitaの機能紹介をしていきます。<br>
 <br>
@@ -311,7 +318,7 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
 
 
 ![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
-![ER図](https://user-images.githubusercontent.com/52862370/96422391-ec79c480-1232-11eb-9c29-201200699e9a.png)
+
 
 
 
