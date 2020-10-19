@@ -6,17 +6,38 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
-![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
-![ER図](https://user-images.githubusercontent.com/52862370/96422391-ec79c480-1232-11eb-9c29-201200699e9a.png)
 
-#Introduction
+
+# Introduction
 Oiitaは「Qiita」に影響を受けたプロジェクトになります。一番の違いは絞り込み検索の充実です。
-Qiitaはキーワードでの検索が可能でありながら、複数タグでの検索やLGTM数、期間指定などができません。そのため、必要としている記事が見つけづらい問題があります。そこで今回のOiitaでは、欲している絞り込み検索の充実させ、欲している記事をみつけやすいように改善しました。
+Qiitaはキーワードでの検索が可能でありながら、複数タグでの検索やLGTM数、期間指定などができません。そのため、欲している記事が見つけにくい問題があります。そこで今回のOiitaでは、絞り込み検索の充実し、目的としている記事をみつけやすいように改善しました。
 
 Oiita will be a project inspired by "Qiita". The biggest difference is the ability to refine the search.
 While Qiita allows you to search by keywords, it does not allow you to search by multiple tags, number of LGTMs, or time period. So it can be difficult to find the articles you are looking for. So, we have improved the search function in Oiita to make it easier to find the articles you are looking for.
 
+
+# function
+ここではOiitaの機能紹介をしていきます。
+I will introduce the features of Oiita here.
+
+
+- 記事一覧の表示  list of articles
+- User認証  authentication
+- 記事投稿 Article Submission
+    - 新規作成(Markdown記法) Create New (Markdown)
+    - 編集 Edit
+    - 削除 Delete
+- いいね機能 like button
+- キーワード検索機能（header） Keyword search(header)
+- 絞り込み検索(side) conditional search
+
+
+## 記事投稿
+ 
+
+![oiita2](https://user-images.githubusercontent.com/52862370/96419552-44163100-122f-11eb-9a81-33e7fe507a39.png)
+![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
+![ER図](https://user-images.githubusercontent.com/52862370/96422391-ec79c480-1232-11eb-9c29-201200699e9a.png)
 
 
 
