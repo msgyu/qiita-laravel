@@ -396,12 +396,20 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
             $query->having('likes_count', '>=', $lgtm_max);
         }
 ```
+<br>
+<br>
+<br>
+
+## 記事投稿
+Markdown記法で記事の投稿、編集が可能。
+![Markdown](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
+
+### 新規投稿
+headerにある「投稿する」ボタンをクリックすると、記事の作成画面に移行する。
+
+![新規作成ボタン](https://user-images.githubusercontent.com/52862370/96473516-b6593680-126c-11eb-88e4-765925c6d100.png)
 
 
-
-
-
-![oiita3](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
 
 
 
