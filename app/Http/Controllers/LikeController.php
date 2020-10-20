@@ -102,9 +102,9 @@ class LikeController extends Controller
 
         // search order
         if ($order == 'new') {
-            $like_posts = $query->orderBy('posts.created_at', 'desc')->get();
+            $like_posts = $query->orderBy('posts.created_at', 'desc')->paginate(20);
         } else {
-            $like_posts = $query->orderBy('likes_count', 'desc')->get();
+            $like_posts = $query->orderBy('likes_count', 'desc')->paginate(20);
         }
         $posts = DB::table('posts')->count();
 
