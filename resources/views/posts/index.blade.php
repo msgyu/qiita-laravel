@@ -55,9 +55,13 @@
     </div>
     @if(count($posts) !== 0)
     @include('parts.posts_index')
+
     @else
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
+    <div class="paginate_wrapper">
+      {{ $posts->links() }}
+    </div>
   </div>
 </div>
 @endsection
