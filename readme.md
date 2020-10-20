@@ -457,7 +457,8 @@ headerにある「投稿する」ボタンをクリックすると、記事の�
 
 ## いいね機能（Ajax） like button
 <br>
-![いいね機能](https://user-images.githubusercontent.com/52862370/96534874-90af4a00-12cb-11eb-8e18-0b2bba3a4753.gif)
+
+![いいね機能](https://user-images.githubusercontent.com/52862370/96536013-1633f980-12ce-11eb-85f8-e2568afdffc1.gif)
 
 <br>
 <br>
