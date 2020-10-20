@@ -108,7 +108,7 @@ class LikeController extends Controller
         }
         $posts = DB::table('posts')->count();
 
-        return view('likes.index', compact('posts', 'like_posts', 'keyword', 'tag_btn_value'));
+        return view('likes.index', compact('posts', 'like_posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**
