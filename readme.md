@@ -400,11 +400,11 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
 <br>
 <br>
 
-## 記事投稿
+## 記事投稿 How to Article Submission
 Markdown記法で記事の投稿、編集が可能。
 
 
-### 新規投稿
+### 新規投稿 Create
 headerにある「投稿する」ボタンをクリックすると、記事の作成画面に移行する。
 
 ![新規作成ボタン](https://user-images.githubusercontent.com/52862370/96473516-b6593680-126c-11eb-88e4-765925c6d100.png)
@@ -413,16 +413,19 @@ headerにある「投稿する」ボタンをクリックすると、記事の�
 
 ![Markdown](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
 
-### 編集
+### 編集 Edit
 投稿したい記事を編集したい場合、編集ボタンをクリックする。<br>
 <br>
 ![編集ボタン](https://user-images.githubusercontent.com/52862370/96532240-6dce6700-12c6-11eb-80ce-e936187833e9.png)<br>
 <br>
 <br>
 
-ただしこの編集ボタンは、記事の投稿者のIDとログインしているUseriDが一致していなければ表示されない。
+ただしこの編集ボタンは、記事の投稿者のIDとログインしているUseriDが一致していなければ表示されない。<br>
+<br>
+<br>
+<br>
 
-### 削除
+### 削除 Delete
 記事を削除するには、まず設定ボタンを押す<br>
 ![削除の操作1](https://user-images.githubusercontent.com/52862370/96533343-b4bd5c00-12c8-11eb-8789-64e224f6ca2e.png)<br>
 <br>
@@ -431,6 +434,12 @@ headerにある「投稿する」ボタンをクリックすると、記事の�
 ![削除操作2](https://user-images.githubusercontent.com/52862370/96533402-d880a200-12c8-11eb-863e-b272db121f9f.png)<br>
 <br>
 <br>
+<br>
+
+## いいね機能（Ajax） like button
+LGTM（いいね）ボタンをクリックすると、記事を評価すると同時に、LGTMした記事として保持できる。ボタンの背景が白色から緑色に変化したら、LGTM済みです。<br>
+LGTMを取り消したい場合は、再度押すことで取り消すことができる。<br>
+ただし、JavaScriptのAjaxを使って非同期処理をしているため、ブラウザでJavaScriptを有効にしておく必要がある。<br>
 
 
 
