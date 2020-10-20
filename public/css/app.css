@@ -18005,3 +18005,7 @@ a.text-dark:focus {
           appearance: none;
 }
 
+.top-wrapper .posts-wrapper .paginate_wrapper {
+  margin-top: 20px;
+}
+
