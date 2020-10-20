@@ -37,6 +37,14 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 今回の目的はSQLを利用した絞り込み検索の実装なので、シンプルな構造となっている。
 
+## Environment
+
+- 言語: PHP 7.3.18
+- フレームワーク: Laravel6
+- ミドルウェア: Apache
+- DB:　MySQL 5.6.47
+- AWS（EC2, RDS）
+- jQuery
 
 # function
 
@@ -393,7 +401,7 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
             $query->having('likes_count', '>=', $lgtm_min);
         }
         if ($lgtm_max !== null) {
-            $query->having('likes_count', '>=', $lgtm_max);
+            $query->having('likes_count', '<=', $lgtm_max);
         }
 ```
 <br>
