@@ -40,7 +40,7 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 ## Environment
 
 - 言語: PHP 7.3.18
-- フレームワーク: Laravel6
+- フレームワーク: Laravel 6.18.40
 - ミドルウェア: Apache
 - DB:　MySQL 5.6.47
 - AWS（EC2, RDS）
