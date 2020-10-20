@@ -426,6 +426,7 @@ headerにある「投稿する」ボタンをクリックすると、記事の�
 <br>
 
 ### 削除 Delete
+投稿者のUserIDと現在ログインしているUserIDが一致している場合は、記事を削除することができる。<br>
 記事を削除するには、まず設定ボタンを押す<br>
 ![削除の操作1](https://user-images.githubusercontent.com/52862370/96533343-b4bd5c00-12c8-11eb-8789-64e224f6ca2e.png)<br>
 <br>
@@ -433,15 +434,38 @@ headerにある「投稿する」ボタンをクリックすると、記事の�
 そうすると削除ボタンが表示され、これをクリックして削除を実行する。
 ![削除操作2](https://user-images.githubusercontent.com/52862370/96533402-d880a200-12c8-11eb-863e-b272db121f9f.png)<br>
 <br>
+`$post->exists()`で記事が削除済みか判定し、すでに削除ずみの場合はトップページにリダイレクトされる。<br>
+
+```php
+            if ($post->exists()) {
+                $user = Auth::user();
+
+                if ($user->id === $post->user_id) {
+
+                    $post->delete();
+                    return redirect(route('root'))->with('flash_message', '削除されました');
+                } else {
+                    return back()->with('flash_message', '投稿者でなければ削除できません');
+                }
+            } else {
+                return redirect(route('root'))->with('flash_message', 'すでに存在しません');
+            }
+```
+<br>
 <br>
 <br>
 
 ## いいね機能（Ajax） like button
+<br>
+![いいね機能](https://user-images.githubusercontent.com/52862370/96534874-90af4a00-12cb-11eb-8e18-0b2bba3a4753.gif)<br>
+<br>
+<br>
 LGTM（いいね）ボタンをクリックすると、記事を評価すると同時に、LGTMした記事として保持できる。ボタンの背景が白色から緑色に変化したら、LGTM済みです。<br>
 LGTMを取り消したい場合は、再度押すことで取り消すことができる。<br>
 ただし、JavaScriptのAjaxを使って非同期処理をしているため、ブラウザでJavaScriptを有効にしておく必要がある。<br>
-
-
+<br>
+<br>
+<br>
 
 ## About Laravel
 
