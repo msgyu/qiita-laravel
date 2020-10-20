@@ -79,12 +79,12 @@ I will introduce the features of Oiita here.<br>
     - period specified (today, week, month, start to end date)
     - Specify the range of the number of LGMTs( min and max )
     - Search the entire article or search by LGTMed article
-- User auth
 - Article Submission
     - Create New (Markdown)
     - Edit
     - Delete
 - like button
+- User auth
 <br>
 <br>
 <br>
@@ -402,18 +402,35 @@ SQLのASを利用してLGTMの合計数である`likes_count`を定義。`likes_
 
 ## 記事投稿
 Markdown記法で記事の投稿、編集が可能。
-![Markdown](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
+
 
 ### 新規投稿
 headerにある「投稿する」ボタンをクリックすると、記事の作成画面に移行する。
 
 ![新規作成ボタン](https://user-images.githubusercontent.com/52862370/96473516-b6593680-126c-11eb-88e4-765925c6d100.png)
 
+記事作成時はMarkdownで記述が可能
 
+![Markdown](https://user-images.githubusercontent.com/52862370/96419584-4d070280-122f-11eb-89ae-f5304d2cf3c3.png)
 
+### 編集
+投稿したい記事を編集したい場合、編集ボタンをクリックする。<br>
+<br>
+![編集ボタン](https://user-images.githubusercontent.com/52862370/96532240-6dce6700-12c6-11eb-80ce-e936187833e9.png)<br>
+<br>
+<br>
 
+ただしこの編集ボタンは、記事の投稿者のIDとログインしているUseriDが一致していなければ表示されない。
 
-
+### 削除
+記事を削除するには、まず設定ボタンを押す<br>
+![削除の操作1](https://user-images.githubusercontent.com/52862370/96533343-b4bd5c00-12c8-11eb-8789-64e224f6ca2e.png)<br>
+<br>
+<br>
+そうすると削除ボタンが表示され、これをクリックして削除を実行する。
+![削除操作2](https://user-images.githubusercontent.com/52862370/96533402-d880a200-12c8-11eb-863e-b272db121f9f.png)<br>
+<br>
+<br>
 
 
 
