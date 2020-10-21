@@ -17583,6 +17583,11 @@ a.text-dark:focus {
   display: block;
 }
 
+.post-page-wrapper .post-create_wrapper .markdown-wrapper .markdown #markdown_preview img {
+  max-width: 100%;
+  height: auto;
+}
+
 .post-page-wrapper .post-create-footer {
   height: 52px;
   padding: 10px 4px;
