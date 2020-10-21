@@ -7,9 +7,7 @@
     <input type="text" class="form-control" id="title-input" placeholder="タイトル" name="title">
     <div class="tags">
       <ul class="tags-wrapper"></ul>
-      <div class="tags-new">
-        <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
-      </div>
+      <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
     </div>
     <div class="markdown-wrapper">
       <div class="markdown">
