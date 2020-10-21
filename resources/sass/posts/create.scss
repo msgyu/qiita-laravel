@@ -5,10 +5,13 @@
     .post-create_wrapper {
         width: 100%;
         height: calc(100% - 56px);
-
         display: block;
-        .tag-wrapper {
-            display: block;
+        .tags {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
             width: 100%;
             height: calc(1.6em + 0.75rem + 2px);
             padding: 0.375rem 0.75rem;
@@ -23,21 +26,23 @@
             transition: border-color 0.15s ease-in-out,
                 box-shadow 0.15s ease-in-out;
             margin: 0;
-            li {
-                display: inline;
-            }
-            .tag-content {
-                background-color: rgb(217, 234, 254);
-                font-size: 12px;
-                padding: 2px;
-                border-radius: 3px;
-                line-height: 100%;
-                margin-right: 2px;
-                .tag-label {
-                    line-height: 12px;
+            &-wrapper {
+                li {
+                    display: inline;
+                }
+                .tag-content {
+                    background-color: rgb(217, 234, 254);
+                    font-size: 12px;
+                    padding: 2px;
+                    border-radius: 3px;
+                    line-height: 100%;
+                    margin-right: 2px;
+                    .tag-label {
+                        line-height: 12px;
+                    }
                 }
             }
-            .tag-new {
+            &-new {
                 #tag-input {
                     border: none;
                     outline: 0;

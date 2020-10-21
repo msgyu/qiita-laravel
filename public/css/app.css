@@ -17475,8 +17475,11 @@ a.text-dark:focus {
   display: block;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper {
-  display: block;
+.post-page-wrapper .post-create_wrapper .tags {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
   width: 100%;
   height: calc(1.6em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
@@ -17492,11 +17495,11 @@ a.text-dark:focus {
   margin: 0;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper li {
+.post-page-wrapper .post-create_wrapper .tags-wrapper li {
   display: inline;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-content {
+.post-page-wrapper .post-create_wrapper .tags-wrapper .tag-content {
   background-color: #d9eafe;
   font-size: 12px;
   padding: 2px;
@@ -17505,11 +17508,11 @@ a.text-dark:focus {
   margin-right: 2px;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-content .tag-label {
+.post-page-wrapper .post-create_wrapper .tags-wrapper .tag-content .tag-label {
   line-height: 12px;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-new #tag-input {
+.post-page-wrapper .post-create_wrapper .tags-new #tag-input {
   border: none;
   outline: 0;
   width: 280px;
