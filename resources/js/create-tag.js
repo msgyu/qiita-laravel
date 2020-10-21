@@ -1,5 +1,5 @@
 $(function() {
-    function add_tag(text) {
+    function new_tag(text) {
         var $tag_li = `<li class="tag-content">
                     <span class="tag-label">
                       ${text}
@@ -15,16 +15,19 @@ $(function() {
     $tags = [];
 
     $("#tag-input").on("keydown", function(e) {
+        
+        //new tag 
         if (e.keyCode == 13) {
             var $text = this.value;
             if ($text.length > 0 && $tags.indexOf($text) == -1) {
-                $("#tag-input").before(add_tag($text));
+                $("#tag-input").before(new_tag($text));
                 $tags.push($text);
                 this.value = "";
             }
             return false;
         }
 
+        //Delete tag 
         if (e.keyCode == 8) {
             var $text = this.value;
             if ($text.length == 0) {
@@ -39,6 +42,7 @@ $(function() {
         }
     });
 
+   //Delete tag 
     $(".tag-wrapper").on("click", ".text-icon", function() {
         var $tag = $(this).parents(".tag-content");
         var tag_value = $tag.find(".tag-hidden-field").val();
