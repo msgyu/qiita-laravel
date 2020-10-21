@@ -6,8 +6,8 @@
   <div class="post-create_wrapper">
     <input type="text" class="form-control" id="title-input" placeholder="タイトル" name="title">
     <div class="tags">
-      <ul class="tag-wrapper"></ul>
-      <div class="tag-new">
+      <ul class="tags-wrapper"></ul>
+      <div class="tags-new">
         <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
       </div>
     </div>
