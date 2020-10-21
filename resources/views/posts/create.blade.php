@@ -6,9 +6,9 @@
   <div class="post-create_wrapper">
     <input type="text" class="form-control" id="title-input" placeholder="タイトル" name="title">
     <ul class="tag-wrapper">
-      <li class="tag-new">
+      <div class="tag-new">
         <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
-      </li>
+      </div>
     </ul>
     <div class="markdown-wrapper">
       <div class="markdown">
