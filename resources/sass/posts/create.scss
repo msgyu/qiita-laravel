@@ -42,12 +42,10 @@
                     }
                 }
             }
-            &-new {
-                #tag-input {
-                    border: none;
-                    outline: 0;
-                    width: 280px;
-                }
+            #tag-input {
+                border: none;
+                outline: 0;
+                width: 100%;
             }
         }
         .markdown-wrapper {

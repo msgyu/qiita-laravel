@@ -17512,10 +17512,10 @@ a.text-dark:focus {
   line-height: 12px;
 }
 
-.post-page-wrapper .post-create_wrapper .tags-new #tag-input {
+.post-page-wrapper .post-create_wrapper .tags #tag-input {
   border: none;
   outline: 0;
-  width: 280px;
+  width: 100%;
 }
 
 .post-page-wrapper .post-create_wrapper .markdown-wrapper {
