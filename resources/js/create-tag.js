@@ -23,6 +23,7 @@ $(function() {
                 $(".tags-wrapper").append(new_tag($text));
                 $tags.push($text);
                 this.value = "";
+                $ul_width = $ul.outerWidth();
             }
             return false;
         }
