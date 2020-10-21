@@ -39995,6 +39995,8 @@ $(function () {
   $tags = [];
   $("#tag-input").on("keydown", function (e) {
     //add tag
+    $ul = $(".tags").find(".tags-wrapper");
+
     if (e.keyCode == 13) {
       var $text = this.value;
 

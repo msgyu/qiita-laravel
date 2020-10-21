@@ -16,6 +16,7 @@ $(function() {
 
     $("#tag-input").on("keydown", function(e) {
         //add tag
+        $ul = $(".tags").find(".tags-wrapper");
         if (e.keyCode == 13) {
             var $text = this.value;
             if ($text.length > 0 && $tags.indexOf($text) == -1) {
