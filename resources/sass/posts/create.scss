@@ -108,6 +108,11 @@
                         max-width: 100%;
                         height: auto;
                     }
+                    p > code {
+                        background-color: #eee;
+                        color: #333;
+                        padding: 0.1em 0.4em;
+                    }
                 }
             }
         }

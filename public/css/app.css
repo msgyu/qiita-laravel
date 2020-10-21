@@ -17588,6 +17588,12 @@ a.text-dark:focus {
   height: auto;
 }
 
+.post-page-wrapper .post-create_wrapper .markdown-wrapper .markdown #markdown_preview p > code {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
+}
+
 .post-page-wrapper .post-create-footer {
   height: 52px;
   padding: 10px 4px;
@@ -17761,6 +17767,17 @@ a.text-dark:focus {
   background-color: #364549;
   width: 100%;
   display: block;
+}
+
+.post-page-wrapper .post-wrapper .post-body p > code {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
+}
+
+.post-page-wrapper .post-wrapper .post-body img {
+  max-width: 100%;
+  height: auto;
 }
 
 .btn-warapper {
