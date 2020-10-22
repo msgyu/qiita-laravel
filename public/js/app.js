@@ -39987,24 +39987,39 @@ $(function () {
 /***/ (function(module, exports) {
 
 $(function () {
-  function add_tag(text) {
-    var $tag_li = "<li class=\"tag-content\">\n                    <span class=\"tag-label\">\n                      ".concat(text, "\n                    </span>\n                    <a class=\"text-icon\">\n                      \xD7\n                    </a>\n                    <input class=\"tag-hidden-field\" name=\"tags[]\" value=\"").concat(text, "\" type=\"hidden\">\n                  </li>");
+  function new_tag(text) {
+    var $tag_li = "<li class=\"tag-content\">\n                    <span class=\"tag-label\">\n                      ".concat(text, "\n                      <a class=\"text-icon\">\n                        \xD7\n                      </a>\n                    </span>\n                    <input class=\"tag-hidden-field\" name=\"tags[]\" value=\"").concat(text, "\" type=\"hidden\">\n                  </li>");
     return $tag_li;
+  }
+
+  function ul_width() {
+    var ul_width = 0;
+    $(".tag-content").each(function () {
+      ul_width += $(this).outerWidth(true);
+    });
+    $("#tag-input").css({
+      width: "calc(100% - ".concat(ul_width, "px - 12px)")
+    });
   }
 
   $tags = [];
   $("#tag-input").on("keydown", function (e) {
+    //add tag
+    $ul = $(".tags").find(".tags-wrapper");
+
     if (e.keyCode == 13) {
       var $text = this.value;
 
       if ($text.length > 0 && $tags.indexOf($text) == -1) {
-        $("#tag-input").before(add_tag($text));
+        $(".tags-wrapper").append(new_tag($text));
         $tags.push($text);
         this.value = "";
+        ul_width();
       }
 
       return false;
-    }
+    } //Delete tag
+
 
     if (e.keyCode == 8) {
       var $text = this.value;
@@ -40019,10 +40034,12 @@ $(function () {
         }
 
         $tag.remove();
+        ul_width();
       }
     }
-  });
-  $(".tag-wrapper").on("click", ".text-icon", function () {
+  }); //Delete tag
+
+  $(".tags-wrapper").on("click", ".text-icon", function () {
     var $tag = $(this).parents(".tag-content");
     var tag_value = $tag.find(".tag-hidden-field").val();
     var index = $tags.indexOf(tag_value);
@@ -40032,6 +40049,7 @@ $(function () {
     }
 
     $tag.remove();
+    ul_width();
   });
 });
 
