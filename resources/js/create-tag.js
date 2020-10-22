@@ -3,10 +3,10 @@ $(function() {
         var $tag_li = `<li class="tag-content">
                     <span class="tag-label">
                       ${text}
+                      <a class="text-icon">
+                        ×
+                      </a>
                     </span>
-                    <a class="text-icon">
-                      ×
-                    </a>
                     <input class="tag-hidden-field" name="tags[]" value="${text}" type="hidden">
                   </li>`;
         return $tag_li;
@@ -23,8 +23,20 @@ $(function() {
                 $(".tags-wrapper").append(new_tag($text));
                 $tags.push($text);
                 this.value = "";
-                $ul_width = $ul.outerWidth();
+                $ul = $(".tags-wrapper");
+                $lis = $ul.find(".tag-content");
+                var ul_width = 0;
+                $(".tag-content").each(function() {
+                    ul_width += $(this).outerWidth(true);
+                });
+
+                $("#tag-input").css({
+                    width: `calc(100% - ${ul_width}px - 12px)`
+                });
+                console.log(ul_width);
+                console.log($(".tags-wrapper").outerWidth());
             }
+
             return false;
         }
 
