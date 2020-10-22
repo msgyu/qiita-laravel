@@ -25,7 +25,7 @@
     <div id="app">
         @include('parts.header')
         @if (session('flash_message'))
-        <div class="flash_message bg-success text-center py-3 my-0">
+        <div class="flash_message text-center">
             {{ session('flash_message') }}
         </div>
         @endif
