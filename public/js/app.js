@@ -40000,11 +40000,12 @@ $(function () {
       ul_width += $(this).outerWidth(true);
     });
     $("#tag-input").css({
-      width: "calc(100% - ".concat(ul_width, "px - 12px)")
+      width: "calc(100% - ".concat(ul_width, "px - 14px)")
     });
   }
 
   $tags = [];
+  ul_width();
   $("#tag-input").on("keydown", function (e) {
     //add tag
     $ul = $(".tags").find(".tags-wrapper");
