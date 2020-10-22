@@ -40034,6 +40034,7 @@ $(function () {
         }
 
         $tag.remove();
+        ul_width();
       }
     }
   }); //Delete tag
@@ -40048,6 +40049,7 @@ $(function () {
     }
 
     $tag.remove();
+    ul_width();
   });
 });
 

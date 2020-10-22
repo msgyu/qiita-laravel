@@ -50,6 +50,7 @@ $(function() {
                     $tags.splice(index, 1);
                 }
                 $tag.remove();
+                ul_width();
             }
         }
     });
@@ -63,5 +64,6 @@ $(function() {
             $tags.splice(index, 1);
         }
         $tag.remove();
+        ul_width();
     });
 });
