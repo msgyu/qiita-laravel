@@ -17495,6 +17495,10 @@ a.text-dark:focus {
   margin: 0;
 }
 
+.post-page-wrapper .post-create_wrapper .tags-wrapper {
+  white-space: normal;
+}
+
 .post-page-wrapper .post-create_wrapper .tags-wrapper li {
   display: inline;
 }

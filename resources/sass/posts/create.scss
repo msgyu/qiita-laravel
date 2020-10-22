@@ -27,6 +27,7 @@
                 box-shadow 0.15s ease-in-out;
             margin: 0;
             &-wrapper {
+                white-space: normal;
                 li {
                     display: inline;
                 }
