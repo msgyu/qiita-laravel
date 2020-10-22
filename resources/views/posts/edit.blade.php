@@ -11,16 +11,14 @@
       <li class="tag-content">
         <span class="tag-label">
           {{$tag->name}}
+          <a class="text-icon">
+            ×
+          </a>
         </span>
-        <a class="text-icon">
-          ×
-        </a>
         <input class="tag-hidden-field" name="tags[]" value="{{$tag->name}}" type="hidden">
       </li>
       @endforeach
-      <li class="tag-new">
-        <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
-      </li>
+      <input id="tag-input" name="tags[]" class="tag-input" placeholder="プログラミング技術に関するタグを入力" type="text" />
     </ul>
     <div class="markdown-wrapper">
       <div class="markdown">
