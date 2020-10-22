@@ -145,9 +145,9 @@ class PostController extends Controller
                 };
             }
 
-            return redirect()->route('posts.show', compact('post'));
+            return redirect()->route('posts.show', compact('post'))->with('flash_message', '投稿しました');
         } else {
-            return back()->with('flash_message', '編集するにはログインする必要があります');
+            return back()->with('flash_message', '投稿するにはログインする必要があります');
         }
     }
 
@@ -229,7 +229,7 @@ class PostController extends Controller
                 }
 
 
-                return redirect()->route('posts.show', compact('post'));
+                return redirect()->route('posts.show', compact('post'))->with('flash_message', '更新しました');
             } else {
                 return back()->with('flash_message', '投稿者でなければ編集できません');
             }

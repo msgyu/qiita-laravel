@@ -17395,6 +17395,12 @@ a.text-dark:focus {
   border-radius: 4px;
 }
 
+.flash_message {
+  background-color: seagreen;
+  color: #fff;
+  padding: 5px 0;
+}
+
 .detailed-search_form {
   width: 100%;
   height: 100%;
