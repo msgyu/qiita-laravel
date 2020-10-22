@@ -12,6 +12,16 @@ $(function() {
         return $tag_li;
     }
 
+    function ul_width() {
+        var ul_width = 0;
+        $(".tag-content").each(function() {
+            ul_width += $(this).outerWidth(true);
+        });
+        $("#tag-input").css({
+            width: `calc(100% - ${ul_width}px - 12px)`
+        });
+    }
+
     $tags = [];
 
     $("#tag-input").on("keydown", function(e) {
@@ -23,18 +33,7 @@ $(function() {
                 $(".tags-wrapper").append(new_tag($text));
                 $tags.push($text);
                 this.value = "";
-                $ul = $(".tags-wrapper");
-                $lis = $ul.find(".tag-content");
-                var ul_width = 0;
-                $(".tag-content").each(function() {
-                    ul_width += $(this).outerWidth(true);
-                });
-
-                $("#tag-input").css({
-                    width: `calc(100% - ${ul_width}px - 12px)`
-                });
-                console.log(ul_width);
-                console.log($(".tags-wrapper").outerWidth());
+                ul_width();
             }
 
             return false;
