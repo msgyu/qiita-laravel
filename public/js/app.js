@@ -39883,6 +39883,8 @@ __webpack_require__(/*! ./create-tag.js */ "./resources/js/create-tag.js");
 
 __webpack_require__(/*! ./create-like.js */ "./resources/js/create-like.js");
 
+__webpack_require__(/*! ./flashmessage.js */ "./resources/js/flashmessage.js");
+
 __webpack_require__(/*! ./input-submit.js */ "./resources/js/input-submit.js");
 
 /***/ }),
@@ -40052,6 +40054,23 @@ $(function () {
     ul_width();
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/flashmessage.js":
+/*!**************************************!*\
+  !*** ./resources/js/flashmessage.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  "use strict";
+
+  $(function () {
+    $(".flash_message").fadeOut(3000);
+  });
+})();
 
 /***/ }),
 
