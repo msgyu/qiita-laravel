@@ -30,7 +30,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button>
+                <button class="delete-button">
                   <span class="trash-form_btn"><i class="far fa-trash-alt "></i></span>
                   <span>削除</span>
                 </button>
