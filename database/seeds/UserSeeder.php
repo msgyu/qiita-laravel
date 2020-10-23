@@ -15,7 +15,9 @@ class UserSeeder extends Seeder
         App\User::create([
             'name' => "test",
             'email' => "test@test",
-            'password' => "test1234",
+            'email_verified_at' => now(),
+            'password' => bcrypt("test1234"),
+            'remember_token' => "test12345"
         ]);
         factory(User::class, 100)->create();
     }
