@@ -56,7 +56,7 @@
             <form action="{{ route('login') }}">
               <input type="hidden" name="email" value="test@email">
               <input type="hidden" name="password" value="test1234">
-              <input type="submit" value="テストログイン">
+              <input type="submit" class="submit" value="テストログイン">
             </form>
           </li>
           @endif
