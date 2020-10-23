@@ -17395,10 +17395,26 @@ a.text-dark:focus {
   border-radius: 4px;
 }
 
+
+.header-right .submit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+}
+
 .flash_message {
   background-color: seagreen;
   color: #fff;
   padding: 5px 0;
+
 }
 
 .detailed-search_form {
