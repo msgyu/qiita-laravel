@@ -30,7 +30,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button class="delete-button">
+                <button class="delete-button" onclick="return confirm('本当に削除しますか？')">
                   <span class="trash-form_btn"><i class="far fa-trash-alt "></i></span>
                   <span>削除</span>
                 </button>
