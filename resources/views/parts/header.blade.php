@@ -56,8 +56,8 @@
             <form action="{{ route('login') }}">
               <input type="hidden" name="email" value="test@email">
               <input type="hidden" name="password" value="test1234">
+              <input type="submit" value="テストログイン">
             </form>
-            <a class="" href="{{ route('login') }}">テストログイン</a>
           </li>
           @endif
           @else
