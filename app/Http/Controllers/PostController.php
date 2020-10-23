@@ -44,7 +44,7 @@ class PostController extends Controller
             $query->having('likes_count', '>=', $lgtm_min);
         }
         if ($lgtm_max !== null) {
-            $query->having('likes_count', '>=', $lgtm_max);
+            $query->having('likes_count', '<=', $lgtm_max);
         }
 
         // priod search
@@ -98,12 +98,13 @@ class PostController extends Controller
 
         // search order
         if ($order == 'new') {
-            $posts = $query->orderBy('posts.created_at', 'desc')->get();
+            $posts = $query->orderBy('posts.created_at', 'desc')->paginate(20);
         } else {
-            $posts = $query->orderBy('likes_count', 'desc')->get();
+            $posts = $query->orderBy('likes_count', 'desc')->paginate(20);
         }
 
-        return view('posts.index', compact('posts', 'keyword', 'tag_btn_value'));
+
+        return view('posts.index', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**
@@ -144,9 +145,9 @@ class PostController extends Controller
                 };
             }
 
-            return redirect()->route('posts.show', compact('post'));
+            return redirect()->route('posts.show', compact('post'))->with('flash_message', '投稿しました');
         } else {
-            return back()->with('flash_message', '編集するにはログインする必要があります');
+            return back()->with('flash_message', '投稿するにはログインする必要があります');
         }
     }
 
@@ -228,7 +229,7 @@ class PostController extends Controller
                 }
 
 
-                return redirect()->route('posts.show', compact('post'));
+                return redirect()->route('posts.show', compact('post'))->with('flash_message', '更新しました');
             } else {
                 return back()->with('flash_message', '投稿者でなければ編集できません');
             }
@@ -246,14 +247,18 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         if (Auth::check()) {
-            $user = Auth::user();
+            if ($post->exists()) {
+                $user = Auth::user();
 
-            if ($user->id === $post->user_id) {
+                if ($user->id === $post->user_id) {
 
-                $post->delete();
-                return redirect(route('root'))->with('flash_message', '削除されました');
+                    $post->delete();
+                    return redirect(route('root'))->with('flash_message', '削除されました');
+                } else {
+                    return back()->with('flash_message', '投稿者でなければ削除できません');
+                }
             } else {
-                return back()->with('flash_message', '投稿者でなければ削除できません');
+                return redirect(route('root'))->with('flash_message', 'すでに存在しません');
             }
         } else {
             return back()->with('flash_message', '削除するにはログインする必要があります');

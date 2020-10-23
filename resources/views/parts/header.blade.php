@@ -52,6 +52,14 @@
           <li class="nav-item">
             <a class="" href="{{ route('login') }}">{{ __('ログイン') }}</a>
           </li>
+          <li class="nav-item">
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+              <input type="hidden" name="email" value="test@test">
+              <input type="hidden" name="password" value="test1234">
+              <input type="submit" class="submit" value="テストユーザー">
+            </form>
+          </li>
           @endif
           @else
           <!-- <li class="nav-item li-icon">
