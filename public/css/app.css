@@ -17395,6 +17395,7 @@ a.text-dark:focus {
   border-radius: 4px;
 }
 
+
 .header-right .submit {
   background-color: transparent;
   border: none;
@@ -17407,6 +17408,13 @@ a.text-dark:focus {
   color: #fff;
   font-size: 11px;
   text-align: center;
+}
+
+.flash_message {
+  background-color: seagreen;
+  color: #fff;
+  padding: 5px 0;
+
 }
 
 .detailed-search_form {
@@ -17489,8 +17497,11 @@ a.text-dark:focus {
   display: block;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper {
-  display: block;
+.post-page-wrapper .post-create_wrapper .tags {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
   width: 100%;
   height: calc(1.6em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
@@ -17506,11 +17517,15 @@ a.text-dark:focus {
   margin: 0;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper li {
+.post-page-wrapper .post-create_wrapper .tags-wrapper {
+  white-space: normal;
+}
+
+.post-page-wrapper .post-create_wrapper .tags-wrapper li {
   display: inline;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-content {
+.post-page-wrapper .post-create_wrapper .tags-wrapper .tag-content {
   background-color: #d9eafe;
   font-size: 12px;
   padding: 2px;
@@ -17519,14 +17534,14 @@ a.text-dark:focus {
   margin-right: 2px;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-content .tag-label {
+.post-page-wrapper .post-create_wrapper .tags-wrapper .tag-content .tag-label {
   line-height: 12px;
 }
 
-.post-page-wrapper .post-create_wrapper .tag-wrapper .tag-new #tag-input {
+.post-page-wrapper .post-create_wrapper .tags #tag-input {
   border: none;
   outline: 0;
-  width: 280px;
+  width: 100%;
 }
 
 .post-page-wrapper .post-create_wrapper .markdown-wrapper {
@@ -17595,6 +17610,17 @@ a.text-dark:focus {
   background-color: #364549;
   width: 100%;
   display: block;
+}
+
+.post-page-wrapper .post-create_wrapper .markdown-wrapper .markdown #markdown_preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-page-wrapper .post-create_wrapper .markdown-wrapper .markdown #markdown_preview p > code {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
 }
 
 .post-page-wrapper .post-create-footer {
@@ -17770,6 +17796,17 @@ a.text-dark:focus {
   background-color: #364549;
   width: 100%;
   display: block;
+}
+
+.post-page-wrapper .post-wrapper .post-body p > code {
+  background-color: #eee;
+  color: #333;
+  padding: 0.1em 0.4em;
+}
+
+.post-page-wrapper .post-wrapper .post-body img {
+  max-width: 100%;
+  height: auto;
 }
 
 .btn-warapper {

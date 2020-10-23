@@ -24,6 +24,11 @@
 <body>
     <div id="app">
         @include('parts.header')
+        @if (session('flash_message'))
+        <div class="flash_message text-center">
+            {{ session('flash_message') }}
+        </div>
+        @endif
         <main>
             @yield('content')
         </main>
