@@ -50,6 +50,12 @@
             <span class="badge">{{ count(Auth::user()->likes)}}</span>
           </a>
         </li>
+        <li>
+          <a href="{{ route('my_posts')}}">
+            投稿記事
+            <span class="badge">{{ count(Auth::user()->likes)}}</span>
+          </a>
+        </li>
         @endauth
       </ul>
     </div>
