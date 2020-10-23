@@ -52,6 +52,9 @@
           <li class="nav-item">
             <a class="" href="{{ route('login') }}">{{ __('ログイン') }}</a>
           </li>
+          <li class="nav-item">
+            <a class="" href="{{ route('login') }}">テストログイン</a>
+          </li>
           @endif
           @else
           <!-- <li class="nav-item li-icon">
