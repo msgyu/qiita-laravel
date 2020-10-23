@@ -17728,6 +17728,7 @@ a.text-dark:focus {
   font-size: 12px;
   padding: 0.25rem 1.5rem;
   width: 100%;
+  text-align: left;
 }
 
 .post-page-wrapper .post-wrapper .post-header_ul-right li .trash-form_btn {
