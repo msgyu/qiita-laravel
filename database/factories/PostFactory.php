@@ -10,9 +10,8 @@ $factory->define(Post::class, function (Faker $faker) {
     $userIDs  = App\User::pluck('id')->all();
     $tagIDs  = App\Models\Tag::pluck('id')->all();
     return [
-        'title' => $faker->realText(30),
-        'body' => $faker->realText(),
-        'user_id' => $faker->randomElement($userIDs),
-        'tag_id' => $faker->randomElement($tagIDs)
+        'title'     => $faker->realText(30),
+        'body'      => $faker->realText(),
+        'user_id'   => $faker->randomElement($userIDs),
     ];
 });
