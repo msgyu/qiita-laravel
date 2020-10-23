@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         $tags = App\Models\Tag::all();
         factory(Post::class, 200)
             ->create()
-            ->each(function ($post) use ($tags, $users) {
+            ->each(function ($post) use ($tags) {
                 $post->tags()->attach(
                     $tags->random(rand(1, 3))->pluck('id')->toArray()
                 );
