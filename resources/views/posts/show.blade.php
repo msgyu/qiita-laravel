@@ -25,7 +25,7 @@
             <a class="dropdown-toggle setting" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span><i class="fas fa-cog"></i></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuLink">
               <form class="dropdown-item trash-form" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
                 @csrf
                 @method('DELETE')
