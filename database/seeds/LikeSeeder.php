@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Like;
 
 class LikeSeeder extends Seeder
 {
@@ -11,6 +12,15 @@ class LikeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // factory(Like::class, 500)->create();
+        $posts = App\Models\Post::all();
+        $users = App\User::pluck('id')->all();
+        $posts->each(function ($post) use ($users) {
+            for ($count = 0; $count < rand(10, 1000); $count++) {
+                $post->likes()->create([
+                    'user_id' => $users[array_rand($users)],
+                ]);
+            }
+        });
     }
 }
