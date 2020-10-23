@@ -26,7 +26,7 @@
               <span><i class="fas fa-cog"></i></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuLink">
-              <form class="dropdown-item trash-form" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
+              <form class="dropdown-item trash-form p-0" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
                 @csrf
                 @method('DELETE')
 
