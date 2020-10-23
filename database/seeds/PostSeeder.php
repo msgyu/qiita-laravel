@@ -15,7 +15,6 @@ class PostSeeder extends Seeder
     public function run()
     {
         $tags = App\Models\Tag::all();
-        $users = App\User::pluck('id')->all();
         factory(Post::class, 200)
             ->create()
             ->each(function ($post) use ($tags, $users) {
