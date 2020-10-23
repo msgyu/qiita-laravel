@@ -25,12 +25,12 @@
             <a class="dropdown-toggle setting" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span><i class="fas fa-cog"></i></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-              <form class="dropdown-item trash-form" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
+            <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuLink">
+              <form class="dropdown-item trash-form p-0" style="display: inline-block;" method="POST" action="{{ route('posts.destroy', $post) }}">
                 @csrf
                 @method('DELETE')
 
-                <button>
+                <button class="delete-button" onclick="return confirm('本当に削除しますか？')">
                   <span class="trash-form_btn"><i class="far fa-trash-alt "></i></span>
                   <span>削除</span>
                 </button>
