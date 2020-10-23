@@ -53,7 +53,7 @@
         <li>
           <a href="{{ route('my_posts')}}">
             投稿記事
-            <span class="badge">{{ count(Auth::user()->likes)}}</span>
+            <span class="badge">{{ count(Auth::user()->posts)}}</span>
           </a>
         </li>
         @endauth
