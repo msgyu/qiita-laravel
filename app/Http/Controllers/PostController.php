@@ -196,7 +196,7 @@ class PostController extends Controller
         }
 
 
-        return view('posts.index', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        return view('posts.my_posts', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**
