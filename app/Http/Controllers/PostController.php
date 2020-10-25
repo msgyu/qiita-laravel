@@ -102,9 +102,10 @@ class PostController extends Controller
         } else {
             $posts = $query->orderBy('likes_count', 'desc')->paginate(20);
         }
+        $all_posts_count = DB::table('posts')->count();
 
 
-        return view('posts.index', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     public function my_posts(Request $request)
@@ -194,9 +195,10 @@ class PostController extends Controller
         } else {
             $posts = $query->orderBy('likes_count', 'desc')->paginate(20);
         }
+        $all_posts_count = DB::table('posts')->count();
 
 
-        return view('posts.my_posts', compact('posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        return view('posts.my_posts', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**
