@@ -5,5 +5,6 @@ $(function() {
                 .parents("form")
                 .submit();
         }
+        console.log("OK");
     });
 });

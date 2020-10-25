@@ -253,6 +253,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $user = Auth::user();
+        // dd($post);
         if (Auth::check()) {
             $like = DB::table('likes')
                 ->where([
