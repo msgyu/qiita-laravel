@@ -40,7 +40,7 @@
         <li>
           <a href="">
             すべて
-            <span class="badge">{{ count($posts)}}</span>
+            <span class="badge">{{ $all_posts_count }}</span>
           </a>
         </li>
         @auth
