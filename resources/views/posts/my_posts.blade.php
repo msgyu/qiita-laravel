@@ -37,7 +37,7 @@
   <div class="posts-wrapper col-md-6">
     <div class="posts-nav">
       <ul class="posts-nav_ul">
-        <li class="active">
+        <li>
           <a href="">
             すべて
             <span class="badge">{{ count($posts)}}</span>
@@ -50,7 +50,7 @@
             <span class="badge">{{ count(Auth::user()->likes)}}</span>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="{{ route('my_posts')}}">
             投稿記事
             <span class="badge">{{ count(Auth::user()->posts)}}</span>
