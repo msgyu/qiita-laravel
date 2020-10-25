@@ -9,7 +9,7 @@
         <li>
           <a href="{{ route('posts.index') }}">
             すべて
-            <span class="badge">{{ $posts }}</span>
+            <span class="badge">{{ $all_posts_count }}</span>
           </a>
         </li>
         @auth
@@ -19,11 +19,17 @@
             <span class="badge">{{ count(Auth::user()->likes)}}</span>
           </a>
         </li>
+        <li>
+          <a href="{{ route('my_posts')}}">
+            投稿記事
+            <span class="badge">{{ count(Auth::user()->posts)}}</span>
+          </a>
+        </li>
         @endauth
       </ul>
     </div>
-    @if(count($like_posts) !== 0)
-    @include('parts.posts_index', ['posts' => $like_posts] )
+    @if(count($posts) !== 0)
+    @include('parts.posts_index', ['posts' => $posts] )
     @else
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
