@@ -38,7 +38,7 @@
     <div class="posts-nav">
       <ul class="posts-nav_ul">
         <li class="active">
-          <a href="{{ route('posts.index') }}">
+          <a href="">
             すべて
             <span class="badge">{{ $all_posts_count }}</span>
           </a>
