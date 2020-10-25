@@ -129,7 +129,7 @@ class PostController extends Controller
         $tags_count = count($tags);
 
         // query
-        $query = Auth::user()->posts->withCount('likes');
+        $query = Post::where("posts.user_id", "=", Auth::user()->id)->withCount('likes');
 
         //LGTM sum search
         if ($lgtm_min !== null) {
@@ -253,7 +253,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $user = Auth::user();
-        // dd($post);
         if (Auth::check()) {
             $like = DB::table('likes')
                 ->where([
