@@ -17,18 +17,18 @@
           <form class="form-inline my-2 my-lg-0 ml-2 search-form" action="{{ route('likes.index')}}" method="GET">
             <i class="fas fa-search"></i>
             @if(isset($keyword))
-            <input type="search" name="search" class="mr-sm-2" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" class="mr-sm-2 search-form__input" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
             @else
-            <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" class="mr-sm-2 search-form__input" placeholder="キーワードを入力" aria-label="検索...">
             @endif
           </form>
           @else
           <form class="form-inline my-2 my-lg-0 ml-2 search-form" action="{{ route('posts.index')}}" method="GET">
             <i class="fas fa-search"></i>
             @if(isset($keyword))
-            <input type="search" name="search" class="mr-sm-2" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" class="mr-sm-2 search-form__input" value="{{$keyword}}" placeholder="キーワードを入力" aria-label="検索...">
             @else
-            <input type="search" name="search" class="mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+            <input type="search" name="search" class="mr-sm-2 search-form__input" placeholder="キーワードを入力" aria-label="検索...">
             @endif
           </form>
           @endif
