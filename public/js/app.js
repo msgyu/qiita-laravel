@@ -39946,7 +39946,6 @@ $(function () {
     var post_id = $(".like_btn").attr("post_id");
     var like_exist = $(".like_btn").attr("like_exist");
     click_button = $(this);
-    console.log(post_id);
     $.ajax({
       headers: {
         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
