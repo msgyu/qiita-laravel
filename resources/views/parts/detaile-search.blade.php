@@ -1,17 +1,14 @@
 <div class="detailed-search col-md-3">
   @switch(Route::currentRouteName())
-  @case('posts.index')
-  <form action="{{ route('posts.index')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
+  @case('likes.index')
+  <form action="{{ route('likes.index')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
     @break
-
-    @case('likes.index')
-    <form action="{{ route('likes.index')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
-
+    @case('my_posts')
+    <form action="{{ route('my_posts')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
       @break
 
-      @case('my_posts')
-      <form action="{{ route('my_posts')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
-        @break
+      @default
+      <form action="{{ route('root')}}" method="GET" name="detailed-search_form" class="detailed-search_form">
         @endswitch
 
         <div class="detailed-search_form_head">記事の条件</div>
