@@ -1,12 +1,4 @@
 ![oiita](https://user-images.githubusercontent.com/52862370/96419448-1f21be00-122f-11eb-983f-febc58f61fc2.png)
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
-
 
 # Introduction
 Oiitaは「Qiita」に影響を受けたプロジェクトです。一番の違いは、オリジナルの絞り込み検索です。
@@ -16,6 +8,11 @@ Oiita will be a project inspired by "Qiita". The biggest difference is the abili
 While Qiita allows you to search by keywords, it does not allow you to search by multiple tags, number of LGTMs, or time period. So it can be difficult to find the articles you are looking for. So, we have improved the search function in Oiita to make it easier to find the articles you are looking for.
 <br>
 <br>
+
+## URL
+URL: http://54.250.84.229/
+ユーザー: ゲストログインボタンを押しと簡単にログインできます。
+
 
 ## Purpose
 
