@@ -29,6 +29,9 @@ class PostController extends Controller
 
         // keyword
         $keyword = $request->input('search');
+        if ($tag_btn_value !== null) {
+            $keyword = "#{$tag_btn_value}";
+        }
         $keyword_space_half = mb_convert_kana($keyword, 's');
         $keywords = preg_split('/[\s]+/', $keyword_space_half);
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
