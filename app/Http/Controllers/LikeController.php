@@ -8,6 +8,7 @@ use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Services\DetailedSearch;
 
 class LikeController extends Controller
 {
@@ -41,7 +42,6 @@ class LikeController extends Controller
         $query = Post::withCount('likes')
             ->join('likes', 'posts.id', '=', 'likes.post_id')
             ->where('likes.user_id', '=', Auth::id());
-
 
         //LGTM sum search
         if ($lgtm_min !== null) {
