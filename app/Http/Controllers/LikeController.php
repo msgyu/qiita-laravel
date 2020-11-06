@@ -36,7 +36,6 @@ class LikeController extends Controller
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
         $no_tag_keywords = array_diff($keywords, $match[0]);
         $tags = $match[1];
-        $tags_count = count($tags);
 
         // query
         $query = Post::withCount('likes')
