@@ -10,8 +10,8 @@ While Qiita allows you to search by keywords, it does not allow you to search by
 <br>
 
 ## URL
-URL: http://54.250.84.229/
-ユーザー: ゲストログインボタンを押しと簡単にログインできます。
+- URL: http://54.250.84.229/
+- ユーザー: ゲストログインボタンを押しと簡単にログインできます。
 
 
 ## Purpose
