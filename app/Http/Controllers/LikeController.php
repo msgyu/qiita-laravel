@@ -31,6 +31,9 @@ class LikeController extends Controller
 
         // keyword
         $keyword = $request->input('search');
+        if ($tag_btn_value !== null) {
+            $keyword = "#{$tag_btn_value}";
+        }
 
         // query
         $query = Post::withCount('likes')
