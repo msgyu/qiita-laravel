@@ -39942,9 +39942,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(function () {
-  $(".like_btn").click(function () {
-    var post_id = $(".like_btn").attr("post_id");
-    var like_exist = $(".like_btn").attr("like_exist");
+  $("#like_btn").click(function () {
+    var post_id = $("#like_btn").attr("post_id");
+    var like_exist = $("#like_btn").attr("like_exist");
     click_button = $(this);
     $.ajax({
       headers: {

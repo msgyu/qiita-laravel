@@ -158,7 +158,8 @@
     top: 10px;
     will-change: transform;
     z-index: 100;
-    .like {
+    .like,
+    #like {
         text-align: center;
         font-size: 2rem;
         height: 44px;
@@ -173,8 +174,12 @@
             color: inherit;
             background-color: inherit;
             cursor: pointer;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
+            font-weight: bolder;
             line-height: 38px;
+            &__span {
+                margin-right: 12px;
+            }
         }
     }
 }

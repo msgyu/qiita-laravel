@@ -58,15 +58,31 @@
     <div class="btn-warapper">
       @if(count($like) > 0)
       <div class="like">
-        <button class="like_btn" post_id="{{ $post->id }}" like_exist="1" style="color:#fff; background: #55c500">LGTM</button>
+        <button id="like_btn" post_id="{{ $post->id }}" like_exist="1" style="color:#fff; background: #55c500">
+          <span class="like_btn__span">LGTM</span>
+          <span>{{ count($post->likes) }}</span>
+        </button>
       </div>
       @else
       <div class="like">
-        <button class="like_btn" post_id="{{ $post->id }}" like_exist="0">LGTM</button>
+        <button id="like_btn" post_id="{{ $post->id }}" like_exist="0">
+          <span class="like_btn__span">LGTM</span>
+          <span>{{ count($post->likes) }}</span>
+        </button>
       </div>
       @endif
     </div>
     @endauth
+    @guest
+    <div class="btn-warapper">
+      <div class="like">
+        <div class="like_btn" post_id="{{ $post->id }}" like_exist="1">
+          <span>LGTM</span>
+          <span>{{ count($post->likes) }}</span>
+        </div>
+      </div>
+    </div>
+    @endguest
     <div class="post-body">{{$post->body}}</div>
   </div>
 </div>
