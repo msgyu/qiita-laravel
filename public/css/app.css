@@ -17843,8 +17843,13 @@ a.text-dark:focus {
   color: inherit;
   background-color: inherit;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: bolder;
   line-height: 38px;
+}
+
+.btn-warapper .like_btn__span,
+.btn-warapper #like_btn__span {
   margin-right: 12px;
 }
 
