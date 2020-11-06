@@ -6,8 +6,14 @@ use Illuminate\Support\Facades\DB;
 
 class DetailedSearch
 {
-  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $tags, $no_tag_keywords, $order)
+  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order)
   {
+    $keyword_space_half = mb_convert_kana($keyword, 's');
+    $keywords = preg_split('/[\s]+/', $keyword_space_half);
+    preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+    $no_tag_keywords = array_diff($keywords, $match[0]);
+    $tags = $match[1];
+
     //LGTM sum search
     if ($lgtm_min !== null) {
       $query->having('likes_count', '>=', $lgtm_min);
@@ -71,8 +77,6 @@ class DetailedSearch
     } else {
       $posts = $query->orderBy('likes_count', 'desc')->paginate(20);
     }
-    
-    // return compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end');
     return $posts;
   }
 }

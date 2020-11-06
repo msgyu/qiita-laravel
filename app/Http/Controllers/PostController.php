@@ -122,22 +122,16 @@ class PostController extends Controller
         $priod = $request->input('priod');
         $priod_start = $request->input('piriod-start');
         $priod_end = $request->input('piriod-end');
+        $all_posts_count = DB::table('posts')->count();
 
 
         // keyword
         $keyword = $request->input('search');
-        $keyword_space_half = mb_convert_kana($keyword, 's');
-        $keywords = preg_split('/[\s]+/', $keyword_space_half);
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
-        $no_tag_keywords = array_diff($keywords, $match[0]);
-        $tags = $match[1];
-        $tags_count = count($tags);
+
 
         // query
         $query = Post::where("posts.user_id", "=", Auth::user()->id)->withCount('likes');
-        $all_posts_count = DB::table('posts')->count();
-
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $tags, $no_tag_keywords, $order);
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
         return view('posts.my_posts', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
