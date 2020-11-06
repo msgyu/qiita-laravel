@@ -135,10 +135,10 @@ class PostController extends Controller
 
         // query
         $query = Post::where("posts.user_id", "=", Auth::user()->id)->withCount('likes');
+        $all_posts_count = DB::table('posts')->count();
 
-        DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $tags, $no_tag_keywords, $order);
-
-        return view('posts.my_posts', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $tags, $no_tag_keywords, $order);
+        return view('posts.my_posts', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
     /**

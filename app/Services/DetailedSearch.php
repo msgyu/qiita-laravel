@@ -71,9 +71,8 @@ class DetailedSearch
     } else {
       $posts = $query->orderBy('likes_count', 'desc')->paginate(20);
     }
-    $all_posts_count = DB::table('posts')->count();
-
+    
     // return compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end');
-    return [$all_posts_count, $posts, $keyword, $order, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end];
+    return $posts;
   }
 }
