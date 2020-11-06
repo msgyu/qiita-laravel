@@ -138,8 +138,6 @@ class PostController extends Controller
 
         DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $tags, $no_tag_keywords, $order);
 
-
-
         return view('posts.my_posts', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
     }
 
