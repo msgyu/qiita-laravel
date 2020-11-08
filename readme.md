@@ -243,6 +243,35 @@ public function index(Request $request)
     }
 ````
 
+これだとfat controllerのため、DetailedSearch.phpにコントローラー処理を分離して、下記の記述に短縮させた。
+
+```
+public function index(Request $request)
+    {
+        // values
+        $tag_btn_value = $request->input('tag_btn');
+        $order = $request->input('order');
+        $lgtm_min = $request->input('lgtm-min');
+        $lgtm_max = $request->input('lgtm-max');
+        $priod = $request->input('priod');
+        $priod_start = $request->input('piriod-start');
+        $priod_end = $request->input('piriod-end');
+        $all_posts_count = DB::table('posts')->count();
+
+        // keyword
+        $keyword = $request->input('search');
+        if ($tag_btn_value !== null) {
+            $keyword = "#{$tag_btn_value}";
+        }
+
+        // query
+        $query = Post::withCount('likes');
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
+        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+    }
+```
+
+
 ### 複数キーワード検索
 
 ![絞り込み検索（キーワード&タグ）](https://user-images.githubusercontent.com/52862370/96460982-ca963700-125e-11eb-9750-a5a863299551.png)<br>
