@@ -158,9 +158,9 @@ public function index(Request $request)
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
-        $priod = $request->input('priod');
-        $priod_start = $request->input('piriod-start');
-        $priod_end = $request->input('piriod-end');
+        $period = $request->input('period');
+        $period_start = $request->input('period-start');
+        $period_end = $request->input('period-end');
 
 
         // keyword
@@ -183,9 +183,9 @@ public function index(Request $request)
             $query->having('likes_count', '>=', $lgtm_max);
         }
 
-        // priod search
-        if ($priod !== null) {
-            switch ($priod) {
+        // period search
+        if ($period !== null) {
+            switch ($period) {
                 case "day":
                     $query->where([
                         ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
@@ -203,8 +203,8 @@ public function index(Request $request)
                     ]);
                 case "period":
                     $query->where([
-                        ['posts.created_at', '>=', date("{$priod_start} 00:00:00")],
-                        ['posts.created_at', '<=', date("{$priod_end} 23:59:59")]
+                        ['posts.created_at', '>=', date("{$period_start} 00:00:00")],
+                        ['posts.created_at', '<=', date("{$period_end} 23:59:59")]
                     ]);
             }
         }
@@ -253,9 +253,9 @@ public function index(Request $request)
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
-        $priod = $request->input('priod');
-        $priod_start = $request->input('piriod-start');
-        $priod_end = $request->input('piriod-end');
+        $period = $request->input('period');
+        $period_start = $request->input('period-start');
+        $period_end = $request->input('period-end');
         $all_posts_count = DB::table('posts')->count();
 
         // keyword
@@ -266,8 +266,8 @@ public function index(Request $request)
 
         // query
         $query = Post::withCount('likes');
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
-        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order);
+        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'period', 'period_start', 'period_end', 'tag_btn_value'));
     }
 ```
 
@@ -374,9 +374,9 @@ if ($order == 'new') {
 記事の投稿日を`posts.created_at`で取得し、date関数を利用して絞り込みを実施している。
 
 ```php
-        // priod search
-        if ($priod !== null) {
-            switch ($priod) {
+        // period search
+        if ($period !== null) {
+            switch ($period) {
                 case "day":
                     $query->where([
                         ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
@@ -394,8 +394,8 @@ if ($order == 'new') {
                     ]);
                 case "period":
                     $query->where([
-                        ['posts.created_at', '>=', date("{$priod_start} 00:00:00")],
-                        ['posts.created_at', '<=', date("{$priod_end} 23:59:59")]
+                        ['posts.created_at', '>=', date("{$period_start} 00:00:00")],
+                        ['posts.created_at', '<=', date("{$period_end} 23:59:59")]
                     ]);
             }
         }

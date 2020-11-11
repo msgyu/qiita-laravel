@@ -2,12 +2,31 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
-
 class DetailedSearch
 {
-  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order)
+  public static function DetailedSearch($query, $keyword, $request)
   {
+    // values
+    $order = $request->input('order');
+    $lgtm_min = $request->input('lgtm-min');
+    $lgtm_max = $request->input('lgtm-max');
+    $period = $request->input('period');
+    $period_start = $request->input('period-start');
+    $period_end = $request->input('period-end');
+
+    //settion
+    $request->session()->put('order', $request->input('order'));
+    $request->session()->put('lgtm-min', $request->input('lgtm-min'));
+    $request->session()->put('lgtm-max', $request->input('lgtm-max'));
+    $request->session()->put('period', $request->input('period'));
+    if ($request->input('period') == "period") {
+      $request->session()->put('period-start', $request->input('period-start'));
+      $request->session()->put('period-end', $request->input('period-end'));
+    } else {
+      $request->session()->forget(['period-start', 'period-end']);
+    }
+
+    //keyword
     $keyword_space_half = mb_convert_kana($keyword, 's');
     $keywords = preg_split('/[\s]+/', $keyword_space_half);
     preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
@@ -22,9 +41,9 @@ class DetailedSearch
       $query->having('likes_count', '<=', $lgtm_max);
     }
 
-    // priod search
-    if ($priod !== null) {
-      switch ($priod) {
+    // period search
+    if ($period !== null) {
+      switch ($period) {
         case "day":
           $query->where([
             ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
@@ -42,8 +61,8 @@ class DetailedSearch
           ]);
         case "period":
           $query->where([
-            ['posts.created_at', '>=', date("{$priod_start} 00:00:00")],
-            ['posts.created_at', '<=', date("{$priod_end} 23:59:59")]
+            ['posts.created_at', '>=', date("{$period_start} 00:00:00")],
+            ['posts.created_at', '<=', date("{$period_end} 23:59:59")]
           ]);
       }
     }
