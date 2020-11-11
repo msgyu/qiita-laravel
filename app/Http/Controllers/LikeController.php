@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Models\like;
 use App\Models\post;
 use Illuminate\Http\Request;
@@ -21,13 +20,7 @@ class LikeController extends Controller
     {
         // values
         $tag_btn_value = $request->input('tag_btn');
-        $order = $request->input('order');
-        $lgtm_min = $request->input('lgtm-min');
-        $lgtm_max = $request->input('lgtm-max');
-        $period = $request->input('period');
-        $period_start = $request->input('period-start');
-        $period_end = $request->input('period-end');
-
+        $all_posts_count = DB::table('posts')->count();
 
         // keyword
         $keyword = $request->input('search');
@@ -35,14 +28,14 @@ class LikeController extends Controller
             $keyword = "#{$tag_btn_value}";
         }
 
-        // queryp
+        // query
         $query = Post::withCount('likes')
             ->join('likes', 'posts.id', '=', 'likes.post_id')
             ->where('likes.user_id', '=', Auth::id());
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order);
+        $posts = DetailedSearch::DetailedSearch($query, $keyword, $request);
         $all_posts_count = DB::table('posts')->count();
 
-        return view('likes.index', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'period', 'period_start', 'period_end', 'tag_btn_value'));
+        return view('likes.index', compact('posts', 'all_posts_count', 'keyword'));
     }
 
     /**
