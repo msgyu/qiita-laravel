@@ -30,6 +30,9 @@ class PostController extends Controller
 
         //settion
         $request->session()->put('order', $request->input('order'));
+        $request->session()->put('lgtm-min', $request->input('lgtm-min'));
+        $request->session()->put('lgtm-max', $request->input('lgtm-max'));
+        $request->session()->put('priod', $request->input('priod'));
 
         // keyword
         $keyword = $request->input('search');
