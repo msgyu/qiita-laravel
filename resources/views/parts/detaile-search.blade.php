@@ -32,7 +32,7 @@
             <div>
               <span class="search-conditions_title order-terms_title">順番</span>
             </div>
-            @if($order == "new")
+            @if(Session::has('order') && Session::get('order') == "new")
             <div class="search-conditions_radio">
               <input type="radio" name="order" value="lgtm">LGTM数順
             </div>
