@@ -23,16 +23,16 @@ class PostController extends Controller
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
-        $priod = $request->input('priod');
-        $priod_start = $request->input('piriod-start');
-        $priod_end = $request->input('piriod-end');
+        $period = $request->input('period');
+        $period_start = $request->input('piriod-start');
+        $period_end = $request->input('piriod-end');
         $all_posts_count = DB::table('posts')->count();
 
         //settion
         $request->session()->put('order', $request->input('order'));
         $request->session()->put('lgtm-min', $request->input('lgtm-min'));
         $request->session()->put('lgtm-max', $request->input('lgtm-max'));
-        $request->session()->put('priod', $request->input('priod'));
+        $request->session()->put('period', $request->input('period'));
 
         // keyword
         $keyword = $request->input('search');
@@ -42,8 +42,8 @@ class PostController extends Controller
 
         // query
         $query = Post::withCount('likes');
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
-        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order);
+        return view('posts.index', compact('all_posts_count', 'posts', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'period', 'period_start', 'period_end', 'tag_btn_value'));
     }
 
     public function my_posts(Request $request)
@@ -53,9 +53,9 @@ class PostController extends Controller
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
-        $priod = $request->input('priod');
-        $priod_start = $request->input('piriod-start');
-        $priod_end = $request->input('piriod-end');
+        $period = $request->input('period');
+        $period_start = $request->input('period-start');
+        $period_end = $request->input('period-end');
         $all_posts_count = DB::table('posts')->count();
 
 
@@ -68,8 +68,8 @@ class PostController extends Controller
 
         // query
         $query = Post::where("posts.user_id", "=", Auth::user()->id)->withCount('likes');
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
-        return view('posts.my_posts', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order);
+        return view('posts.my_posts', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'period', 'period_start', 'period_end', 'tag_btn_value'));
     }
 
     /**

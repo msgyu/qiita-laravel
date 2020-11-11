@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class DetailedSearch
 {
-  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order)
+  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order)
   {
     $keyword_space_half = mb_convert_kana($keyword, 's');
     $keywords = preg_split('/[\s]+/', $keyword_space_half);
@@ -22,9 +22,9 @@ class DetailedSearch
       $query->having('likes_count', '<=', $lgtm_max);
     }
 
-    // priod search
-    if ($priod !== null) {
-      switch ($priod) {
+    // period search
+    if ($period !== null) {
+      switch ($period) {
         case "day":
           $query->where([
             ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
@@ -42,8 +42,8 @@ class DetailedSearch
           ]);
         case "period":
           $query->where([
-            ['posts.created_at', '>=', date("{$priod_start} 00:00:00")],
-            ['posts.created_at', '<=', date("{$priod_end} 23:59:59")]
+            ['posts.created_at', '>=', date("{$period_start} 00:00:00")],
+            ['posts.created_at', '<=', date("{$period_end} 23:59:59")]
           ]);
       }
     }

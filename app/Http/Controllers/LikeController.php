@@ -24,9 +24,9 @@ class LikeController extends Controller
         $order = $request->input('order');
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
-        $priod = $request->input('priod');
-        $priod_start = $request->input('piriod-start');
-        $priod_end = $request->input('piriod-end');
+        $period = $request->input('period');
+        $period_start = $request->input('period-start');
+        $period_end = $request->input('period-end');
 
 
         // keyword
@@ -35,14 +35,14 @@ class LikeController extends Controller
             $keyword = "#{$tag_btn_value}";
         }
 
-        // query
+        // queryp
         $query = Post::withCount('likes')
             ->join('likes', 'posts.id', '=', 'likes.post_id')
             ->where('likes.user_id', '=', Auth::id());
-        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $priod, $priod_start, $priod_end, $keyword, $order);
+        $posts = DetailedSearch::DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order);
         $all_posts_count = DB::table('posts')->count();
 
-        return view('likes.index', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'priod', 'priod_start', 'priod_end', 'tag_btn_value'));
+        return view('likes.index', compact('posts', 'all_posts_count', 'keyword', 'order', 'lgtm_min', 'lgtm_max', 'period', 'period_start', 'period_end', 'tag_btn_value'));
     }
 
     /**
