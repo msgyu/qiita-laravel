@@ -116,7 +116,7 @@
               <span>
                 <label for="">
                   @if(Session::has('lgtm-min') && Session::get('lgtm-min') !== null)
-                  最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100" value="{{$lgtm_min}}">
+                  最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100" value="{{Session::get('lgtm-min')}}">
                   @else
                   最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100">
                   @endif
@@ -125,7 +125,7 @@
               <span>
                 <label for="">
                   @if(Session::has('lgtm-max') && Session::get('lgtm-max') !== null)
-                  最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000" value="{{$lgtm_max}}">
+                  最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000" value="{{Session::get('lgtm-max')}}">
                   @else
                   最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000">
                   @endif
