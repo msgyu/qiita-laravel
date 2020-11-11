@@ -83,8 +83,8 @@
             <div class="search-conditions_radio">
               <span>
                 <label for="">
-                  @if($period_start !== null)
-                  開始:<input type="date" class="input-small" name="period-start" placeholder="2020-01-11" value="{{$period_start}}">
+                  @if(Session::has('period-start') && Session::get('period-start') !== null)
+                  開始:<input type="date" class="input-small" name="period-start" placeholder="2020-01-11" value="{{Session::get('period-start')}}">
                   @else
                   開始:<input type="date" class="input-small" name="period-start" placeholder="2020-01-11">
                   @endif
@@ -92,8 +92,8 @@
               </span>
               <span>
                 <label for="">
-                  @if($period_end !== null)
-                  終了:<input type="date" class="input-small" name="period-end" placeholder="2020-02-11" value="{{$period_end}}">
+                  @if(Session::has('period-end') && Session::get('period-end') !== null)
+                  終了:<input type="date" class="input-small" name="period-end" placeholder="2020-02-11" value="{{Session::get('period-end')}}">
                   @else
                   終了:<input type="date" class="input-small" name="period-end" placeholder="2020-02-11">
                   @endif
