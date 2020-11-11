@@ -74,7 +74,7 @@
               @endif
             </div>
             <div class="search-conditions_radio">
-              @if(Settion::has('period') && Settion::get('period') == "period")
+              @if(Session::has('period') && Session::get('period') == "period")
               <input type="radio" name="period" value="period" checked="checked">期間指定
               @else
               <input type="radio" name="period" value="period">期間指定
