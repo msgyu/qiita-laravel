@@ -53,7 +53,11 @@
               <span class="search-conditions_title">期間</span>
             </div>
             <div class="search-conditions_radio">
+              @if(Session::has('period'))
+              <input type="radio" name="period" value="">なし
+              @else
               <input type="radio" name="period" value="" checked="checked">なし
+              @endif
             </div>
             <div class="search-conditions_radio">
               @if(Session::has('period') && Session::get('period') == "day")
