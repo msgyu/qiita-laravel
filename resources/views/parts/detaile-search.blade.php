@@ -108,7 +108,7 @@
             <div class="search-conditions_radio">
               <span>
                 <label for="">
-                  @if($lgtm_min !== null)
+                  @if(Session::has('lgtm-min') && Session::get('lgtm-min') !== null)
                   最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100" value="{{$lgtm_min}}">
                   @else
                   最低:<input type="number" class="input-small" name="lgtm-min" placeholder="100">
@@ -117,7 +117,7 @@
               </span>
               <span>
                 <label for="">
-                  @if($lgtm_max !== null)
+                  @if(Session::has('lgtm-max') && Session::get('lgtm-max') !== null)
                   最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000" value="{{$lgtm_max}}">
                   @else
                   最高:<input type="number" class="input-small" name="lgtm-max" placeholder="1000">
