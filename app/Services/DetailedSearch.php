@@ -21,7 +21,7 @@ class DetailedSearch
     $request->session()->put('period', $request->input('period'));
     if ($request->input('period') == "period") {
       $request->session()->put('period-start', $request->input('period-start'));
-      $request->session()->put('period-end', $request->input('period'));
+      $request->session()->put('period-end', $request->input('period-end'));
     } else {
       $request->session()->forget(['period-start', 'period-end']);
     }
