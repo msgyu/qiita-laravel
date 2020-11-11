@@ -24,8 +24,8 @@ class PostController extends Controller
         $lgtm_min = $request->input('lgtm-min');
         $lgtm_max = $request->input('lgtm-max');
         $period = $request->input('period');
-        $period_start = $request->input('piriod-start');
-        $period_end = $request->input('piriod-end');
+        $period_start = $request->input('period-start');
+        $period_end = $request->input('period-end');
         $all_posts_count = DB::table('posts')->count();
 
         //settion
@@ -33,6 +33,12 @@ class PostController extends Controller
         $request->session()->put('lgtm-min', $request->input('lgtm-min'));
         $request->session()->put('lgtm-max', $request->input('lgtm-max'));
         $request->session()->put('period', $request->input('period'));
+        if ($request->input('period') == "period"){
+            $request->session()->put('period-start', $request->input('period-start'));
+            $request->session()->put('period-end', $request->input('period'));
+        } else {
+            $request->session()->forget(['period-start', 'period-end']);
+        }
 
         // keyword
         $keyword = $request->input('search');
