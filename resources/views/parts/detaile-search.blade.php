@@ -93,9 +93,9 @@
               <span>
                 <label for="">
                   @if($period_end !== null)
-                  終了:<input type="date" class="input-small" name="piriod-end" placeholder="2020-02-11" value="{{$period_end}}">
+                  終了:<input type="date" class="input-small" name="period-end" placeholder="2020-02-11" value="{{$period_end}}">
                   @else
-                  終了:<input type="date" class="input-small" name="piriod-end" placeholder="2020-02-11">
+                  終了:<input type="date" class="input-small" name="period-end" placeholder="2020-02-11">
                   @endif
                 </label>
               </span>
