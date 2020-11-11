@@ -2,12 +2,31 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
-
 class DetailedSearch
 {
-  public static function DetailedSearch($query, $lgtm_min, $lgtm_max, $period, $period_start, $period_end, $keyword, $order)
+  public static function DetailedSearch($query, $keyword, $request)
   {
+    // values
+    $order = $request->input('order');
+    $lgtm_min = $request->input('lgtm-min');
+    $lgtm_max = $request->input('lgtm-max');
+    $period = $request->input('period');
+    $period_start = $request->input('period-start');
+    $period_end = $request->input('period-end');
+
+    //settion
+    $request->session()->put('order', $request->input('order'));
+    $request->session()->put('lgtm-min', $request->input('lgtm-min'));
+    $request->session()->put('lgtm-max', $request->input('lgtm-max'));
+    $request->session()->put('period', $request->input('period'));
+    if ($request->input('period') == "period") {
+      $request->session()->put('period-start', $request->input('period-start'));
+      $request->session()->put('period-end', $request->input('period'));
+    } else {
+      $request->session()->forget(['period-start', 'period-end']);
+    }
+
+    //keyword
     $keyword_space_half = mb_convert_kana($keyword, 's');
     $keywords = preg_split('/[\s]+/', $keyword_space_half);
     preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
