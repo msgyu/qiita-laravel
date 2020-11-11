@@ -28,6 +28,9 @@ class PostController extends Controller
         $priod_end = $request->input('piriod-end');
         $all_posts_count = DB::table('posts')->count();
 
+        //settion
+        $request->session()->put('order', $request->input('order'));
+
         // keyword
         $keyword = $request->input('search');
         if ($tag_btn_value !== null) {
