@@ -108,13 +108,14 @@ class LikeController extends Controller
     {
         if (Auth::check()) {
             $user = auth()->user();
+            $post = Post::find($request->input('post_id'));
             if ($request->input('like_exist') == 0) {
                 Like::create([
-                    'post_id' => $request->input('post_id'),
+                    'post_id' => $post->id,
                     'user_id' => $user->id,
                 ]);
             } elseif ($request->input('like_exist')  == 1) {
-                Like::where('post_id', "=", $request->input('post_id'))
+                Like::where('post_id', "=", $post->id)
                     ->where('user_id', "=", $user->id)
                     ->delete();
             }
