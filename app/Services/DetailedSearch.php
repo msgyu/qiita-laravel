@@ -89,7 +89,6 @@ class DetailedSearch
       }
     }
 
-
     // search order
     if ($order == 'new') {
       $posts = $query->orderBy('posts.created_at', 'desc')->paginate(20);
