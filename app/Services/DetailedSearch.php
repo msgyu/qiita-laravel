@@ -34,11 +34,13 @@ class DetailedSearch
     $tags = $match[1];
 
     //LGTM sum search
+    $query
+      ->join('likes_counts', 'posts.id', '=', 'likes_counts.post_id');
     if ($lgtm_min !== null) {
-      $query->having('likes_count', '>=', $lgtm_min);
+      $query->where('likes_count', '>=', $lgtm_min);
     }
     if ($lgtm_max !== null) {
-      $query->having('likes_count', '<=', $lgtm_max);
+      $query->where('likes_count', '<=', $lgtm_max);
     }
 
     // period search
@@ -89,13 +91,15 @@ class DetailedSearch
       }
     }
 
-
     // search order
     if ($order == 'new') {
-      $posts = $query->orderBy('posts.created_at', 'desc')->get();
+      $query->orderBy('posts.created_at', 'desc');
+
     } else {
-      $posts = $query->orderBy('likes_count', 'desc')->get();
+      $query->orderBy('likes_count', 'desc');
     }
+
+    $posts = $query->paginate(20);
     return $posts;
   }
 }

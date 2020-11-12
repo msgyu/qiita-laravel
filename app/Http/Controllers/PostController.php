@@ -29,7 +29,7 @@ class PostController extends Controller
         }
 
         // query
-        $query = Post::withCount('likes');
+        $query = Post::with(['likes', 'tags', 'user']);
         $posts = DetailedSearch::DetailedSearch($query, $keyword, $request);
         return view('posts.index', compact('posts', 'all_posts_count', 'keyword'));
     }
@@ -80,6 +80,7 @@ class PostController extends Controller
 
             $params['user_id'] = Auth::id();
             $post = Post::create($params);
+            $post->likes_count()->create();
             $tags = $request->tags;
 
             if (count($tags) !== 0) {

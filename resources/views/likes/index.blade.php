@@ -34,6 +34,7 @@
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
     <div class="paginate_wrapper">
+      {{ $posts->links() }}
     </div>
   </div>
 </div>

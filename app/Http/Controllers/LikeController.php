@@ -108,15 +108,21 @@ class LikeController extends Controller
     {
         if (Auth::check()) {
             $user = auth()->user();
+            $post = Post::find($request->input('post_id'));
+            $likes_count = $post->likes_count;
             if ($request->input('like_exist') == 0) {
                 Like::create([
-                    'post_id' => $request->input('post_id'),
+                    'post_id' => $post->id,
                     'user_id' => $user->id,
                 ]);
+                $likes_count->update(['likes_count' => ++$likes_count->likes_count]);
             } elseif ($request->input('like_exist')  == 1) {
-                Like::where('post_id', "=", $request->input('post_id'))
+                Like::where('post_id', "=", $post->id)
                     ->where('user_id', "=", $user->id)
                     ->delete();
+                if ($likes_count->likes_count != 0) {
+                    $likes_count->update(['likes_count' => --$likes_count->likes_count]);
+                }
             }
         }
         return  $request->input('like_exist');

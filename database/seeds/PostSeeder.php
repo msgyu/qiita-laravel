@@ -21,6 +21,7 @@ class PostSeeder extends Seeder
                 $post->tags()->attach(
                     $tags->random(rand(1, 3))->pluck('id')->toArray()
                 );
+                $post->likes_count()->create();
             });
     }
 }

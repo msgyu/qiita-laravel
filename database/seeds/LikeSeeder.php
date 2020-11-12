@@ -20,6 +20,8 @@ class LikeSeeder extends Seeder
                 $post->likes()->create([
                     'user_id' => $users[array_rand($users)],
                 ]);
+                $likes_count = $post->likes_count;
+                $likes_count->update(['likes_count' => ++$likes_count->likes_count]);
             }
         });
     }
