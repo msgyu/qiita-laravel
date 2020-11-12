@@ -93,10 +93,12 @@ class DetailedSearch
 
     // search order
     if ($order == 'new') {
-      $posts = $query->orderBy('posts.created_at', 'desc')->paginate(20);
+      $query->orderBy('posts.created_at', 'desc');
     } else {
-      $posts = $query->orderBy('likes_count', 'desc')->get();
+      $query->orderBy('likes_count', 'desc');
     }
+
+    $posts = $query->paginate(20);
     return $posts;
   }
 }
