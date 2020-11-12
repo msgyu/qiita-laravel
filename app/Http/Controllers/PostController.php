@@ -29,11 +29,10 @@ class PostController extends Controller
         }
 
         // query
-        $query = DB::table('posts')
+        $query = Post::with(['likes', 'tags', 'user'])
             ->join('likes', 'posts.id', '=', 'likes.post_id')
             ->select(
-                'posts.*',
-                'likes.*',
+                '*',
                 DB::raw('count(likes.id) AS likes_count')
             )
             ->groupBy('posts.id');
