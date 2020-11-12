@@ -86,6 +86,7 @@ class PostController extends Controller
 
             $params['user_id'] = Auth::id();
             $post = Post::create($params);
+            $post->likes_count()->create();
             $tags = $request->tags;
 
             if (count($tags) !== 0) {
