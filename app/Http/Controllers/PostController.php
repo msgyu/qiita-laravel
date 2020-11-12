@@ -29,13 +29,7 @@ class PostController extends Controller
         }
 
         // query
-        $query = Post::with(['likes', 'tags', 'user'])
-            ->join('likes', 'posts.id', '=', 'likes.post_id')
-            ->select(
-                '*',
-                DB::raw('count(likes.id) AS likes_count')
-            )
-            ->groupBy('posts.id');
+        $query = Post::with(['likes', 'tags', 'user']);
         $posts = DetailedSearch::DetailedSearch($query, $keyword, $request);
         return view('posts.index', compact('posts', 'all_posts_count', 'keyword'));
     }
