@@ -94,6 +94,7 @@ class DetailedSearch
     // search order
     if ($order == 'new') {
       $query->orderBy('posts.created_at', 'desc');
+
     } else {
       $query->orderBy('likes_count', 'desc');
     }
