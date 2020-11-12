@@ -23,4 +23,9 @@ class post extends Model
     {
         return $this->hasMany('App\Models\like');
     }
+
+    public function likes_count()
+    {
+        return $this->hasOne('App\Models\likes_count');
+    }
 }
