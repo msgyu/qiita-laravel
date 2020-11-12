@@ -17,7 +17,7 @@ class CreateLikesCountsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
-            $table->integer('likes_count');
+            $table->integer('likes_count')->default(0);
             $table->timestamps();
         });
     }
