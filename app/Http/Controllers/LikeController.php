@@ -120,7 +120,9 @@ class LikeController extends Controller
                 Like::where('post_id', "=", $post->id)
                     ->where('user_id', "=", $user->id)
                     ->delete();
-                $likes_count->update(['likes_count' => --$likes_count->likes_count]);
+                if ($likes_count->likes_count != 0) {
+                    $likes_count->update(['likes_count' => --$likes_count->likes_count]);
+                }
             }
         }
         return  $request->input('like_exist');
