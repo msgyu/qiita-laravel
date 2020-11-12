@@ -66,9 +66,6 @@
     <p>「{{ $keyword }}」に一致する記事は見つかりませんでした。</p>
     @endif
     <div class="paginate_wrapper">
-      @if(Session::has('order') && Session::get('order') == "new")
-      {{ $posts->links() }}
-      @endif
     </div>
   </div>
 </div>
