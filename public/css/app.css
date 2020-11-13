@@ -172,6 +172,17 @@ a:hover {
   text-decoration: none;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 /*!
  * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -17439,6 +17450,7 @@ a.text-dark:focus {
 
 .detailed-search_form_body .search-conditions .search-submit {
   background-color: #55c501;
+  border: solid 1px #4ea30a;
 }
 
 #login-wrapper {
