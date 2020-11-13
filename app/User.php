@@ -12,12 +12,12 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany('App\Models\post');
     }
 
     public function likes()
     {
-        return $this->hasMany('App\Models\Like');
+        return $this->hasMany('App\Models\like');
     }
 
 
