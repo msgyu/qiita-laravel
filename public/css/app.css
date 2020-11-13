@@ -17451,6 +17451,8 @@ a.text-dark:focus {
 .detailed-search_form_body .search-conditions .search-submit {
   background-color: #55c501;
   border: solid 1px #4ea30a;
+  width: 100%;
+  color: #eeffe1;
 }
 
 #login-wrapper {
