@@ -134,7 +134,7 @@
             </div>
           </div>
           <div class="search-conditions lgtm-terms">
-            <input type="submit" value="検索する">
+            <input type="submit" class="search-submit" value="検索する">
           </div>
         </div>
       </form>
