@@ -39957,12 +39957,16 @@ $(function () {
         like_exist: like_exist
       }
     }).done(function (like_exist) {
+      var count_string = $(".like_btn__count").text();
+
       if (like_exist == 0) {
         click_button.attr("like_exist", "1");
         click_button.css({
           color: "#fff",
           background: "#55c500"
         });
+        var count = Number(count_string) + 1;
+        $(".like_btn__count").text(count);
       }
 
       if (like_exist == 1) {
