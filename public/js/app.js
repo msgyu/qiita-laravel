@@ -39975,6 +39975,8 @@ $(function () {
           color: "#55c500",
           background: "#fff"
         });
+        var count = Number(count_string) - 1;
+        $(".like_btn__count").text(count);
       }
     }).fail(function (data) {
       alert("いいね処理に失敗しました");

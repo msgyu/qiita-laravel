@@ -22,6 +22,8 @@ $(function() {
                 if (like_exist == 1) {
                     click_button.attr("like_exist", "0");
                     click_button.css({ color: "#55c500", background: "#fff" });
+                    var count = Number(count_string) - 1;
+                    $(".like_btn__count").text(count);
                 }
             })
             .fail(function(data) {
