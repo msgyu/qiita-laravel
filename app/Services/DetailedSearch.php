@@ -56,12 +56,9 @@ class DetailedSearch
             ['posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 week"))],
             ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
           ]);
-          dd(date("Y-m-d 00:00:00", strtotime("-1 week")));
         case "month":
-          $query->where([
-            ['posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 month"))],
-            ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
-          ]);
+          $query->where('posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 month")));
+          $query->where('posts.created_at', '<=', date("Y-m-d H:i:s"));
         case "period":
           if ($period_start !== null) {
             $query->where('posts.created_at', '>=', date("{$period_start} 00:00:00"));
