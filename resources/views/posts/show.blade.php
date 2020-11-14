@@ -60,14 +60,14 @@
       <div class="like">
         <button id="like_btn" post_id="{{ $post->id }}" like_exist="1" style="color:#fff; background: #55c500">
           <span class="like_btn__span">LGTM</span>
-          <span>{{ count($post->likes) }}</span>
+          <span class="like_btn__count">{{ count($post->likes) }}</span>
         </button>
       </div>
       @else
       <div class="like">
         <button id="like_btn" post_id="{{ $post->id }}" like_exist="0">
           <span class="like_btn__span">LGTM</span>
-          <span>{{ count($post->likes) }}</span>
+          <span class="like_btn__count">{{ count($post->likes) }}</span>
         </button>
       </div>
       @endif
