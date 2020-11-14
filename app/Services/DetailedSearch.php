@@ -47,10 +47,8 @@ class DetailedSearch
     if ($period !== null) {
       switch ($period) {
         case "day":
-          $query->where([
-            ['posts.created_at', '>=', date("Y-m-d 00:00:00")],
-            ['posts.created_at', '<=', date("Y-m-d 23:59:59")]
-          ]);
+          $query->where('posts.created_at', '>=', date("Y-m-d 00:00:00"));
+          $query->where('posts.created_at', '<=', date("Y-m-d H:i:s"));
         case "week":
           $query->where('posts.created_at', '>=', date("Y-m-d 00:00:00", strtotime("-1 week")));
           $query->where('posts.created_at', '<=', date("Y-m-d H:i:s"));
