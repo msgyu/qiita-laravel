@@ -54,4 +54,11 @@ class PostTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function testPostsUpdate()
+    {
+        $response = $this->put('/posts/10');
+
+        $response->assertStatus(302);
+    }
 }
