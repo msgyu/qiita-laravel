@@ -19,4 +19,10 @@ class UserTest extends TestCase
         $response->assertStatus(200);
         $this->assertGuest();
     }
+
+    private function dummyLogin()
+    {
+        $user = factory(User::class, 'default')->create();
+        return $this->actingAs($user);
+    }
 }
