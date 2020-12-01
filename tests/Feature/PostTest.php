@@ -50,28 +50,28 @@ class PostTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testPostsStore()
+    public function testPostsStore__logout()
     {
         $response = $this->post('/posts');
 
         $response->assertStatus(302);
     }
 
-    public function testPostsEdit()
+    public function testPostsEdite__logout()
     {
         $response = $this->get('/posts/10/edit');
 
         $response->assertStatus(302);
     }
 
-    public function testPostsUpdate()
+    public function testPostsUpdatee__logout()
     {
         $response = $this->put('/posts/10');
 
         $response->assertStatus(302);
     }
 
-    public function testPostsDelete()
+    public function testPostsDeletee__logout()
     {
         $response = $this->delete('/posts/10');
 
