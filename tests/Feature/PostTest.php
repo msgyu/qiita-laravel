@@ -56,6 +56,14 @@ class PostTest extends TestCase
 
         $response->assertStatus(302);
     }
+    public function testPostsStore__login()
+    {
+        $user = factory(User::class, 'default')->create();
+        $this->actingAs($user);
+        $response = $this->post('/posts');
+
+        $response->assertStatus(302);
+    }
 
     public function testPostsEdite__logout()
     {
