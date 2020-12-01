@@ -40,4 +40,11 @@ class PostTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function testPostsStore()
+    {
+        $response = $this->post('/posts');
+
+        $response->assertStatus(302);
+    }
 }
