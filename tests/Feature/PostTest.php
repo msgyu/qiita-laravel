@@ -19,4 +19,11 @@ class PostTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testPostsIndex()
+    {
+        $response = $this->get('/posts');
+
+        $response->assertStatus(200);
+    }
 }
