@@ -34,7 +34,7 @@ class PostTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testPostsCreate()
+    public function testPostsCreate__logout()
     {
         $response = $this->get('/posts/create');
 
