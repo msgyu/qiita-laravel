@@ -13,7 +13,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testtop()
     {
         $response = $this->get('/');
 
