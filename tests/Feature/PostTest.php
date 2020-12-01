@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class PostTest extends TestCase
 {
@@ -39,6 +40,14 @@ class PostTest extends TestCase
         $response = $this->get('/posts/create');
 
         $response->assertStatus(302);
+    }
+    public function testPostsCreate__login()
+    {
+        $user = factory(User::class, 'default')->create();
+        $this->actingAs($user);
+        $response = $this->get('/posts/create');
+
+        $response->assertStatus(200);
     }
 
     public function testPostsStore()
