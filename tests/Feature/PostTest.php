@@ -26,4 +26,11 @@ class PostTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testPostsShow()
+    {
+        $response = $this->get('/posts/10');
+
+        $response->assertStatus(200);
+    }
 }
