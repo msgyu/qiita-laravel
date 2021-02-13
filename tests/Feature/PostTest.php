@@ -85,4 +85,22 @@ class PostTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    public function testPostsCreate()
+    {
+        $post = factory(Post::class)->create();
+        $user = factory(User::class)->create();
+        $post->likes()->attach($user);
+        $test_user = User::create([
+            'name' => "test",
+            'email' => "test@test",
+            'email_verified_at' => now(),
+            'password' => bcrypt("test1234"),
+            'remember_token' => "test12345"
+        ]);
+
+        $result = isset($test_user);
+
+        $this->assertTrue($result);
+    }
 }
