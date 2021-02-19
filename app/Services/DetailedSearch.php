@@ -94,6 +94,7 @@ class DetailedSearch
       $query->orderBy('likes_count', 'desc');
     }
 
+    // 配列を取得
     $posts = $query->paginate(20);
     return $posts;
   }
