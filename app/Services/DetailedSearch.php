@@ -26,11 +26,22 @@ class DetailedSearch
       $request->session()->forget(['period-start', 'period-end']);
     }
 
-    //keyword
+    /* keyword 
+    */
+
+    /* 全角スペースを半角スペースに変換 */
     $keyword_space_half = mb_convert_kana($keyword, 's');
+
+    /* 半角スペースでsplitし、配列を生成 */
     $keywords = preg_split('/[\s]+/', $keyword_space_half);
+
+    /* "#"を先頭に持つキーワードのみを選定 */
+
     preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
+    /* 検索キーワードに"#"がつくものを除外 */
+
     $no_tag_keywords = array_diff($keywords, $match[0]);
+    /* #を除外したタグキーワード */
     $tags = $match[1];
 
     //LGTM sum search
