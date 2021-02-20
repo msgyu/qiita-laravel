@@ -26,7 +26,7 @@ class DetailedSearch
       $request->session()->forget(['period-start', 'period-end']);
     }
 
-    /* keyword 
+    /* keywordの生成
     */
 
     /* 全角スペースを半角スペースに変換 */
