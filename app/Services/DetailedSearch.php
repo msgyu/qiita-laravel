@@ -36,11 +36,11 @@ class DetailedSearch
     $keywords = preg_split('/[\s]+/', $keyword_space_half);
 
     /* "#"を先頭に持つキーワードのみを選定 */
-
     preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $keyword, $match);
-    /* 検索キーワードに"#"がつくものを除外 */
 
+    /* 検索キーワードに"#"がつくものを除外 */
     $no_tag_keywords = array_diff($keywords, $match[0]);
+
     /* #を除外したタグキーワード */
     $tags = $match[1];
 
